@@ -3,38 +3,28 @@
 CMPT276 TEAM - proposal
 
 Members: 
-
 Wai Si  Yip (Raymond) - 301297354
-
 Gleb Pirogov - 301298139
-
 Gloria Yoon - 301316188
-
 Justin Siu  - 301326899
-
 Benny Mai - 301225053
 
 
 Requirements:  
-
 (1)At least one API
-
 (2) Real-time feature
-
 (3) API should be a significant part
 
 
 Iteration 0 Overview
 
 What is the name of your web application?
-
 Burning+
 
  
 Do we have a clear understanding of the problem?
 
 How is this problem solved currently (if at all)?  
-
 
 Keeping track of fitness progress is typically done manually through pen/paper, spreadsheets or dedicated fitness app. Researching workouts, routines and diets on the other hand are typically done using third party sources such as reading fitness blogs/forums and YouTube videos.
 
