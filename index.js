@@ -34,7 +34,9 @@ express()
     {
       pool.query(accountInfo, accountVal);
       pool.query(userInfo,userVal);
-
+      res.render('pages/SignUpError.ejs',{
+        msg:'CREATED'
+      })
     } else if (ans.rowCount == 1 )
     {
       res.render('pages/SignUpError.ejs',{
@@ -52,35 +54,35 @@ express()
   })
 })
 
-  .post('/burning-plus.html', function(req,res){
-    var loginname = req.body.username;
-    var password = req.body.pw;
+.post('/burning-plus.html', function(req,res){
+  var loginname = req.body.username;
+  var password = req.body.pw;
 
-    pool.query("SELECT * from account WHERE username = '" + loginname + "'", (err,ans) =>{
-      if ( ans.rowCount == 0)
+  pool.query("SELECT * from account WHERE username = '" + loginname + "'", (err,ans) =>{
+    if ( ans.rowCount == 0)
+    {
+      res.render('pages/errorPage', {
+        msg: "No exsit account"
+      })
+    } else if ( ans.rowCount == 1 )
+    {
+      if ( password == ans.rows[0].password)
       {
         res.render('pages/errorPage', {
-          msg: "No exsit account"
+          msg: "CORRECT :)"
         })
-      } else if ( ans.rowCount == 1 )
+      } else
       {
-        if ( password == ans.rows[0].password)
-        {
-          res.render('pages/errorPage', {
-            msg: "CORRECT :)"
-          })
-        } else
-        {
-          res.render('pages/errorPage', {
-            msg: "OH SHIT !"
-          })
-        }
+        res.render('pages/errorPage', {
+          msg: "OH SHIT !"
+        })
       }
-    })
+    }
   })
+})
 
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
+.set('views', path.join(__dirname, 'views'))
+.set('view engine', 'ejs')
+.get('/', (req, res) => res.render('pages/index'))
 
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+.listen(PORT, () => console.log(`Listening on ${ PORT }`))
