@@ -68,7 +68,7 @@ express()
           res.render('pages/errorPage', {
             msg: "CORRECT :)"
           })
-        } else 
+        } else
         {
           res.render('pages/errorPage', {
             msg: "OH SHIT !"
