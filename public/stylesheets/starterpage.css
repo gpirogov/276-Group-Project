@@ -23,8 +23,8 @@ h2 {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 14px;
-  width: 100px;
-  height: 50px;
+  width: 125px;
+  height: 55px;
 }
 
 .topnav a:hover {
@@ -36,7 +36,7 @@ h2 {
     display: inline-block;
     align: center;
     width: 100%;
-    height: 100%;    margin: auto;
+    height: 100%;
 }
 
 .formdiv{

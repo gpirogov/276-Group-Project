@@ -4,30 +4,28 @@
     <meta charset="utf-8">
     <title>Signup Burning + </title>
     <link rel="stylesheet" href="./stylesheets/starterpage.css">
-
+    <script src="signup.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="topnav">
-      <a><img src="back.jpeg" class="logo"></a>
+      <a><img src="image/logo.png" class="logo"></a>
       <h2>Welcome to Burning+ !!!!!</h2>
     </div>
-
       <div class="formdiv">
         <h3>Sign up Here</h3>
         <form class = "form" action="/signup.html" method="post">
           <table class="formtable">
-            <tr><td><strong>Username:  </strong></td>   <td><input type="text" name='username'  ></td></tr>
-            <tr><td><strong>Password:  </strong></td>   <td><input type="password" name='pw'></td></tr>
-            <tr><td><strong>Gender:    </strong></td>   <td><select type="text" name='Gender'> <option value="M">Male</option> <option value="F">Female</option> <option value="other">Other</option></td></tr>
-            <tr><td><strong>Age:       </strong></td>   <td><input type="number" name='age'  require min="0"></td></tr>
-            <tr><td><strong>Weight(kg):    </strong></td>   <td><input type="number" name='weight'  require min="0"></td></tr>
-            <tr><td><strong>Height(cm):    </strong></td>   <td><input type="number" name='height'  require min="0"></td></tr>
-            <tr><td colspan="2"><button type="submit" name="signupbut">Sign Up</button></td></tr>
+            <tr><td><strong>Username:  </strong></td>   <td><input type="text" name='username' id="user" required ></td></tr>
+            <tr><td><strong>Password:  </strong></td>   <td><input type="password" name='pw' id="pw" required></td></tr>
+            <tr><td><strong>Gender:    </strong></td>   <td><select type="text" name='Gender' id="gender" required> <option value="M">Male</option> <option value="F">Female</option> <option value="other">Other</option></select></td></tr>
+            <tr><td><strong>Age:       </strong></td>   <td><input type="number" name='age'  id="age" required min="0"></td></tr>
+            <tr><td><strong>Weight(kg):    </strong></td>   <td><input type="number" name='weight' id="weight" required min="0"></td></tr>
+            <tr><td><strong>Height(cm):    </strong></td>   <td><input type="number" name='height' id="height" required min="0"></td></tr>
+            <tr><td colspan="2"><button type="submit" name="signupbut" >Sign Up</button></td></tr>
           </table>
         </form>
         <br>Already have an account?<br>
         <a href="burning-plus.html">Sign in here</a>
-
       </div>
   </body>
 </html>
