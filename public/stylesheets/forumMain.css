@@ -1,0 +1,65 @@
+i {
+  font-size: 48px;
+  padding: 2px;
+  /* width: 72px;
+  height: 72px;
+  max-width: 72px;
+  max-height: 72px;
+  vertical-align: middle;
+  text-align: center;*/
+}
+
+h3 {
+  font-size: 42px;
+  color: white;
+  padding-left: 32px;
+  margin: 20px 0;
+}
+
+#forumMain > p {
+  color: white;
+  padding-left: 32px;
+  padding-bottom: 10px;
+}
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 24px;
+}
+
+#forumMain {
+  background-color: #1D1D1D;
+  padding-top: 20px;
+  margin-left: 10px;
+  margin-top: 40px;
+}
+
+.forumTopics {
+  display: table;
+  background-color: #2C4348;
+  margin: 6px 10px;
+  padding: 15px 20px;
+  width: 100%;
+}
+
+.icon {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  background-color: white;
+  width: 72px;
+  height: 72px;
+  max-width: 72px;
+  max-height: 72px;
+  /* padding: 0; */
+
+}
+
+.TopicDesc {
+  display: inline-block;
+  padding: 0 0 0 40px;
+}
+
+.TopicDesc > p {
+  color: 	#587178;
+}
