@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  //ssl : true
 });
 
 express()
@@ -34,7 +34,7 @@ express()
     {
       pool.query(accountInfo, accountVal);
       pool.query(userInfo,userVal);
-      res.render('pages/welcomePage.html')
+      res.render('pages/welcomePage.ejs')
     } else if (ans.rowCount == 1 )
     {
       res.render('pages/SignUpError.ejs',{
@@ -82,5 +82,6 @@ express()
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
 .get('/', (req, res) => res.render('pages/index'))
-
+.get('/begginer', (req,res) => res.render('pages/questionarie.ejs'))
+.get('/experience', (req,res) => res.render('pages/proquestion.ejs'))
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
