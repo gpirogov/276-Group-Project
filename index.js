@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  //ssl : true
 });
 
 express()
@@ -41,14 +41,6 @@ express()
         msg:'Exsiting Account'
       })
     }
-  // pool.query('SELECT * FROM account', (err,ans)=>{
-  //   console.log(ans);
-  // })
-  // console.log("---------------------------------");
-  //
-  // pool.query('SELECT * FROM user_info', (err,ans)=>{
-  //   console.log(ans);
-  // })
   })
 })
 
@@ -78,6 +70,25 @@ express()
     }
   })
 })
+
+// .post('/user/:id', function(req,res){
+//   console.log(req.params.id);
+//   var username = req.body.username;
+//   var password = req.body.pw;
+//   var gender = req.body.Gender;
+//   var age = req.body.age;
+//   var weight = req.body.weight;
+//   var height = req.body.height;
+//
+//   res.render('pages/profile.ejs'),{
+//     username:username,
+//     age:age,
+//     gender:gender,
+//     weight:weight,
+//     height:height,
+//     status:"Beginner"
+//   }
+// })
 
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')

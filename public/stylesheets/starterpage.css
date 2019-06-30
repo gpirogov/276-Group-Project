@@ -53,6 +53,6 @@ form{
   display : inline-block;
 }
 
-select {
+select #gender{
   width: 160px;
 }
