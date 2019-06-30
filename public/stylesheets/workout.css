@@ -1,0 +1,127 @@
+body {
+	background-color: #363231;
+}
+
+#centering-container {
+	text-align: center;
+	padding-top: 1.5%;
+}
+
+.day-div {
+	display: inline-block;
+	width: 94%;
+	margin-bottom: 1.5%;
+}
+
+table, th, td {
+	/*border: 1px solid black;*/
+}
+
+.day-div-exercises table{
+	width: 100%;
+	padding-bottom: 0.25em;
+	padding-top: 0.25em;
+	border-radius: 0 0.5em 0.5em 0.5em;
+	background-color: #4b4342;
+	/* used this generator for box shadow https://www.cssmatic.com/box-shadow */
+	-webkit-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+}
+
+/* learned how to add circles around images from https://www.w3schools.com/howto/howto_css_rounded_images.asp */
+.exercise-icon {
+  border-radius: 50%;
+  width: 3.2em;
+}
+
+.day-other-titles{
+	display: inline;
+}
+
+.day-other-titles button{
+
+	background-color: #4b4342;
+	color: #7d7272;
+}
+.exercise-icon-cell {
+	text-align: right;
+}
+
+.exercise-info-cell {
+	text-align: left;
+}
+
+.exercise-name-cell h3{
+	font-size: 1.5em;
+	font-weight: normal;
+	margin: 0;
+	text-align: left;
+	color: #dedcdc;
+}
+
+.exercise-info-cell{
+	vertical-align: top;
+}
+
+.exercise-info-button, .one-rep-max-button{
+	padding: 0;
+	width: 1.5em;
+	height: 1.5em;
+	border-color: lightgrey;
+	border-radius: 50%;
+	font-size: 0.75em;
+}
+
+.day-div-exercises tr td{
+	padding-bottom: 0.25em;
+}
+
+.day-div-header { 
+	text-align: left;
+	border-radius: 0.5em 0.5em 0 0;
+	background-color: #3f3938;
+	float: left;
+	padding-left: 1em;
+	padding-right: 1em;
+	/* used this generator for box shadow https://www.cssmatic.com/box-shadow */
+	-webkit-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+	box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
+}
+
+.day-current-title{
+	font-size: 2em;
+	padding-right: 0.25em;
+	color: white;
+
+}
+
+.day-other-titles{
+	vertical-align: top;
+}
+
+.day-other-titles tr td button{
+	border: none;
+	font-size: 0.75em;
+}
+
+.exercise-data-cell form input{
+	background-color: #645b5a;
+	border-color: #645b5a;
+}
+
+.exercise-data-cell form select{
+	background-color: #645b5a;
+	border-color: #645b5a;
+}
+
+.exercise-data-cell form select{
+	/* learned how to remove select arrow from here https://stackoverflow.com/a/27641804 */
+	-webkit-appearance: none;
+}
+
+/*.exercise-data-cell form input{ //use this color set somewhere else
+	background-color: #2e2b2a;
+	border-color: #3f3938;
+}*/
