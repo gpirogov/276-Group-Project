@@ -51,7 +51,7 @@ express()
   pool.query("SELECT * from account WHERE username = '" + loginname + "'", (err,ans) =>{
     if ( ans.rowCount == 0)
     {
-      res.render('pages/errorPage', {
+      res.render('pages/:req.body.id', {
         msg: "No exsit account"
       })
     } else if ( ans.rowCount == 1 )
