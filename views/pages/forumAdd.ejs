@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/starterpage.css">
+    <script src="signup.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a><img src="image/logo.png" class="logo"></a>
+      <h2>Welcome to Burning+ !!!!!</h2>
+    </div>
+    <div id="forumAdd">
+        <h3>Create a New Thread</h3>
+        <h1> Add New Students </h1>
+        <form id="forumAddInner" method="post" action="/forumAdd" >
+          <label for="title"><b>Title</b></label
+          ><br />
+          <input type="text" name="title" /><br />
+
+          <label for="comment"><b>Comment</b></label
+          ><br />
+          <input type="text" name="comment" /><br />
+
+          <!-- eventually maybe not need to ask -->
+          <label for="username"><b>Your Username</b></label
+          ><br />
+          <input type="text" name="username" /><br />
+
+          <!-- workout, nutrition, questions, etc -->
+          <label for="topic"><b>Which topic does this belong in?</b></label
+          ><br />
+          <!-- should change to list options -->
+          <input type="text" name="topic" /><br />
+
+          <div class="submitdiv">
+            <input id="submitButton" value="SUBMIT" type="submit" />
+          </div>
+        </form>
+      </div>
+  </body>
+</html>

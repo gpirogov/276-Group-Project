@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/starterpage.css">
+    <script src="signup.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a><img src="image/logo.png" class="logo"></a>
+      <h2>WORKOUT FORUM</h2>
+    </div>
+    <div id="forumThread">
+        <!-- should only be one result... -->
+        <% results.forEach(function(s) { %>
+            <div >
+              <h3> <%= s.title %> </h3>
+              <p> <%= s.content %> <p>
+            </div>
+        <% }); %>
+
+      </div>
+  </body>
+</html>
