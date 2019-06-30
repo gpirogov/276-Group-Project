@@ -34,9 +34,7 @@ express()
     {
       pool.query(accountInfo, accountVal);
       pool.query(userInfo,userVal);
-      res.render('pages/SignUpError.ejs',{
-        msg:'CREATED'
-      })
+      res.render('pages/welcomePage')
     } else if (ans.rowCount == 1 )
     {
       res.render('pages/SignUpError.ejs',{
