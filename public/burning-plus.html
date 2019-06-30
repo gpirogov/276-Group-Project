@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>Burning +</title>
     <link rel="stylesheet" href="./stylesheets/starterpage.css">
-
+    <script src="signup.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="topnav">
-      <a><img src="back.jpeg" class="logo"></a>
+      <a><img src="image/logo.png" class="logo"></a>
       <h2>Welcome to Burning+ !!!!!</h2>
     </div>
 
@@ -16,16 +16,13 @@
       <h3>Login in here</h3>
       <form class = "form" action='/burning-plus.html' method="post">
           <table>
-            <tr><td><strong>Username:  </strong></td>  <td><input type="text" name='username' placeholder="username" ></td></tr>
-            <tr><td><strong>Password:  </strong></td>  <td><input type="password" name="pw" placeholder="password"></td></tr>
-            <tr><td colspan="2"><button type="submit" name="signinbut">Login</button></td></tr>
+            <tr><td><strong>Username:  </strong></td>  <td><input type="text" name='username' id="user"placeholder="username" required ></td></tr>
+            <tr><td><strong>Password:  </strong></td>  <td><input type="password" name="pw" id="pw" placeholder="password" required></td></tr>
+            <tr><td colspan="2"><button type="submit" name="signinbut" >Login</button></td></tr>
           </table>
       </form>
       <br>New user?<br>
       <a href="signup.html">Sign up to create your account</a>
-
     </div>
-
-
   </body>
 </html>

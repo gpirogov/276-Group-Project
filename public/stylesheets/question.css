@@ -1,0 +1,13 @@
+form{
+  display : inline-block;
+  text-align: left;
+}
+
+.button{
+  text-align: center;
+}
+
+table{
+  text-align: left;
+  padding: 10px;
+}
