@@ -44,20 +44,20 @@ express()
   })
 })
 
-.post('/burning-plus.html', function(req,res){
+.post('/:username', function(req,res){
   var loginname = req.body.username;
   var password = req.body.pw;
-
-  pool.query("SELECT * from account WHERE username = '" + loginname + "'", (err,ans) =>{
+  pool.query("SELECT * from user_info WHERE username = '" + loginname + "'", (err,ans) =>{
     if ( ans.rowCount == 0)
     {
-      res.render('pages/:req.body.id', {
+      res.render('pages/errorPage', {
         msg: "No exsit account"
       })
     } else if ( ans.rowCount == 1 )
     {
       if ( password == ans.rows[0].password)
       {
+        var id = ans.rows[0].id
         res.render('pages/errorPage', {
           msg: "CORRECT :)"
         })
@@ -95,5 +95,30 @@ express()
 .get('/', (req, res) => res.render('pages/index'))
 .get('/begginer', (req,res) => res.render('pages/questionarie.ejs'))
 .get('/experience', (req,res) => res.render('pages/proquestion.ejs'))
-.
+// .get('/1', function(req,res){
+//   var loginname = req.body.username;
+//   var password = req.body.pw;
+//   pool.query("SELECT * from user_info WHERE username = '" + loginname + "'", (err,ans) =>{
+//     if ( ans.rowCount == 0)
+//     {
+//       res.render('pages/errorPage', {
+//         msg: "No exsit account"
+//       })
+//     } else if ( ans.rowCount == 1 )
+//     {
+//       if ( password == ans.rows[0].password)
+//       {
+//         var id = ans.rows[0].id
+//         res.render('pages/errorPage', {
+//           msg: "CORRECT :)"
+//         })
+//       } else
+//       {
+//         res.render('pages/errorPage', {
+//           msg: "OH SHIT !"
+//         })
+//       }
+//     }
+//   })
+// })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
