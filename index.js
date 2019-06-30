@@ -95,4 +95,5 @@ express()
 .get('/', (req, res) => res.render('pages/index'))
 .get('/begginer', (req,res) => res.render('pages/questionarie.ejs'))
 .get('/experience', (req,res) => res.render('pages/proquestion.ejs'))
+.
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
