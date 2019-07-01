@@ -6,6 +6,8 @@
 	To-do: 		- add padding to bottom of table. will probably have to use js for that.
 				- add "exercise-weight-plus-5" functionality.
 				- add ability to add custom comments. (important)
+				- comment box is slightly off center.
+				- find way to add color to draggable exercises.
 */
 
 
