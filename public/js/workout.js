@@ -4,6 +4,8 @@
 				Note: first clicking to select, then dragging out of bounds does not result in a bug.
 
 	To-do: 		- add padding to bottom of table. will probably have to use js for that.
+				- add "exercise-weight-plus-5" functionality.
+				- add ability to add custom comments. (important)
 */
 
 
@@ -39,12 +41,35 @@ function updateOneRepMaxButton() {
 	for(var i = 0; i < oneRepMaxForms.length; i++) {
 		(function () {
 			var counter = i;
-			oneRepMaxForms[i].style.display="none";
 			oneRepMaxButtons[i].addEventListener('click', function(){ toggleElementDisplay(oneRepMaxForms[counter]); });
 		}());
 	}
-	console.log("test2");
+	//console.log("test2");
 }
+
+function updateCommentButton() {
+	var commentButtons = document.getElementsByClassName("exercise-comment-button");
+	var commentForms = document.getElementsByClassName("exercise-comment-form");
+	for(var i = 0; i < commentForms.length; i++) {
+		(function () {
+			var counter = i;
+			var old_element = commentButtons[counter];
+			var new_element = old_element.cloneNode(true);
+			old_element.parentNode.replaceChild(new_element, old_element);
+		}());
+	}
+
+	var commentButtons = document.getElementsByClassName("exercise-comment-button");
+	for(var i = 0; i < commentForms.length; i++) {
+		(function () {
+			var counter = i;
+			commentButtons[i].addEventListener('click', function(){ commentForms[counter].classList.toggle("show"); });
+		}());
+	}
+}
+
+
+
 
 window.addEventListener("load", function(){
 	oneRepMaxForms = document.getElementsByClassName("one-rep-max-weight-form");
@@ -55,9 +80,13 @@ window.addEventListener("load", function(){
 	}
 
 
-
 	updateDraggableExercises();
 });
+
+
+
+
+
 
 
 
@@ -103,8 +132,12 @@ function updateDraggableExercises(){
 	    
 	});
 
+	updateCommentButton();
 	updateOneRepMaxButton();
 }
 
 
-// add "exercise-weight-plus-5" functionality.
+
+
+
+
