@@ -61,7 +61,10 @@ body {
 
 .day-div {
 	display: inline-block;
-	width: 92%;
+	/*width: 92%;*/
+	max-width: 75em; /* tables look weird when too large */
+	max-width: 92%;  /* so that there is some margin on sides if width of window is small */
+	/*text-align: center;*/
 	margin-bottom: 1.5%;
 }
 
@@ -69,7 +72,11 @@ table, th, td {
 	/*border: 1px solid black;*/
 }
 
+
 .day-div-exercises table{
+	border-collapse: collapse;	/* removing this causes lines to appear during selection */
+	table-layout: fixed;
+	max-width: 75em;
 	width: 100%;
 	/*padding-bottom: 0.5em;
 	padding-top: 0.5em;*/
@@ -97,11 +104,17 @@ table, th, td {
 	color: #7d7272;
 }
 .exercise-icon-cell {
+	width: 5.25em;
 	text-align: right;
 }
 
 .exercise-info-cell {
+	width: 5.25%;
 	text-align: left;
+}
+
+.exercise-name-cell{
+	max-width: 20em;
 }
 
 .exercise-name-cell h3{
@@ -116,13 +129,28 @@ table, th, td {
 	vertical-align: top;
 }
 
-.exercise-info-button, .one-rep-max-button{
+.exercise-info-button{
 	padding: 0;
 	width: 1.5em;
 	height: 1.5em;
 	border-color: lightgrey;
 	border-radius: 50%;
 	font-size: 0.75em;
+}
+
+.exercise-comment-cell {
+	text-align: right;
+	width: 5.25%;
+}
+
+.exercise-comment-button, .one-rep-max-button{
+	padding: 0;
+	width: 1.5em;
+	height: 1.5em;
+	border-color: lightgrey;
+	border-radius: 50%;
+	font-size: 1.125em;
+	background-color: white;
 }
 
 .day-div-exercises tr td{
@@ -137,6 +165,8 @@ table, th, td {
 	float: left;
 	padding-left: 1em;
 	padding-right: 1em;
+	padding-top: 0.25em;
+	padding-bottom: 0.375em;
 	/* used this generator for box shadow https://www.cssmatic.com/box-shadow */
 	-webkit-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
@@ -157,6 +187,10 @@ table, th, td {
 .day-other-titles tr td button{
 	border: none;
 	font-size: 0.75em;
+}
+
+.exercise-data-cell {
+	width: 16em;
 }
 
 .exercise-data-cell form input{
@@ -185,17 +219,16 @@ table, th, td {
 	border-color: #3f3938;
 }*/
 
+.exercise-one-rep-max-button-cell {
+	width: 3.75em;
+	text-align: left;
+}
 
 /* =================================================
 ================ Draggable Exercises ===============
 ================================================= */
 
 /* learned how to add drag and droppable table rows from https://stackoverflow.com/a/21807833 */
-
-
-table{
-	border-collapse:collapse;
-}
 
 table, td, th{
 	/*border:1px solid black;*/

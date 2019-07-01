@@ -3,6 +3,7 @@
 				click-select an exercise again without dragging it.
 				Note: first clicking to select, then dragging out of bounds does not result in a bug.
 
+	To-do: 		- add padding to bottom of table. will probably have to use js for that.
 */
 
 
