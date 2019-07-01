@@ -5,8 +5,9 @@
   <title>Workout Planner Page</title>
   <link rel="stylesheet" href="stylesheets/workout.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <!-- <script src="jquery-ui-dist/jquery-ui" type="module"></script> -->
   <script src="js/workout.js"></script>
 </head>
 
@@ -29,9 +30,9 @@
       </div>
 
 
-      <div class="day-div-exercises" id="table1">
-        <table class="childgrid">
-          <tr id="overhead-press" class="draggable_tr">
+      <div class="day-div-exercises">
+        <table>
+          <tr id="overhead-press">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/overhead-press.jpg" alt="(image)">
             </td>
@@ -85,7 +86,7 @@
             </td>
           </tr>
 
-          <tr id="incline-dumbell-shoulder-press" class="draggable_tr">
+          <tr id="incline-dumbell-shoulder-press">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/incline-dumbbell-shoulder-press.jpg" alt="(image)">
             </td>
@@ -139,7 +140,7 @@
             </td>
           </tr>
 
-          <tr id="dumbell-shoulder-flys" class="draggable_tr">
+          <tr id="dumbell-shoulder-flys">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/dumbbell-shoulder-flys.png" alt="(image)">
             </td>
@@ -193,7 +194,7 @@
             </td>
           </tr>
 
-          <tr id="rear-delt-cable-crossovers" class="draggable_tr">
+          <tr id="rear-delt-cable-crossovers">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/rear-delt-cable-crossovers.jpg" alt="(image)">
             </td>
@@ -266,9 +267,9 @@
       </div>
 
 
-      <div class="day-div-exercises" id="table2">
+      <div class="day-div-exercises bitacoratable" id="table1">
         <table class="childgrid">
-          <tr class="draggable_tr" id="hammer-curls">
+          <tr draggable="true" class="draggable_tr" id="hammer-curls">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/hammer-curls.jpg" alt="(image)">
             </td>
@@ -322,7 +323,7 @@
             </td>
           </tr>
 
-          <tr class="draggable_tr" id="incline-dumbell-curl">
+          <tr draggable="true" class="draggable_tr" id="incline-dumbell-curl">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/incline-dumbbell-curl.jpg" alt="(image)">
             </td>
@@ -376,7 +377,7 @@
             </td>
           </tr>
 
-          <tr class="draggable_tr" id="preacher-curls">
+          <tr draggable="true" class="draggable_tr" id="preacher-curls">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/preacher-curls.jpg" alt="(image)">
             </td>
@@ -442,9 +443,9 @@
       </div>
 
 
-      <div class="day-div-exercises" id="table3">
+      <div class="day-div-exercises bitacoratable" id="table2">
         <table class="childgrid">
-          <tr class="draggable_tr" id="additional-exercise">
+          <tr draggable="true" class="draggable_tr" id="additional-exercise">
             <td class="exercise-icon-cell">
               <img class="exercise-icon" src="./images/additional-exercise.png" alt="(image)">
             </td>
