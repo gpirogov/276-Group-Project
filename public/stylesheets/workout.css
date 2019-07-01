@@ -109,6 +109,10 @@ table, th, td {
 .exercise-data-cell form input{
 	background-color: #645b5a;
 	border-color: #645b5a;
+	color: #dedcdc;
+	text-align: center;
+	font-size: 1.25em;
+	width: 3.25em;
 }
 
 .exercise-data-cell form select{
@@ -119,6 +123,8 @@ table, th, td {
 .exercise-data-cell form select{
 	/* learned how to remove select arrow from here https://stackoverflow.com/a/27641804 */
 	-webkit-appearance: none;
+	color: #dedcdc;
+	font-size: 1.25em;
 }
 
 /*.exercise-data-cell form input{ //use this color set somewhere else
