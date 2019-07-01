@@ -61,10 +61,8 @@ body {
 
 .day-div {
 	display: inline-block;
-	/*width: 92%;*/
 	max-width: 75em; /* tables look weird when too large */
 	max-width: 92%;  /* so that there is some margin on sides if width of window is small */
-	/*text-align: center;*/
 	margin-bottom: 1.5%;
 }
 
@@ -165,7 +163,7 @@ table, th, td {
 	float: left;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-top: 0.25em;
+	padding-top: 0.375em;
 	padding-bottom: 0.375em;
 	/* used this generator for box shadow https://www.cssmatic.com/box-shadow */
 	-webkit-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.2);
