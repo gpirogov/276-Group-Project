@@ -32,13 +32,14 @@ express()
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
+        var status = ans.rows[0].status;
         res.render('pages/profile', {
               username:username,
               age:age,
               gender:gender,
               weight:weight,
               height:height,
-              status:"Beginner"
+              status:status,
         })
       } else
       {
@@ -87,37 +88,45 @@ express()
 
 .post('/beginnerChoice', function(req,res){
   res.render('pages/questionarie')
+  pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
+
 })
 
 .post('/beginnerQuestion', function(req,res){
+
+
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
       var gender = ans.rows[0].gender;
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-
+      var status = ans.rows[0].status;
     res.render('pages/profile', {
           username:username,
           age:age,
           gender:gender,
           weight:weight,
           height:height,
+          status:status,
     })
   })
 })
 
 .post('/experienceChoice', function(req,res){
   res.render('pages/proquestion')
+  pool.query("UPDATE user_info SET status = 'experience' WHERE username = '" + globalName + "'" );
 })
 
 .post('/experienceQuestion', function(req,res){
+
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
       var gender = ans.rows[0].gender;
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
+      var status = ans.rows[0].status;
 
     res.render('pages/profile', {
           username:username,
@@ -125,7 +134,7 @@ express()
           gender:gender,
           weight:weight,
           height:height,
-          status:"Experience"
+          status:status,
     })
   })
 })
