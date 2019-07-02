@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title> Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/starterpage.css">
+    <link rel="stylesheet" href="./stylesheets/diet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="topnav">
+      <a><img src="image/logo.png" class="logo"></a>
+      <h2>Add Meal</h2>
+    </div>
+
+    <a href = 'diet.html' id="backButton" >Back</a>
+
+    <div id = "mealSelector">
+        <select  name="meal">
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+          <option value="snack">Snack</option>
+        </select>
+    </div>
+
+    <form class = "search">
+      <input type="text" id="searchBar" placeholder="Search for foods">
+      <button type="submit" class = "searchButton"><i class="fa fa-search"></i></button>
+    </form>
+
+
+
+    <table id = "meals">
+      <tr>
+          <th>Food</th>
+          <th>Calories</th>
+          <th>Fat</th>
+          <th>Carbs</th>
+          <th>Protien</th>
+      </tr>
+
+      <tr class =  "mealRow">
+        <td id = "mealFood"></td>
+        <td id = "mealCalories"></td>
+        <td id = "mealFat"></td>
+        <td id = "mealCarbs"></td>
+        <td id = "mealProtien"></td>
+      </tr>
+    </table>
+
+    <button id="addButton" >Add</button>
+
+
+
+  </body>
+</html>
