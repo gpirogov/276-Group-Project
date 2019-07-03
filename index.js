@@ -144,21 +144,20 @@ express()
 .get('/', (req, res) => res.render('pages/index'))
 .get('/profile',(req,res)=>{
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
-    //   var username = ans.rows[0].username;
-    //   var gender = ans.rows[0].gender;
-    //   var age = ans.rows[0].age;
-    //   var weight = ans.rows[0].weight;
-    //   var height = ans.rows[0].height;
-    //   var status = ans.rows[0].status;
-    // res.render('pages/profile', {
-    //       username:username,
-    //       age:age,
-    //       gender:gender,
-    //       weight:weight,
-    //       height:height,
-    //       status:status,
-    // })
-    console.log(ans);
+      var username = ans.rows[0].username;
+      var gender = ans.rows[0].gender;
+      var age = ans.rows[0].age;
+      var weight = ans.rows[0].weight;
+      var height = ans.rows[0].height;
+      var status = ans.rows[0].status;
+    res.render('pages/profile', {
+          username:username,
+          age:age,
+          gender:gender,
+          weight:weight,
+          height:height,
+          status:status,
+    })
   })
 })
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
