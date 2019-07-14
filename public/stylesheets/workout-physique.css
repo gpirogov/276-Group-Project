@@ -104,13 +104,16 @@ table, th, td {
 
 .day-other-titles{
 	display: inline;
+	vertical-align: top;
 }
 
 .day-other-titles button{
-
 	background-color: #4b4342;
 	color: #7d7272;
+	border: none;
+	font-size: 1.25em;
 }
+
 .exercise-icon-cell {
 	width: 5.25em;
 	text-align: right;
@@ -188,15 +191,6 @@ table, th, td {
 	padding-right: 0.25em;
 	color: white;
 
-}
-
-.day-other-titles{
-	vertical-align: top;
-}
-
-.day-other-titles tr td button{
-	border: none;
-	font-size: 0.75em;
 }
 
 .exercise-data-cell {
