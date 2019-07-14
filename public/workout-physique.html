@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Workout Planner Page</title>
+  <link rel="stylesheet" href="stylesheets/workout-physique.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/workout.js"></script>
+</head>
+
+<body>
+  <div class="topnav">
+    <a href="profile"><img src="images/logo-inverted.png"class="logo"></a>
+    <a href="logout" class="navbar">Signout</a>
+    <a href="profile" class="navbar">Profile</a>
+    <a href="forum.html" class="navbar">Forum</a>
+    <a href="diet.html" class="navbar">Diet</a>
+    <a href="workout-physique.html" class="navbar">Workout</a>
+    <!-- <h2>WORKOUT PLANNER</h2> -->
+  </div>
+  <div id="centering-container">
+    <div class="day-div" id="main-day-div">
+      <div class="day-div-header">
+        <span class="day-current-title" id="shoulder-day-title">Shoulder Day</span>
+        <table class="day-other-titles">
+          <tr>
+            <td><button id="back-day-title">Back</button></td>
+            <td><button id="leg-day-title">Leg</button></td>
+            <td><button id="chest-day-title">Chest</button></td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="day-div-exercises" id="table1">
+        <table class="childgrid">
+          <tr id="overhead-press" class="draggable_tr">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/overhead-press.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Overhead Press</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button exercise-comment-button-empty">💬</button>
+                <span class="exercise-comment-form"></span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+          <tr id="incline-dumbell-shoulder-press" class="draggable_tr">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/incline-dumbbell-shoulder-press.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Incline Dumbell Shoulder Press</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button">💬</button>
+                <span class="exercise-comment-form">Use lowest notch on bench. Raise both dumbbells evenly!</span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+          <tr id="dumbell-shoulder-flys" class="draggable_tr">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/dumbbell-shoulder-flys.png" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Dumbbell Shoulder Flys</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button exercise-comment-button-empty">💬</button>
+                <span class="exercise-comment-form"></span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+          <tr id="rear-delt-cable-crossovers" class="draggable_tr">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/rear-delt-cable-crossovers.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Rear Delt Cable Crossovers</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button">💬</button>
+                <span class="exercise-comment-form">Step back half a meter. Start with hands together outstretched in front of you. Keep arms imobile. Focus on JUST using rear delts. Should feel really tiring.</span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+
+        </table>
+      </div>
+    </div>
+    <div class="seperator-div"></div>
+
+
+
+
+
+    <div class="day-div" id="secondary-day-div">
+      <div class="day-div-header">
+        <span class="day-current-title" id="bicep-day-title">Biceps</span>
+        <table class="day-other-titles">
+          <tr>
+            <td><button id="triceps">Triceps</button></td>
+          </tr>
+        </table>
+      </div>
+
+
+      <div class="day-div-exercises" id="table2">
+        <table class="childgrid">
+          <tr class="draggable_tr" id="hammer-curls">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/hammer-curls.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Hammer Curls</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button">💬</button>
+                <span class="exercise-comment-form">1 arm at a time.</span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+          <tr class="draggable_tr" id="incline-dumbell-curl">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/incline-dumbbell-curl.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Incline Dumbbell Curl</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button">💬</button>
+                <span class="exercise-comment-form">Use 3rd lowest notch on bench. Relax arms. Raise dumbbells as controlled as possible.</span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+
+          <tr class="draggable_tr" id="preacher-curls">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/preacher-curls.jpg" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Preacher Curls</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button exercise-comment-button-empty">💬</button>
+                <span class="exercise-comment-form"></span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="seperator-div"></div>
+
+
+
+
+
+    <div class="day-div" id="extra-day-div">
+      <div class="day-div-header">
+        <div class="day-current-title" id="additional-day-title">Additional</div>
+      </div>
+
+
+      <div class="day-div-exercises" id="table3">
+        <table class="childgrid">
+          <tr class="draggable_tr" id="additional-exercise">
+            <td class="exercise-icon-cell">
+              <img class="exercise-icon" src="./images/additional-exercise.png" alt="(image)">
+            </td>
+            <td class="exercise-info-cell">
+              <button class="exercise-info-button">❓</button>
+            </td>
+            <td class="exercise-name-cell"><h3>Add Additional Exercise</h3></td>
+            <td class="exercise-comment-cell">
+              <div class="popup">
+                <button class="exercise-comment-button exercise-comment-button-empty">💬</button>
+                <span class="exercise-comment-form"></span>
+              </div>
+            </td>
+            <td class="exercise-data-cell">
+              <form class="regular-weight-form" action="/1" method="post">
+                <!-- learned datalists from https://stackoverflow.com/a/21958246 -->
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-minus-2.5">-2.5</option>
+                  <option class="exercise-weight-plus-2.5">+2.5</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="&ndash;">
+                <datalist>
+                  <option>5&times;5</option>
+                  <option>3&times;8</option>
+                  <option>3&times;10</option>
+                  <option>3&times;12</option>
+                  <option>8,10,12</option>
+                </datalist>
+              </form>
+
+              <form class="one-rep-max-weight-form" action="/2" method="post">
+                <input class="exercise-weight" type="text" name="weight" placeholder="&ndash;">
+                <datalist>
+                  <option class="exercise-weight-plus-5">+5</option>
+                  <option class="exercise-weight-plus-10">+10</option>
+                  <option class="exercise-weight-plus-15">+15</option>
+                  <option class="exercise-weight-plus-20">+20</option>
+                  <option class="exercise-weight-plus-25">+25</option>
+                  <option class="exercise-weight-plus-30">+30</option>
+                  <option class="exercise-weight-plus-35">+35</option>
+                  <option class="exercise-weight-plus-40">+40</option>
+                </datalist>
+                <select class="exercise-weight-type" name="wType">
+                  <option value="lbs">lbs</option>
+                  <option value="kg">kg</option>
+                </select>
+                <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
+              </form>
+            </td>
+            <td class="exercise-one-rep-max-button-cell">
+              <button class="one-rep-max-button one-rep-max-button-unclicked">🏆</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="seperator-div"></div>
+
+
+
+
+
+
+</body>
+</html>

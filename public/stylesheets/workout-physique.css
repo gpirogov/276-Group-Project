@@ -313,11 +313,11 @@ td {
 }
 
 
-.exercise-comment-button-empty {
+.exercise-comment-button-empty, .one-rep-max-button-unclicked{
 	opacity: 0.20;
 }
 
-.exercise-comment-button-empty:hover {
+.exercise-comment-button-empty:hover, .one-rep-max-button-unclicked:hover {
 	opacity: 1;
 	transition: opacity 0.25s;
 }
