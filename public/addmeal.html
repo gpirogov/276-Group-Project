@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title> Burning + </title>
-    <link rel="stylesheet" href="./stylesheets/starterpage.css">
-    <link rel="stylesheet" href="./stylesheets/diet.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  </head>
-  <body>
-    <div class="topnav">
-      <a href="profile"><img src="images/logo.png"class="logo"></a>
-      <a href="burning-plus.html" class="navbar">Signout</a>
-      <a href="workout.html" class="navbar">Workout</a>
-      <a href="diet.html" class="navbar">Diet</a>
-      <a href="forum.html" class="navbar">Forum</a>
-      <!-- <h2>Add Meal</h2> -->
-    </div>
+<head>
+  <meta charset="utf-8">
+  <title> Burning + </title>
+  <link rel="stylesheet" href="./stylesheets/starterpage.css">
+  <link rel="stylesheet" href="./stylesheets/diet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div class="topnav">
+    <a href="profile"><img src="images/logo.png"class="logo"></a>
+    <a href="logout" class="navbar">Signout</a>
+    <a href="profile" class="navbar">Profile</a>
+    <a href="workout.html" class="navbar">Workout</a>
+    <a href="diet.html" class="navbar">Diet</a>
+    <a href="forum.html" class="navbar">Forum</a>
+    <!-- <h2>Add Meal</h2> -->
+  </div>
 
+  <div class="formdiv">
     <a href = 'diet.html' id="backButton" >Back</a>
 
     <div id = "mealSelector">
-        <select  name="meal">
-          <option value="breakfast">Breakfast</option>
-          <option value="lunch">Lunch</option>
-          <option value="dinner">Dinner</option>
-          <option value="snack">Snack</option>
-        </select>
+      <select  name="meal">
+        <option value="breakfast">Breakfast</option>
+        <option value="lunch">Lunch</option>
+        <option value="dinner">Dinner</option>
+        <option value="snack">Snack</option>
+      </select>
     </div>
 
     <form class = "search">
@@ -37,11 +39,11 @@
 
     <table id = "meals">
       <tr>
-          <th>Food</th>
-          <th>Calories</th>
-          <th>Fat</th>
-          <th>Carbs</th>
-          <th>Protien</th>
+        <th>Food</th>
+        <th>Calories</th>
+        <th>Fat</th>
+        <th>Carbs</th>
+        <th>Protien</th>
       </tr>
 
       <tr class =  "mealRow">
@@ -58,4 +60,6 @@
 
 
   </body>
+
+</div>
 </html>

@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL//,
-  //ssl : true
+  connectionString: process.env.DATABASE_URL,
+  ssl : true
 });
 
 var globalName
@@ -17,6 +17,7 @@ express()
 .post('/burning-plus.html', function(req,res){
   var loginname = req.body.username;
   var password = req.body.pw;
+  globalName = loginname;
   pool.query("SELECT * from user_info WHERE username = '" + loginname + "'", (err,ans) =>{
     if ( ans.rowCount == 0)
     {
