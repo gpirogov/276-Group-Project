@@ -162,4 +162,38 @@ express()
   })
 })
 .get('/logout',(req,res)=> res.render('pages/logout'))
+
+
+// forums
+.get('/forums/:topic', (req,res) => {
+  // topic in req.params.topic
+  var topic = JSON.stringify(req.params.topic);
+  console.log(topic);
+  var text = 'SELECT * FROM forums WHERE topic = $1';
+  var values = [ req.params.topic ];
+
+  // pool.query('SELECT * FROM forums', (err, result) => {
+  // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
+  pool.query(text, values, (err, result) => {
+    console.log(result.rows);
+    res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic });
+  });
+})
+
+.get('/forums/:topic/:id', (req,res) => {
+  // topic in req.params.topic
+  var id = req.params.id;
+  var topic = req.params.id;
+  var text = 'SELECT * FROM forums WHERE id = $1';
+  var values = id;
+
+
+  // const result = pool.query(text, values);
+  // const results = { results: result ? result.rows : null, topic: topic };
+  // res.render('pages/forumPost', results);
+
+  pool.query("SELECT * FROM forums", (err, result) => {
+    res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
+  });
+  
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
