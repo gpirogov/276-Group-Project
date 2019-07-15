@@ -144,7 +144,7 @@ table, th, td {
 	width: 5.25%;
 }
 
-.exercise-comment-button, .one-rep-max-button{
+.exercise-comment-button, .one-rep-max-button, .exercise-submit-button{
 	padding: 0;
 	width: 1.5em;
 	height: 1.5em;
@@ -152,6 +152,12 @@ table, th, td {
 	border-radius: 50%;
 	font-size: 1.125em;
 	background-color: white;
+}
+
+
+.exercise-submit-button{
+	margin-left: 0.375em;
+	background-color: #9DC183;
 }
 
 .day-div-exercises tr td{
