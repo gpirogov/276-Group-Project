@@ -197,4 +197,6 @@ express()
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
   })})
 
+.get('/homepage',(req,res)=> res.render('pages/homepage'))
+
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
