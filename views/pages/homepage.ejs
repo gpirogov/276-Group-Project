@@ -30,8 +30,8 @@
           var options = {
             'legend' : 'NONE',
             'title':'Test title',
-                         'width':700,
-                         'height':300 };
+            'chartArea':{width:'50%',height:'50%'}
+          };
 
           // Instantiate and draw our chart, passing in some options.
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -53,7 +53,7 @@
       <div class="formdiv">
         <div>
           <h1>Homepage</h1>
-          <div id="chart_div" style="width:50%; height:40%"></div>
+          <div id="chart_div" style=" margin:5% "></div>
           <br>
       </div>
     </body>
