@@ -5,6 +5,8 @@
   <title> Burning + </title>
   <link rel="stylesheet" href="./stylesheets/starterpage.css">
   <link rel="stylesheet" href="./stylesheets/diet.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
+  <script src="js/caloriecalc.js" defer></script>
 </head>
 <body>
   <div class="topnav">
@@ -21,62 +23,111 @@
 
   <div class="formdiv">
 
-    <a href="" id="homebutton">Home</a>
+    <div id = "date"> Today's Date</div>
 
-    <div id = "calorieCounter">
-      <p>Goal = Food - Excercise</p>
+    <div id = "dietMain">
+      <div id = "calorieCounter">
+        <p id = "calorieGoal">Goal</p>
+        <p id = "calorieNet">Goal = Food - Excercise</p>
+      </div>
+
+      <div id = "addMealToggle">
+        <button id = "addMealButton"> Add Meal </button>
+      </div>
+
+      <table id = "tableMeal" class = "meals">
+        <tr>
+            <th class = "mealRowTitle">Meal</th>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td class = "mealRowTitle">Breakfast</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td class = "mealRowTitle">Lunch</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td class = "mealRowTitle">Dinner</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td class = "mealRowTitle">Snacks</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+      </table>
+
     </div>
 
-    <div id = "addMealButton">
-      <a href = "addmeal.html">Add Meal</a>
+    <div id="addMeal" hidden>
+      <button id = "backButton"> Back </button>
+
+      <div id = "mealSelector">
+          <select  name="meal">
+            <option value="default">Select Meal</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snack">Snack</option>
+          </select>
+      </div>
+
+      <form class = "search">
+        <input type="text" id="searchBar" placeholder="Search for foods">
+      </form>
+      <button id = "apiSearchButton"> Search </button>
+
+
+
+      <table id = "tableAddMeal" class = "meals">
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td id = "mealFood"></td>
+          <td id = "mealCalories"></td>
+          <td id = "mealFat"></td>
+          <td id = "mealCarbs"></td>
+          <td id = "mealProtien"></td>
+        </tr>
+      </table>
+
+      <button id="addButton" >Add</button>
+
     </div>
 
-    <table id = "meals">
-      <tr>
-        <th class = "mealRowTitle">Meal</th>
-        <th>Food</th>
-        <th>Calories</th>
-        <th>Fat</th>
-        <th>Carbs</th>
-        <th>Protien</th>
-      </tr>
-
-      <tr class =  "mealRow">
-        <td class = "mealRowTitle">Breakfast</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr class =  "mealRow">
-        <td class = "mealRowTitle">Lunch</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr class =  "mealRow">
-        <td class = "mealRowTitle">Dinner</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr class =  "mealRow">
-        <td class = "mealRowTitle">Snacks</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
+      <!-- <button id = "apiTestButton"> API TEST BUTTON </button> -->
   </div>
 </body>
 </html>

@@ -6,30 +6,33 @@ a{
   color:white;
 }
 
+#date{
+  margin-bottom: 1%;
+}
 #calorieCounter {
-	text-align: center;
+  justify-content: center;
   color: black;
   padding-top:0.5%;
   padding-bottom: 0.5%;
   background-color: #FF6010;
 	width: 25%;
-  margin-left: 12.5%;
+  margin-left: 37.5%;
 }
 
 #addMealButton{
-  text-align: center;
+  /* text-align: center; */
   width: 25%;
-  margin-left: 12.5%;
-  margin-top: 1%;
+  /* margin-left: 12.5%; */
   margin-top: 1%;
   padding-top:0.5%;
   padding-bottom: 0.5%;
 }
 
-#meals{
+.meals{
   margin-top: 1%;
   border-collapse: collapse;
   width: 50%;
+  margin-left: 25%;
 }
 
 .mealRowTitle{
@@ -51,5 +54,10 @@ a{
 
 #addButton{
   margin-top: 1%;
+  margin-bottom: 1%;
   width: 50%;
+}
+
+#backButton{
+  width: 25%;
 }
