@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+//  ssl : true
 });
 
 var globalName
@@ -28,6 +28,7 @@ express()
     {
       if ( password == ans.rows[0].password)
       {
+        console.log(req.body);
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
         var age = ans.rows[0].age;
@@ -194,6 +195,6 @@ express()
 
   pool.query("SELECT * FROM forums", (err, result) => {
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
-  });
-  
+  })})
+
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
