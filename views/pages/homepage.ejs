@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Burning +</title>
+      <link rel="stylesheet" href="./stylesheets/starterpage.css">
+      <link rel="stylesheet" href="./stylesheets/question.css">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+
+        google.charts.load('current', {'packages':['corechart']});
+
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+          // Create the data table.
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Topping');
+          data.addColumn('number', 'Slices');
+          data.addRows([
+            ['Mushrooms', 3],
+            ['Onions', 1],
+            ['Olives', 1],
+            ['Zucchini', 1],
+            ['Pepperoni', 2]
+          ]);
+
+          // Set chart options
+          var options = {
+            'legend' : 'NONE',
+            'title':'How Much Pizza I Ate Last Night',
+            'is3D':true,
+                         'width':700,
+                         'height':300 };
+
+          // Instantiate and draw our chart, passing in some options.
+          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+        }
+      </script>
+    </head>
+    <body>
+      <div class="topnav">
+        <a href="profile"><img src="images/logo.png"class="logo"></a>
+        <a href="logout" class="navbar">Signout</a>
+        <a href="profile" class="navbar">Profile</a>
+        <a href="workout.html" class="navbar">Workout</a>
+        <a href="diet.html" class="navbar">Diet</a>
+        <a href="forum.html" class="navbar">Forum</a>
+        <a herf="homepage" class="navbar">Homepage</a>
+      </div>
+
+      <div class="formdiv">
+        <div>
+          <h1>Homepage</h1>
+          <!-- <div class="profile-pic" style="background-image:url(/assets/users/18/small/think.jpg?1561862675)"></div> -->
+          <div id="chart_div" style="width:400; height:300"></div>
+          <br>
+      </div>
+    </body>
+  </html>
