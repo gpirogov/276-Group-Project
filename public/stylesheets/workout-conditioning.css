@@ -148,7 +148,7 @@ table, th, td {
 	width: 5.25%;
 }
 
-.exercise-comment-button, .one-rep-max-button, .round-complete-button{
+.exercise-comment-button, .one-rep-max-button, .round-complete-button, .exercise-submit-button{
 	padding: 0;
 	width: 1.5em;
 	height: 1.5em;
@@ -158,7 +158,7 @@ table, th, td {
 	background-color: white;
 }
 
-.round-complete-button{
+.round-complete-button, .exercise-submit-button{
 	margin-left: 0.375em;
 	background-color: #9DC183;
 }
