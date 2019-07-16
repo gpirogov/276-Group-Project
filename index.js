@@ -40,6 +40,7 @@ express()
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
         // var status = ans.rows[0].status;
+        var routine = ans.rows[0].routine;
         res.render('pages/profile', {
               username:username,
               age:age,
@@ -47,6 +48,7 @@ express()
               weight:weight,
               height:height,
               //status:status,
+              routine:routine,
         })
       } else
       {
