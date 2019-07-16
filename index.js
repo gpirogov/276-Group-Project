@@ -73,7 +73,7 @@ express()
   pool.query(accountInfo, accountVal)
 
   const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
-  const userVal = [username,password,gender,age,weight,height,""]
+  const userVal = [username,password,gender,age,weight,height," "]
   pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
@@ -124,6 +124,7 @@ express()
   pool.query(updateRoutineQuery);
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
+    console.log(ans.rows[0]);
       var username = ans.rows[0].username;
       var gender = ans.rows[0].gender;
       var age = ans.rows[0].age;
