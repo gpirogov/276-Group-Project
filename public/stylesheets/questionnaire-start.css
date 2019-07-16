@@ -72,7 +72,7 @@ select #gender{
 
 .questionnaire-image{
   border-radius: 50%;
-  width: 16vw;
+  width: 14vw;
   background-color: white;
 }
 
@@ -96,4 +96,19 @@ https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons
 
 h3 {
   font-size: 2.5em;
+  margin: 0.25em;
+}
+
+h4 {
+  font-size: 1.75em;
+  margin: 0.375em;
+}
+
+#skip-text{
+  display: inline-block;
+  font-size: 1.5em;
+}
+
+#continue-button{
+  font-size: 1.25em;
 }
