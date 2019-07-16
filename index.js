@@ -39,7 +39,7 @@ express()
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
-        var status = ans.rows[0].status;
+        // var status = ans.rows[0].status;
         res.render('pages/profile', {
               username:username,
               age:age,
@@ -209,13 +209,15 @@ express()
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
       var status = ans.rows[0].status;
+      var routine = ans.rows[0].routine;
     res.render('pages/profile', {
           username:username,
           age:age,
           gender:gender,
           weight:weight,
           height:height,
-          status:status,
+          // status:status,
+          routine:routine
     })
   })
 })
