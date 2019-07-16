@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  //ssl : true
 });
 
 var globalName;
@@ -208,7 +208,7 @@ express()
   // pool.query('SELECT * FROM forums', (err, result) => {
   // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
   pool.query(text, values, (err, result) => {
-    console.log(result.rows);
+    // console.log(result.rows);
     res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic });
   });
 })
