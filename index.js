@@ -141,26 +141,30 @@ express()
 
 .post('/1', function(req,res){
   var exercise = req.body.exercise;
+  var routine = req.body.routine
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
 
-  const userInfo = "INSERT INTO workout_table(username,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5)"
-  const userVal = [globalName,exercise,weight,unit,rep]
+  const userInfo = "INSERT INTO workout_table(username,routine,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5,$6)"
+  const userVal = [globalName,routine,exercise,weight,unit,rep]
 
   pool.query(userInfo,userVal);
+  //res.redirect("workout-physique.html")
 })
 
 .post('/2', function(req,res){
   var exercise = req.body.exercise;
+  var routine = req.body.routine
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
 
-  const userInfo = "INSERT INTO workout_table(username,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5)"
-  const userVal = [globalName,exercise,weight,unit,1]
+  const userInfo = "INSERT INTO workout_table_max(username,routine,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5,$6)"
+  const userVal = [globalName,routine,exercise,weight,unit,1]
 
   pool.query(userInfo,userVal);
+  //res.redirect("workout-physique.html")
 })
 
 .set('views', path.join(__dirname, 'views'))
