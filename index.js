@@ -112,7 +112,7 @@ express()
 })
 
 .post('/advancedChoiceSkip', function(req,res){
-  res.redirect('questionnaire-end.html');
+  res.render('pages/questionnaire-end-skip');
 })
 
 
@@ -285,26 +285,40 @@ express()
  * ============================= */
 
 .post('/questionnaire-main.html', function (req, res){
-
-
   res.redirect('questionnaire-main.html');
 })
 
 .post('/questionnaire-end.html', function (req, res){
-
 // found JSON parsing solution from https://stackoverflow.com/questions/28764822/req-body-cant-be-read-as-an-array
 // and https://github.com/expressjs/express/issues/3264#issuecomment-290480516
 req.body = JSON.parse(JSON.stringify(req.body));
 
-for (var key in req.body) {
-  if (req.body.hasOwnProperty(key)) {
-    item = req.body[key];
-    //console.log(item);
-    questionnaireAnswers += item;
+  for (var key in req.body) {
+    if (req.body.hasOwnProperty(key)) {
+      item = req.body[key];
+      //console.log(item);
+      questionnaireAnswers += item;
+    }
   }
-}
 
-  res.redirect('questionnaire-end.html');
+  var strengthRecommendationScore = 0;
+  var physiqueRecommendationScore = 0;
+  var conditioningRecommendationScore = 0;
+
+  for (var i = 0; i < questionnaireAnswers.length; i+=3){
+  	strengthRecommendationScore += parseInt(questionnaireAnswers[i]);
+  	physiqueRecommendationScore += parseInt(questionnaireAnswers[i+1]);
+  	conditioningRecommendationScore += parseInt(questionnaireAnswers[i+2]);
+  }
+
+
+  //var physiqueRecommendationScore = questionnaireAnswers;
+  res.render('pages/questionnaire-end', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+  })
+  //res.redirect('questionnaire-end.html');
 })
 
 .post('/workout-physique.html', function (req, res){

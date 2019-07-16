@@ -3,25 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>Signup Burning + </title>
-    <link rel="stylesheet" href="./stylesheets/questionnaire-end.css">
+    <link rel="stylesheet" href="./stylesheets/questionnaire-end-skip.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/questionnaire-end.js"></script>
+    <script src="./js/questionnaire-end.js"></script>
   </head>
   <body>
-    <div class="topnav">
-      <a href="burning-plus.html"><img src="images/logo-inverted.png" class="logo"></a>
+    <div class="topnav">s
+      <a href="burning-plus.html"><img src="./images/logo-inverted.png" class="logo"></a>
       <h2>Welcome to Burning+ !!!!!</h2>
     </div>
 
 
 
       <div class="formdiv">
-        <h3>Your Gym Routine Recommendations:</h3>
+        <h3>Your Gym Routine Options:</h3>
         <form class = "form" action="finishQuestionnaire" method="post">
           <table class="formtable">
             <tr>
               <td>
-                  <h4 id="recommendation-0-header-recommended">Recommended:</h4>
+                  <h4 id="recommendation-0-header-recommended" hidden>Recommended:</h4>
               </td>
               <td>
                   <h4 id="recommendation-1-header-recommended" hidden>Recommended:</h4>
@@ -46,7 +46,6 @@
                 <label>
                   <input type="radio" name="routineRecommendation" id="physique-radio" value="physique" checked="checked">
                   <img class="questionnaire-image" src="./images/questionnaire/physique.png" alt="(image)">
-                  <h4><span>100<span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>
@@ -62,7 +61,6 @@
                 <label>
                   <input type="radio" name="routineRecommendation" id="conditioning-radio" value="conditioning">
                   <img class="questionnaire-image" src="./images/questionnaire/conditioning.jpg" alt="(image)">
-                  <h4><span>78.6<span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>
@@ -77,7 +75,6 @@
                 <label>
                   <input type="radio" name="routineRecommendation" id="strength-radio" value="strength">
                   <img class="questionnaire-image" src="./images/questionnaire/strength.png" alt="(image)">
-                  <h4><span>61.5<span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>
