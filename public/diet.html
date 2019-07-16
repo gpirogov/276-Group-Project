@@ -88,24 +88,43 @@
     <div id="addMeal" hidden>
       <button id = "backButton"> Back </button>
 
-      <div id = "mealSelector">
-          <select  name="meal">
-            <option value="default">Select Meal</option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="snack">Snack</option>
-          </select>
+      <div class = "search">
+        <input type="text" id="searchBar" placeholder="Search for foods">
+        <button id = "apiSearchButton"> Search </button>
       </div>
 
-      <form class = "search">
-        <input type="text" id="searchBar" placeholder="Search for foods">
+      <form name = "addMealForm" action ="/a" method="post">
+
+        <div id = "mealSelector">
+            <select  name="meal">
+              <option value="" disabled selected>Select Meal</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+        </div>
+
+        <table id = "tableAddMeal" class = "meals">
+          <tr>
+              <th>Food</th>
+              <th>Calories</th>
+              <th>Fat (g)</th>
+              <th>Carbs (g)</th>
+              <th>Protien (g)</th>
+          </tr>
+
+          <tr class =  "mealRow">
+            <td><input id = "mealFoodCell" type ="text" name = "mealFood", placeholder = ""></td>
+            <td><input id = "mealCaloriesCell" type ="number" step="0.01" name = "mealCalories", placeholder = ""></td>
+            <td><input id = "mealFatCell" type ="number" step="0.01" name = "mealFat", placeholder = ""></td>
+            <td><input id = "mealCarbsCell" type ="number" step="0.01" name = "mealCarbs", placeholder = ""></td>
+            <td><input id = "mealProtienCell" type ="number" step="0.01" name = "mealProtien", placeholder = ""></td>
+          </tr>
+        </table>
+        <button type = "submit" id="addButton" >Add</button>
       </form>
-      <button id = "apiSearchButton"> Search </button>
-
-
-
-      <table id = "tableAddMeal" class = "meals">
+      <!-- <table id = "tableAddMeal" class = "meals">
         <tr>
             <th>Food</th>
             <th>Calories</th>
@@ -121,9 +140,8 @@
           <td id = "mealCarbs"></td>
           <td id = "mealProtien"></td>
         </tr>
-      </table>
+      </table> -->
 
-      <button id="addButton" >Add</button>
 
     </div>
 

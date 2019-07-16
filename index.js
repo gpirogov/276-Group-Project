@@ -5,12 +5,16 @@ const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL//,
-  //ssl : true
+  // //ssl : true
 });
 
 var globalName;
 
-
+today = new Date();
+let day = today.getDate()
+let month = today.getMonth()//Jan = 0, Dec = 11
+let year = today.getFullYear()
+var date = (year + "-" + month + "-" + day)
 
 express()
 .use(express.static(path.join(__dirname, 'public')))
@@ -173,9 +177,11 @@ express()
   res.redirect(workoutURL);
 })
 
+
+
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/index'))
+.get('/', (req, res) => res.render('pages/homepage'))
 .get('/profile',(req,res)=>{
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
@@ -228,6 +234,23 @@ express()
   pool.query("SELECT * FROM forums", (err, result) => {
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
   })})
+
+//add meal to db
+.post('/a', function (req, res){
+  var foodName = req.body.mealFood;
+  var cals = req.body.mealCalories;
+  var fat = req.body.mealFat;
+  var carbs = req.body.mealCarbs;
+  var protien = req.body.mealProtien;
+  var meal = req.body.meal;
+
+  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
+  const mealVal =[foodName, cals, fat, carbs, protien, meal, date]
+
+  pool.query(mealInfo, mealVal);
+  res.redirect('diet.html');
+})
+
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
 

@@ -65,28 +65,26 @@ $(document).ready(function() {
         console.log({foodName, cals, carbs, fat, protien});
 
         //add to tableAddMeal
-        let tableAddMeal = document.getElementById('tableAddMeal')
-        let row = tableAddMeal.insertRow(1)
-        let cell0 = row.insertCell(0)
-        let cell1 = row.insertCell(1)
-        let cell2 = row.insertCell(2)
-        let cell3 = row.insertCell(3)
-        let cell4 = row.insertCell(4)
-        cell0.innerHTML = foodName
-        cell1.innerHTML = cals
-        cell2.innerHTML = fat
-        cell3.innerHTML = carbs
-        cell4.innerHTML = protien
+        // let tableAddMeal = document.getElementById('tableAddMeal')
+        // let row = tableAddMeal.insertRow(1)
+        // let cell0 = row.insertCell(0)
+        // let cell1 = row.insertCell(1)
+        // let cell2 = row.insertCell(2)
+        // let cell3 = row.insertCell(3)
+        // let cell4 = row.insertCell(4)
+        // cell0.innerHTML = foodName
+        // cell1.innerHTML = cals
+        // cell2.innerHTML = fat
+        // cell3.innerHTML = carbs
+        // cell4.innerHTML = protien
+        document.getElementById('mealFoodCell').value = foodName
+        document.getElementById('mealCaloriesCell').value = cals
+        document.getElementById('mealFatCell').value = fat
+        document.getElementById('mealCarbsCell').value = carbs
+        document.getElementById('mealProtienCell').value = protien
         }
       })
     })
-
-// // add meal to database NEEDS WORK
-// $('#addButton').on("click", function(){
-//   assert(selectedMeal != "Select Meal") //ensures selector is not left in default
-//   //loop table to add to db
-//
-// })
 
 
   // $('#apiTestButton').on("click",function(){
