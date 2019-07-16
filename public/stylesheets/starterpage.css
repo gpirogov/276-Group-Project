@@ -8,45 +8,6 @@ h2 {
   padding-top : 15px;
   padding-right: 132px;
 }
-.topnav {
-  overflow: hidden;
-  background-color: #FF6010;
-  width: 100%;
-  text-align: center;
-  font-size: 10px;
-  color: black;
-}
-
-.topnav a.navbar{
-  float: right;
-  padding: 34px 16px;
-  text-decoration: none;
-  font-size: 15px;
-  width: 80px;
-  height: 15px
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 14px;
-  width: 125px;
-  height: 55px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.logo {
-    display: inline-block;
-    align: center;
-    width: 100%;
-    height: 100%;
-}
 
 .formdiv{
   margin: 10%;
@@ -65,3 +26,44 @@ form{
 select #gender{
   width: 160px;
 }
+
+
+/* =================================================
+============== Nav Bar Workout Button ==============
+================================================= */
+
+/*.go-to-workout-page{
+  display: inline-block !important;
+}
+
+.topnav button{
+  background-color: rgba(0,0,0,0);
+  padding-bottom: 3.18675em !important;
+  padding-right: 6em !important;
+  padding-left: 2em !important;
+
+  border: none;
+  cursor: pointer;
+
+  float: left;
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 14px;
+  width: 125px;
+  height: 55px;
+}
+
+.topnav button:hover{
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav button.navbar{
+  display: inline-block;
+  float: right !important;
+  padding: 34px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  width: 80px;
+  height: 15px
+}*/

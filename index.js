@@ -9,6 +9,7 @@ const pool = new Pool({
 });
 
 var globalName;
+var globalRoutine = " ";
 
 today = new Date();
 let day = today.getDate()
@@ -119,6 +120,7 @@ express()
 
 .post('/finishQuestionnaire', function(req,res){
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
+  globalRoutine = req.body.routineRecommendation;
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       console.log(ans.rows[0]);
@@ -200,22 +202,26 @@ express()
 .set('view engine', 'ejs')
 .get('/', (req, res) => res.render('pages/homepage'))
 .get('/profile',(req,res)=>{
-  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
-      var username = ans.rows[0].username;
-      var gender = ans.rows[0].gender;
-      var age = ans.rows[0].age;
-      var weight = ans.rows[0].weight;
-      var height = ans.rows[0].height;
-      var routine = ans.rows[0].routine;
-    res.render('pages/profile', {
-          username:username,
-          age:age,
-          gender:gender,
-          weight:weight,
-          height:height,
-          routine:routine
-    })
-  })
+  if(globalRoutine == " "){
+    res.render('pages/not-logged-in');
+  }else{
+	  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
+	      var username = ans.rows[0].username;
+	      var gender = ans.rows[0].gender;
+	      var age = ans.rows[0].age;
+	      var weight = ans.rows[0].weight;
+	      var height = ans.rows[0].height;
+	      var routine = ans.rows[0].routine;
+	    res.render('pages/profile', {
+	          username:username,
+	          age:age,
+	          gender:gender,
+	          weight:weight,
+	          height:height,
+	          routine:routine
+	    })
+	  })
+	}
 })
 .get('/logout',(req,res)=> res.render('pages/logout'))
 
@@ -311,6 +317,7 @@ express()
   })
 })
 
+
 /* =============================
  *  Questionnaire-Related Code:
  * ============================= */
@@ -372,6 +379,29 @@ req.body = JSON.parse(JSON.stringify(req.body));
 .post('/workout-physique.html', function (req, res){
   res.redirect('workout-physique.html');
 })
+
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
+/* =============================
+ *     Nav-bar Related Code:
+ * ============================= */
+
+.post('/go-to-workout-page', function (req, res){
+  if(globalRoutine == " "){
+    res.render('pages/not-logged-in');
+  }else{
+    res.redirect('workout-' + globalRoutine + '.html');
+  }
+})
+
+
+
+
+
 
 
 /* =============================
