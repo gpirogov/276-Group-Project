@@ -72,8 +72,8 @@ express()
   const accountVal = [username,password]
   pool.query(accountInfo, accountVal)
 
-  const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height) values ($1,$2,$3,$4,$5,$6)"
-  const userVal = [username,password,gender,age,weight,height]
+  const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
+  const userVal = [username,password,gender,age,weight,height,""]
   pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
