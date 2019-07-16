@@ -1,5 +1,5 @@
 /*
-	Known bugs: - dragging and dropping an exercise outside of acceptable area will make you unable to 
+	Known bugs: - dragging and dropping an exercise outside of acceptable area will make you unable to
 				click-select an exercise again without dragging it.
 				Note: first clicking to select, then dragging out of bounds does not result in a bug.
 
@@ -120,7 +120,7 @@ function updateDraggableExercises(){
 	});
 
 	$(document).on("click", ".childgrid tr", function () {
-	    
+
 	    //alert("clicked: " + event.target.nodeName);
 
 	    if(event.target.nodeName == "BUTTON"
@@ -131,7 +131,7 @@ function updateDraggableExercises(){
 	    }else{
 	    	$(this).toggleClass("selectedRow");
 	    }
-	    
+
 	});
 
 	updateCommentButton();
@@ -141,5 +141,42 @@ function updateDraggableExercises(){
 
 
 
+//change div by button
 
+function show_shoudler(){
+    document.getElementById("main-day-div-shoudler").style.display = "inline-block";
+    document.getElementById("main-day-div-back").style.display = "none";
+    document.getElementById("main-day-div-leg").style.display = "none";
+    document.getElementById("main-day-div-chest").style.display = "none";
+  }
 
+function show_back(){
+    document.getElementById("main-day-div-shoudler").style.display = "none";
+    document.getElementById("main-day-div-back").style.display = "inline-block";
+    document.getElementById("main-day-div-leg").style.display = "none";
+    document.getElementById("main-day-div-chest").style.display = "none";
+  }
+
+function show_leg(){
+    document.getElementById("main-day-div-shoudler").style.display = "none";
+    document.getElementById("main-day-div-back").style.display = "none";
+    document.getElementById("main-day-div-leg").style.display = "inline-block";
+    document.getElementById("main-day-div-chest").style.display = "none";
+  }
+
+function show_chest(){
+    document.getElementById("main-day-div-shoudler").style.display = "none";
+    document.getElementById("main-day-div-back").style.display = "none";
+    document.getElementById("main-day-div-leg").style.display = "none";
+    document.getElementById("main-day-div-chest").style.display = "inline-block";
+  }
+
+function show_biceps(){
+    document.getElementById("secondary-day-div-biceps").style.display = "inline-block";
+    document.getElementById("secondary-day-div-tricep").style.display = "none";
+  }
+
+function show_tricep(){
+    document.getElementById("secondary-day-div-biceps").style.display = "none";
+    document.getElementById("secondary-day-div-tricep").style.display = "inline-block";
+  }
