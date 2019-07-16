@@ -41,7 +41,6 @@ express()
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
-        // var status = ans.rows[0].status;
         var routine = ans.rows[0].routine;
         res.render('pages/profile', {
               username:username,
@@ -49,7 +48,6 @@ express()
               gender:gender,
               weight:weight,
               height:height,
-              //status:status,
               routine:routine,
         })
       } else
@@ -99,27 +97,21 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  //res.render('pages/questionarie')
-  //pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
   questionnaireAnswers += req.body.routineRecommendation;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/intermediateChoice', function(req,res){
-  //res.render('pages/proquestion')
-  //pool.query("UPDATE user_info SET status = 'intermediate' WHERE username = '" + globalName + "'" );
   questionnaireAnswers += req.body.routineRecommendation;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoice', function(req,res){
-  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
   res.redirect('questionnaire-main.html');
   questionnaireAnswers += req.body.routineRecommendation;
 })
 
 .post('/advancedChoiceSkip', function(req,res){
-  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
   res.redirect('questionnaire-end.html');
 })
 
@@ -132,10 +124,6 @@ express()
   }*/
   
 
-
-  //const newRoutine = "test";
-  //pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
-
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
@@ -144,16 +132,17 @@ express()
       var gender = ans.rows[0].gender;
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
-      var height = ans.rows[0].height
-      //var status = ans.rows[0].status;
+      var height = ans.rows[0].height;
       var routine = ans.rows[0].routine;
+      if (routine == ' '){
+      	routine = req.body.routineRecommendation;
+      }
     res.render('pages/profile', {
           username:username,
           age:age,
           gender:gender,
           weight:weight,
           height:height,
-          //status:status,
           routine:routine,
     })
   })
@@ -167,7 +156,6 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      var status = ans.rows[0].status;
 
     res.render('pages/profile', {
           username:username,
@@ -175,7 +163,6 @@ express()
           gender:gender,
           weight:weight,
           height:height,
-          status:status,
     })
   })
 })*/
@@ -224,7 +211,6 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      //var status = ans.rows[0].status;
       var routine = ans.rows[0].routine;
     res.render('pages/profile', {
           username:username,
@@ -232,7 +218,6 @@ express()
           gender:gender,
           weight:weight,
           height:height,
-          // status:status,
           routine:routine
     })
   })
