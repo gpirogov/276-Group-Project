@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/questionnaire-start.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/questionnaire-start.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="buring-plus.html"><img src="images/logo.png" class="logo"></a>
+      <h2>Welcome to Burning+ !!!!!</h2>
+    </div>
+
+
+
+      <div class="formdiv">
+        <h3>How new are you to fitness?</h3>
+        <form class = "form" action="/signup.html" method="post">
+          <table class="formtable">
+            <form>
+              <tr>
+              
+                <td>
+                  <label>
+                    <h4>Beginner</h4>
+                    <input type="radio" name="level-of-experience" id="beginner-radio"  value="024" checked="checked">
+                    <img class="questionnaire-image" src="./images/questionnaire/beginner.jpg" alt="(image)">
+                  </label>
+                  <p>You're a complete beginner, just starting on your fitness and healthy lifestyle journey.</p>
+                </td>
+                <td>
+                  <label>
+                    <h4>Intermediate</h4>
+                    <input type="radio" name="level-of-experience" id="intermediate-radio" value="131">
+                    <img class="questionnaire-image" src="./images/questionnaire/intermediate.png" alt="(image)">
+                  </label>
+                  <p>You're an intermediate. You exercise or play sports once or twice a week, but aren't an expert.</p>
+                </td>
+                <td>
+                  <label>
+                    <h4>Advanced</h4>
+                    <input type="radio" name="level-of-experience" id="advanced-radio" value="321">
+                    <img class="questionnaire-image" src="./images/questionnaire/advanced.png" alt="(image)">
+                  </label>
+                  <p>You're an advanced gym-goer. You know the place like the back of your hand.</p>
+                </td>
+              <tr id="skip-questionnaire-row" hidden>
+                <td colspan="3">
+                  <div>
+                    <p id="skip-text">Do you want to skip the questionnaire?</p>
+                    <input type="checkbox" name="skip-questionnaire" id="skip-questionnaire-checkbox" value="true">
+                  </div>
+                  <p><i>(Its goal is to determine which workout routine is the best pick for you, based on your preferences and experience.)</i></p>
+                </td>
+              </tr>
+            </form>
+            <tr>
+              <td colspan="3">
+                <button type="submit" name="continue-button" id="continue-button">Continue</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+  </body>
+</html>
