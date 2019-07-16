@@ -96,27 +96,32 @@ express()
 
 .post('/beginnerChoice', function(req,res){
   //res.render('pages/questionarie')
-  pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
+  //pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
   res.redirect('questionnaire-main.html');
 })
 
 .post('/intermediateChoice', function(req,res){
   //res.render('pages/proquestion')
-  pool.query("UPDATE user_info SET status = 'intermediate' WHERE username = '" + globalName + "'" );
+  //pool.query("UPDATE user_info SET status = 'intermediate' WHERE username = '" + globalName + "'" );
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoice', function(req,res){
-  pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoiceSkip', function(req,res){
-  pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
   res.redirect('questionnaire-end.html');
 })
 
+
+
 .post('/finishQuestionnaire', function(req,res){
+  const newRoutine = req.body.routineRecommendation;
+  const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
+  pool.query(updateRoutineQuery);
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
@@ -124,14 +129,16 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      var status = ans.rows[0].status;
+      //var status = ans.rows[0].status;
+      var routine = ans.rows[0].routine;
     res.render('pages/profile', {
           username:username,
           age:age,
           gender:gender,
           weight:weight,
           height:height,
-          status:status,
+          //status:status,
+          routine:routine,
     })
   })
 })
