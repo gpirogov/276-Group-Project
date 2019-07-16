@@ -8,7 +8,9 @@ const pool = new Pool({
   ssl : true
 });
 
-var globalName
+var globalName;
+
+
 
 express()
 .use(express.static(path.join(__dirname, 'public')))
@@ -145,12 +147,14 @@ express()
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
+  var workoutURL = "workout-" + routine + ".html";
+  console.log(workoutURL);
 
   const userInfo = "INSERT INTO workout_table(username,routine,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5,$6)"
   const userVal = [globalName,routine,exercise,weight,unit,rep]
 
   pool.query(userInfo,userVal);
-  //res.redirect("workout-physique.html")
+  res.redirect(workoutURL);
 })
 
 .post('/2', function(req,res){
@@ -159,12 +163,14 @@ express()
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
+  var workoutURL = "workout-" + routine + ".html";
+  console.log(workoutURL);
 
   const userInfo = "INSERT INTO workout_table_max(username,routine,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5,$6)"
   const userVal = [globalName,routine,exercise,weight,unit,1]
 
   pool.query(userInfo,userVal);
-  //res.redirect("workout-physique.html")
+  res.redirect(workoutURL);
 })
 
 .set('views', path.join(__dirname, 'views'))
