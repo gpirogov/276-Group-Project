@@ -121,6 +121,7 @@ express()
 
 
 .post('/finishQuestionnaire', function(req,res){
+  console.log(req.body);
   const newRoutine = req.body.routineRecommendation;
   const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
   pool.query(updateRoutineQuery);
