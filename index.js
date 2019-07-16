@@ -9,6 +9,7 @@ const pool = new Pool({
 });
 
 var globalName;
+var globalRoutine = " ";
 
 today = new Date();
 let day = today.getDate()
@@ -119,6 +120,7 @@ express()
 
 .post('/finishQuestionnaire', function(req,res){
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
+  globalRoutine = req.body.routineRecommendation;
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       console.log(ans.rows[0]);
@@ -280,6 +282,7 @@ express()
 })
 
 
+
 /* =============================
  *  Questionnaire-Related Code:
  * ============================= */
@@ -341,6 +344,29 @@ req.body = JSON.parse(JSON.stringify(req.body));
 .post('/workout-physique.html', function (req, res){
   res.redirect('workout-physique.html');
 })
+
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
+/* =============================
+ *     Nav-bar Related Code:
+ * ============================= */
+
+.post('/go-to-workout-page', function (req, res){
+  if(globalRoutine == " "){
+    res.render('pages/logout');
+  }else{
+    res.redirect('workout-' + globalRoutine + '.html');
+  }
+})
+
+
+
+
+
 
 
 /* =============================
