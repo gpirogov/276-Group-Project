@@ -10,7 +10,7 @@ h2 {
 }
 .topnav {
   overflow: hidden;
-  background-color: #FF6010;
+  background-color: #22201f;
   width: 100%;
   text-align: center;
   font-size: 10px;
@@ -79,7 +79,7 @@ select #gender{
 /* learned how to use image as radio input from
 https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons */
 
-[type=radio] { 
+[type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
