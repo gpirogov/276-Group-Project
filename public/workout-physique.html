@@ -24,15 +24,15 @@
 
   <div id="centering-container">
 
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-shoudler" style=" display: inline-block">
 
       <div class="day-div-header">
         <span class="day-current-title" id="shoulder-day-title">Shoulder Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="leg-day-title">Leg</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()" onclick="show_leg()">Leg</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -309,14 +309,14 @@
     </div>
 
     <!--- **************************** Back need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-back" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="back-day-title">Back Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="leg-day-title">Leg</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()">Leg</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -324,7 +324,7 @@
         <table class="childgrid">
           <tr id="overhead-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/overhead-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/chin-ups.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -390,7 +390,7 @@
 
           <tr id="incline-dumbell-shoulder-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/incline-dumbbell-shoulder-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/dual-pulley- row.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -456,7 +456,7 @@
 
           <tr id="dumbell-shoulder-flys" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/dumbbell-shoulder-flys.png" alt="(image)">
+              <img class="exercise-icon" src="./images/iso-lateral- pulldown.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -594,14 +594,14 @@
 
 
     <!--- **************************** leg need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-leg" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="leg-day-title">Leg Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -609,7 +609,7 @@
         <table class="childgrid">
           <tr id="overhead-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/overhead-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/squat.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -675,7 +675,7 @@
 
           <tr id="incline-dumbell-shoulder-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/incline-dumbbell-shoulder-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/deadlift.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -742,7 +742,7 @@
 
           <tr id="dumbell-shoulder-flys" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/dumbbell-shoulder-flys.png" alt="(image)">
+              <img class="exercise-icon" src="./images/leg-press.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -809,7 +809,7 @@
 
           <tr id="rear-delt-cable-crossovers" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/rear-delt-cable-crossovers.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/calf-raise.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -880,14 +880,14 @@
 
 
     <!--- **************************** Chest need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-chest" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="chest-day-title">chest Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="leg-day-title">leg</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()">leg</button></td>
           </tr>
         </table>
       </div>
@@ -895,7 +895,7 @@
         <table class="childgrid">
           <tr id="overhead-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/overhead-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/bench-press.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -962,7 +962,7 @@
 
           <tr id="incline-dumbell-shoulder-press" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/incline-dumbbell-shoulder-press.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/chest-press.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -1029,7 +1029,7 @@
 
           <tr id="dumbell-shoulder-flys" class="draggable_tr">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/dumbbell-shoulder-flys.png" alt="(image)">
+              <img class="exercise-icon" src="./images/dips.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -1099,14 +1099,14 @@
     </div>
     <!--- **************************** Chest need to combind  *********************-->
 
+    <div class="seperator-div"></div>
 
-
-    <div class="day-div" id="secondary-day-div">
+    <div class="day-div" id="secondary-day-div-biceps" style=" display: inline-block">
       <div class="day-div-header">
         <span class="day-current-title" id="biceps-day-title">Biceps</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="triceps">Triceps</button></td>
+            <td><button id="tricep" onclick="show_tricep()">Triceps</button></td>
           </tr>
         </table>
       </div>
@@ -1316,12 +1316,12 @@
 
 
     <!--- **************************** Triple need to combind  *********************-->
-    <div class="day-div" id="secondary-day-div">
+    <div class="day-div" id="secondary-day-div-tricep" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="tricep-day-title">Triceps</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="triceps">Biceps</button></td>
+            <td><button id="biceps" onclick="show_biceps()">Biceps</button></td>
           </tr>
         </table>
       </div>
@@ -1330,7 +1330,7 @@
         <table class="childgrid">
           <tr class="draggable_tr" id="Tricep Pulldowns">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/hammer-curls.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/tricep-pulldown.png" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -1396,7 +1396,7 @@
 
           <tr class="draggable_tr" id="Cable Skullcrushers">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/incline-dumbbell-curl.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/cable-skullcrushers.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
@@ -1462,7 +1462,7 @@
 
           <tr class="draggable_tr" id="Lower Chest Cable Crossovers">
             <td class="exercise-icon-cell">
-              <img class="exercise-icon" src="./images/preacher-curls.jpg" alt="(image)">
+              <img class="exercise-icon" src="./images/lower-chest-cable-crossover.jpg" alt="(image)">
             </td>
             <td class="exercise-info-cell">
               <button class="exercise-info-button">❓</button>
