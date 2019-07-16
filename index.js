@@ -126,7 +126,6 @@ express()
 
 
 .post('/finishQuestionnaire', function(req,res){
-<<<<<<< HEAD
 
   /*for(req.length){
     questionnaireAnswers += req.body.routineRecommendation;	
@@ -138,12 +137,6 @@ express()
   //pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
 
   pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
-=======
-  console.log(req.body);
-  const newRoutine = req.body.routineRecommendation;
-  const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
-  pool.query(updateRoutineQuery);
->>>>>>> f18c15046aa16c6b42fd23fb42fc2dbfca420f22
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
     console.log(ans.rows[0]);
@@ -292,15 +285,15 @@ express()
 // );
 
 .post('/a', function (req, res){
-  var foodname = req.body.mealFood;
+  var foodName = req.body.mealFood;
   var cals = req.body.mealCalories;
   var fat = req.body.mealFat;
   var carbs = req.body.mealCarbs;
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
 
-  const mealInfo = "INSERT INTO meals_table(foodname, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
-  const mealVal =[foodname, cals, fat, carbs, protien, meal, date]
+  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
+  const mealVal =[foodName, cals, fat, carbs, protien, meal, date]
 
   pool.query(mealInfo, mealVal);
   res.redirect('diet.html');
