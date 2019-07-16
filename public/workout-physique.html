@@ -8,6 +8,45 @@
   <!-- <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="js/workout.js"></script>
+  <script>
+  function show_shoudler(){
+      document.getElementById("main-day-div-shoudler").style.display = "inline-block";
+      document.getElementById("main-day-div-back").style.display = "none";
+      document.getElementById("main-day-div-leg").style.display = "none";
+      document.getElementById("main-day-div-chest").style.display = "none";
+    }
+
+  function show_back(){
+      document.getElementById("main-day-div-shoudler").style.display = "none";
+      document.getElementById("main-day-div-back").style.display = "inline-block";
+      document.getElementById("main-day-div-leg").style.display = "none";
+      document.getElementById("main-day-div-chest").style.display = "none";
+    }
+
+  function show_leg(){
+      document.getElementById("main-day-div-shoudler").style.display = "none";
+      document.getElementById("main-day-div-back").style.display = "none";
+      document.getElementById("main-day-div-leg").style.display = "inline-block";
+      document.getElementById("main-day-div-chest").style.display = "none";
+    }
+
+  function show_chest(){
+      document.getElementById("main-day-div-shoudler").style.display = "none";
+      document.getElementById("main-day-div-back").style.display = "none";
+      document.getElementById("main-day-div-leg").style.display = "none";
+      document.getElementById("main-day-div-chest").style.display = "inline-block";
+    }
+
+  function show_biceps(){
+      document.getElementById("secondary-day-div-biceps").style.display = "inline-block";
+      document.getElementById("secondary-day-div-tricep").style.display = "none";
+    }
+
+  function show_tricep(){
+      document.getElementById("secondary-day-div-biceps").style.display = "none";
+      document.getElementById("secondary-day-div-tricep").style.display = "inline-block";
+    }
+  </script>
 </head>
 
 <body>
@@ -24,15 +63,15 @@
 
   <div id="centering-container">
 
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-shoudler" style=" display: inline-block">
 
       <div class="day-div-header">
         <span class="day-current-title" id="shoulder-day-title">Shoulder Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="leg-day-title">Leg</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()" onclick="show_leg()">Leg</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -309,14 +348,14 @@
     </div>
 
     <!--- **************************** Back need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-back" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="back-day-title">Back Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="leg-day-title">Leg</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()">Leg</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -594,14 +633,14 @@
 
 
     <!--- **************************** leg need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-leg" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="leg-day-title">Leg Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="chest-day-title">Chest</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="chest-day-title" onclick="show_chest()">Chest</button></td>
           </tr>
         </table>
       </div>
@@ -880,14 +919,14 @@
 
 
     <!--- **************************** Chest need to combind  *********************-->
-    <div class="day-div" id="main-day-div">
+    <div class="day-div" id="main-day-div-chest" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="chest-day-title">chest Day</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="shoulder-day-title">Shoulder</button></td>
-            <td><button id="back-day-title">Back</button></td>
-            <td><button id="leg-day-title">leg</button></td>
+            <td><button id="shoulder-day-title" onclick="show_shoudler()">Shoulder</button></td>
+            <td><button id="back-day-title" onclick="show_back()">Back</button></td>
+            <td><button id="leg-day-title" onclick="show_leg()">leg</button></td>
           </tr>
         </table>
       </div>
@@ -1099,14 +1138,14 @@
     </div>
     <!--- **************************** Chest need to combind  *********************-->
 
+    <div class="seperator-div"></div>
 
-
-    <div class="day-div" id="secondary-day-div">
+    <div class="day-div" id="secondary-day-div-biceps" style=" display: inline-block">
       <div class="day-div-header">
         <span class="day-current-title" id="biceps-day-title">Biceps</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="triceps">Triceps</button></td>
+            <td><button id="tricep" onclick="show_tricep()">Triceps</button></td>
           </tr>
         </table>
       </div>
@@ -1316,12 +1355,12 @@
 
 
     <!--- **************************** Triple need to combind  *********************-->
-    <div class="day-div" id="secondary-day-div">
+    <div class="day-div" id="secondary-day-div-tricep" style=" display: none">
       <div class="day-div-header">
         <span class="day-current-title" id="tricep-day-title">Triceps</span>
         <table class="day-other-titles">
           <tr>
-            <td><button id="triceps">Biceps</button></td>
+            <td><button id="biceps" onclick="show_biceps()">Biceps</button></td>
           </tr>
         </table>
       </div>
