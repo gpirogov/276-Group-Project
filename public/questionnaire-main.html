@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/questionnaire-main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="js/questionnaire-main.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="buring-plus.html"><img src="images/logo.png" class="logo"></a>
+      <h2>Welcome to Burning+ !!!!!</h2>
+    </div>
+      <div class="formdiv">
+        <h3>Fitness Questionnaire</h3>
+        <form class="form" action="/signup.html" method="post">
+          <table>
+            <tr> 
+              <td><p>What are your goals?</p></td>
+              <td>
+                <input type="checkbox" name="questionnaire[0]" value="262">Toned Physique
+                <br><input type="checkbox" name="questionnaire[1]" value="044">Weight Loss
+                <br><input type="checkbox" name="questionnaire[2]" value="620">Pure Strength
+                <br><input type="checkbox" name="questionnaire[3]" value="460">Big Muscles
+                <br><input type="checkbox" name="questionnaire[4]" value="226">Feeling Healthy
+              </td>
+            </tr>
+            <tr> 
+              <td><p>What's the maximum number of days a week you can devote to going to the gym / exercising?</p></td>
+              <td>
+                <input type="radio" name="questionnaire[5]" value="012">1-2 days
+                <br><input type="radio" name="questionnaire[5]" value="121">3-4 days
+                <br><input type="radio" name="questionnaire[5]" value="210">4+ days
+              </td>
+            </tr>
+            <tr> 
+              <td><p>How many hours a day can you devote to working out?</p></td>
+              <td>
+                <input type="radio" name="questionnaire[5]" value="102">under 1 hour
+                <br><input type="radio" name="questionnaire[5]" value="211">1 hour to 2 hours
+                <br><input type="radio" name="questionnaire[5]" value="120">over 2 hours
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <button type="submit" name="continue-button" id="continue-button">Continue</button>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+  </body>
+</html>
