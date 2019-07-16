@@ -28,7 +28,6 @@ express()
     {
       if ( password == ans.rows[0].password)
       {
-        console.log(req.body);
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
         var age = ans.rows[0].age;
@@ -96,7 +95,6 @@ express()
 
 .post('/beginnerQuestion', function(req,res){
 
-
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
       var gender = ans.rows[0].gender;
@@ -139,6 +137,30 @@ express()
           status:status,
     })
   })
+})
+
+.post('/1', function(req,res){
+  var exercise = req.body.exercise;
+  var weight = req.body.weight;
+  var unit = req.body.wType;
+  var rep = req.body.setsAndReps;
+
+  const userInfo = "INSERT INTO workout_table(username,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5)"
+  const userVal = [globalName,exercise,weight,unit,rep]
+
+  pool.query(userInfo,userVal);
+})
+
+.post('/2', function(req,res){
+  var exercise = req.body.exercise;
+  var weight = req.body.weight;
+  var unit = req.body.wType;
+  var rep = req.body.setsAndReps;
+
+  const userInfo = "INSERT INTO workout_table(username,exercise,weight,unit,rep) values ($1,$2,$3,$4,$5)"
+  const userVal = [globalName,exercise,weight,unit,1]
+
+  pool.query(userInfo,userVal);
 })
 
 .set('views', path.join(__dirname, 'views'))
