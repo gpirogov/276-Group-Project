@@ -72,11 +72,11 @@ express()
 
   const accountInfo = "INSERT INTO account(username,password) values ($1,$2)"
   const accountVal = [username,password]
-  // pool.query(accountInfo, accountVal)
+  pool.query(accountInfo, accountVal)
 
   const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
   const userVal = [username,password,gender,age,weight,height," "]
-  // pool.query(userInfo,userVal)
+  pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
     if ( ans.rowCount == 0)
@@ -97,18 +97,18 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  questionnaireAnswers += req.body.routineRecommendation;
+  questionnaireAnswers += req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/intermediateChoice', function(req,res){
-  questionnaireAnswers += req.body.routineRecommendation;
+  questionnaireAnswers += req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoice', function(req,res){
   res.redirect('questionnaire-main.html');
-  questionnaireAnswers += req.body.routineRecommendation;
+  questionnaireAnswers += req.body.levelOfExperience;
 })
 
 .post('/advancedChoiceSkip', function(req,res){
@@ -118,16 +118,10 @@ express()
 
 
 .post('/finishQuestionnaire', function(req,res){
-
-  /*for(req.length){
-    questionnaireAnswers += req.body.routineRecommendation;	
-  }*/
-  
-
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
-    console.log(ans.rows[0]);
+      console.log(ans.rows[0]);
       var username = ans.rows[0].username;
       var gender = ans.rows[0].gender;
       var age = ans.rows[0].age;
@@ -137,6 +131,7 @@ express()
       if (routine == ' '){
       	routine = req.body.routineRecommendation;
       }
+      //routine = questionnaireAnswers;	// TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for testing
     res.render('pages/profile', {
           username:username,
           age:age,
@@ -296,6 +291,19 @@ express()
 })
 
 .post('/questionnaire-end.html', function (req, res){
+
+// found JSON parsing solution from https://stackoverflow.com/questions/28764822/req-body-cant-be-read-as-an-array
+// and https://github.com/expressjs/express/issues/3264#issuecomment-290480516
+req.body = JSON.parse(JSON.stringify(req.body));
+
+for (var key in req.body) {
+  if (req.body.hasOwnProperty(key)) {
+    item = req.body[key];
+    //console.log(item);
+    questionnaireAnswers += item;
+  }
+}
+
   res.redirect('questionnaire-end.html');
 })
 
