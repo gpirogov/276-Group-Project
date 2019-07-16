@@ -127,15 +127,16 @@ express()
 
 .post('/finishQuestionnaire', function(req,res){
 
-  for(req.length){
-    questionnaireAnswers += req.body.routineRecommendation;
-  }
+  /*for(req.length){
+    questionnaireAnswers += req.body.routineRecommendation;	
+  }*/
   
 
 
-  const newRoutine = req.body.routineRecommendation;
-  const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
-  pool.query(updateRoutineQuery);
+  //const newRoutine = "test";
+  //pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
+
+  pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
     console.log(ans.rows[0]);
