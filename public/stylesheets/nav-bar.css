@@ -1,3 +1,14 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #363231;
+}
+
+h2 {
+  padding-top : 15px;
+  padding-right: 132px;
+}
+
 .topnav h2 {
   padding-top : 15px;
   padding-right: 132px;
@@ -76,4 +87,8 @@
   font-size: 15px;
   width: 80px;
   height: 15px
+}
+
+.go-to-workout-page{
+  display: block !important;
 }

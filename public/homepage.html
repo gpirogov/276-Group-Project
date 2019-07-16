@@ -5,6 +5,7 @@
       <title>Burning +</title>
       <link rel="stylesheet" href="./stylesheets/starterpage.css">
       <link rel="stylesheet" href="./stylesheets/question.css">
+      <link rel="stylesheet" href="./stylesheets/nav-bar.css">
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
 
@@ -44,7 +45,9 @@
         <a href="homepage"><img src="images/logo-inverted.png"class="logo"></a>
         <a href="logout" class="navbar">Signout</a>
         <a href="profile" class="navbar">Profile</a>
-        <a href="workout-physique.html" class="navbar">Workout</a>
+        <form class="go-to-workout-page" action="/go-to-workout-page" method="post">
+          <button type="submit" class="navbar">Workout</button>
+        </form>
         <a href="diet.html" class="navbar">Diet</a>
         <a href="forum.html" class="navbar">Forum</a>
         <a href="homepage" class="navbar">Homepage</a>
