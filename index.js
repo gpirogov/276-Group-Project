@@ -272,15 +272,15 @@ express()
 // );
 
 .post('/a', function (req, res){
-  var foodName = req.body.mealFood;
+  var foodname = req.body.mealFood;
   var cals = req.body.mealCalories;
   var fat = req.body.mealFat;
   var carbs = req.body.mealCarbs;
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
 
-  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
-  const mealVal =[foodName, cals, fat, carbs, protien, meal, date]
+  const mealInfo = "INSERT INTO meals_table(foodname, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
+  const mealVal =[foodname, cals, fat, carbs, protien, meal, date]
 
   pool.query(mealInfo, mealVal);
   res.redirect('diet.html');
