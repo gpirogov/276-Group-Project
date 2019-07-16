@@ -126,30 +126,17 @@ express()
 
 
 .post('/finishQuestionnaire', function(req,res){
-<<<<<<< HEAD
-=======
-// <<<<<<< HEAD
->>>>>>> 4c19f1fa1b31a19d28ec463f31065228f04bd418
 
   /*for(req.length){
-    questionnaireAnswers += req.body.routineRecommendation;
+    questionnaireAnswers += req.body.routineRecommendation;	
   }*/
-
+  
 
 
   //const newRoutine = "test";
   //pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
 
   pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
-<<<<<<< HEAD
-=======
-// =======
-  console.log(req.body);
-  const newRoutine = req.body.routineRecommendation;
-  const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
-  pool.query(updateRoutineQuery);
-// >>>>>>> f18c15046aa16c6b42fd23fb42fc2dbfca420f22
->>>>>>> 4c19f1fa1b31a19d28ec463f31065228f04bd418
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
     console.log(ans.rows[0]);
