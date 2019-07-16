@@ -311,13 +311,30 @@ req.body = JSON.parse(JSON.stringify(req.body));
   	conditioningRecommendationScore += parseInt(questionnaireAnswers[i+2]);
   }
 
+  var highestScore = Math.max(strengthRecommendationScore, physiqueRecommendationScore, conditioningRecommendationScore);
+  strengthRecommendationScore = ((strengthRecommendationScore/highestScore)*100).toFixed(1);;
+  physiqueRecommendationScore = ((physiqueRecommendationScore/highestScore)*100).toFixed(1);;
+  conditioningRecommendationScore = ((conditioningRecommendationScore/highestScore)*100).toFixed(1);;
 
-  //var physiqueRecommendationScore = questionnaireAnswers;
-  res.render('pages/questionnaire-end', {
+  if(strengthRecommendationScore == 100.0){
+    res.render('pages/questionnaire-end-strength', {
         strengthRecommendationScore:strengthRecommendationScore,
         physiqueRecommendationScore:physiqueRecommendationScore,
         conditioningRecommendationScore:conditioningRecommendationScore
-  })
+    })
+  }else if(conditioningRecommendationScore == 100.0){
+    res.render('pages/questionnaire-end-conditioning', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+    })
+  }else{
+    res.render('pages/questionnaire-end-physique', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+    })
+  }
   //res.redirect('questionnaire-end.html');
 })
 

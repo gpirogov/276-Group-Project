@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Signup Burning + </title>
+    <link rel="stylesheet" href="./stylesheets/questionnaire-end.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./js/questionnaire-end.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <a href="burning-plus.html"><img src="./images/logo-inverted.png" class="logo"></a>
+      <h2>Welcome to Burning+ !!!!!</h2>
+    </div>
+
+
+
+      <div class="formdiv">
+        <h3>Your Gym Routine Recommendations:</h3>
+        <form class = "form" action="finishQuestionnaire" method="post">
+          <table class="formtable">
+            <tr>
+              <td>
+                  <h4 id="recommendation-0-header-recommended">Recommended:</h4>
+              </td>
+              <td>
+                  <h4 id="recommendation-1-header-recommended" hidden>Recommended:</h4>
+              </td>
+              <td>
+                  <h4 id="recommendation-2-header-recommended" hidden>Recommended:</h4>
+              </td>
+            </tr>
+            <tr>
+              <td id="recommended-routine-header">
+                  <h4>Physique-Focussed Routine</h4>
+              </td>
+              <td id="">
+                  <h4>Conditioning and Cardio</h4>
+              </td>
+              <td id="">
+                  <h4>Strength-Training</h4>
+              </td>
+            </tr>
+            <tr>
+              <td class="recommendation-cell" id="recommended-routine-cell">
+                <label>
+                  <input type="radio" name="routineRecommendation" id="physique-radio" value="physique" checked="checked">
+                  <img class="questionnaire-image" src="./images/questionnaire/physique.png" alt="(image)">
+                  <h4><span><%=physiqueRecommendationScore%><span>% fit</h4>
+                </label>
+                <h5>Main Attributes:</h5>
+                <ul>
+                  <li>Beginner friendly, but most time-consuming</li>
+                  <li>High volume</li>
+                  <li>Medium intensity</li>
+                  <li>Strict diet</li>
+                  <li>4+ days a week</li>
+                  <li>Varies between 1.5 and 2.5 hours a day</li>
+                </ul>
+              </td>
+              <td class="recommendation-cell">
+                <label>
+                  <input type="radio" name="routineRecommendation" id="conditioning-radio" value="conditioning">
+                  <img class="questionnaire-image" src="./images/questionnaire/conditioning.jpg" alt="(image)">
+                  <h4><span><%=conditioningRecommendationScore%><span>% fit</h4>
+                </label>
+                <h5>Main Attributes:</h5>
+                <ul>
+                  <li>Very beginner friendly</li>
+                  <li>High intensity</li>
+                  <li>Semi-strict diet</li>
+                  <li>Any number of days a week (3+ recommended)</li>
+                  <li>As little as 1 hour a day</li>
+                </ul>
+              </td>
+              <td class="recommendation-cell">
+                <label>
+                  <input type="radio" name="routineRecommendation" id="strength-radio" value="strength">
+                  <img class="questionnaire-image" src="./images/questionnaire/strength.png" alt="(image)">
+                  <h4><span><%=strengthRecommendationScore%><span>% fit</h4>
+                </label>
+                <h5>Main Attributes:</h5>
+                <ul>
+                  <li>Not beginner friendly</li>
+                  <li>Low volume</li>
+                  <li>Low intensity</li>
+                  <li>High-calorie diet</li>
+                  <li>3+ days a week</li>
+                  <li>Consistently around 2.5 hours a day</li>
+                </ul>
+              </td>
+            <tr>
+              <td colspan="3">
+                <button type="submit" name="continue-button" id="continue-button">Continue</button>
+                <p><i>Note: If you ever want to switch routines, after already picking one, that can be done from the "Profile" page.</i></p>
+              </td>
+            </tr>
+          </table>
+        </form>
+  </body>
+</html>

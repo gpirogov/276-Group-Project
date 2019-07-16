@@ -117,11 +117,11 @@ table {
    border-collapse: collapse;
 }
 
-#recommendation-0, #recommendation-0-header{
+#recommended-routine-cell, #recommended-routine-header{
   background-color: #8e8e72;
 }
 
-#recommendation-0, #recommendation-1, #recommendation-2{
+.recommendation-cell{
   width: 33%;
   vertical-align: top;
 }
@@ -137,6 +137,6 @@ li {
   text-align: left;
 }
 
-#recommendation-0 h4 {
+#recommended-routine-cell h4{
   background-color: #a1a15f;
 }
