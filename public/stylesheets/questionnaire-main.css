@@ -97,16 +97,3 @@ h4 {
 #continue-button{
   font-size: 1.25em;
 }
-
-.questionnaire-column-1{
-  width: 70%;
-  text-align: left;
-  vertical-align: top;
-  font-size: 1.5em;
-}
-
-.questionnaire-column-2{
-  width: 30%;
-  text-align: left;
-  font-size: 1.25em;
-}

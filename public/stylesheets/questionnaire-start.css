@@ -79,7 +79,7 @@ select #gender{
 /* learned how to use image as radio input from
 https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons */
 
-[type=radio] { 
+[type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
