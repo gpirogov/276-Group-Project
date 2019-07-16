@@ -236,6 +236,17 @@ express()
   })})
 
 //add meal to db
+// CREATE TABLE meals_table (
+//   foodName VARCHAR(30) NOT NULL,
+//   cals real,
+//   fat real,
+//   carbs real,
+//   protien real,
+//   meal VARCHAR(10) NOT NULL,
+//   date VARCHAR(30),
+//   PRIMARY KEY(date, meal, foodName)
+// );
+
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
   var cals = req.body.mealCalories;
