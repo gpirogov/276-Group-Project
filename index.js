@@ -28,7 +28,7 @@ express()
     if ( ans.rowCount == 0)
     {
       res.render('pages/errorPage', {
-        msg: "No exsit account"
+        msg: "No account exists"
       })
     } else if ( ans.rowCount == 1 )
     {
@@ -51,7 +51,7 @@ express()
       } else
       {
         res.render('pages/errorPage', {
-          msg: "OH SHIT !"
+          msg: "An error occured!"
         })
       }
     }
@@ -81,12 +81,13 @@ express()
     {
       pool.query(accountInfo, accountVal);
       pool.query(userInfo,userVal);
-      res.render('pages/welcomePage')
+      //res.render('pages/welcomePage')
+      res.redirect('questionnaire-start.html');
 
     } else if (ans.rowCount == 1 )
     {
       res.render('pages/SignUpError',{
-        msg:'Exsiting Account'
+        msg:'Existing Account'
       })
     }
   })
@@ -94,12 +95,28 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  res.render('pages/questionarie')
+  //res.render('pages/questionarie')
   pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
-
+  res.redirect('questionnaire-main.html');
 })
 
-.post('/beginnerQuestion', function(req,res){
+.post('/intermediateChoice', function(req,res){
+  //res.render('pages/proquestion')
+  pool.query("UPDATE user_info SET status = 'intermediate' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/advancedChoice', function(req,res){
+  pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/advancedChoiceSkip', function(req,res){
+  pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-end.html');
+})
+
+.post('/finishQuestionnaire', function(req,res){
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
@@ -119,12 +136,7 @@ express()
   })
 })
 
-.post('/experienceChoice', function(req,res){
-  res.render('pages/proquestion')
-  pool.query("UPDATE user_info SET status = 'experience' WHERE username = '" + globalName + "'" );
-})
-
-.post('/experienceQuestion', function(req,res){
+/*.post('/experienceQuestion', function(req,res){
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
@@ -143,7 +155,7 @@ express()
           status:status,
     })
   })
-})
+})*/
 
 .post('/1', function(req,res){
   var exercise = req.body.exercise;
@@ -261,6 +273,32 @@ express()
   pool.query(mealInfo, mealVal);
   res.redirect('diet.html');
 })
+
+
+/* =============================
+ *  Questionnaire-Related Code:
+ * ============================= */
+
+.post('/questionnaire-main.html', function (req, res){
+
+
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/questionnaire-end.html', function (req, res){
+  res.redirect('questionnaire-end.html');
+})
+
+.post('/workout-physique.html', function (req, res){
+  res.redirect('workout-physique.html');
+})
+
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
 
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
