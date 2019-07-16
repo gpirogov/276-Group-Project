@@ -62,7 +62,7 @@ express()
   var username = req.body.username;
   globalName = req.body.username;
   var password = req.body.pw;
-  var gender = req.body.Gender;
+  var gender = req.body.gender;
   var age = req.body.age;
   var weight = req.body.weight;
   var height = req.body.height;
