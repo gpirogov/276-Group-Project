@@ -112,3 +112,8 @@ h4 {
 #continue-button{
   font-size: 1.25em;
 }
+
+#experience-0, #experience-1, #experience-2{
+  width: 33%;
+  vertical-align: top;
+}

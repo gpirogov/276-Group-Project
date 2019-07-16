@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="topnav">
-      <a href="buring-plus.html"><img src="images/logo-inverted.png" class="logo"></a>
+      <a href="burning-plus.html"><img src="images/logo-inverted.png" class="logo"></a>
       <h2>Welcome to Burning+ !!!!!</h2>
     </div>
 
@@ -17,12 +17,10 @@
 
       <div class="formdiv">
         <h3>How new are you to fitness?</h3>
-        <form class = "form" action="/signup.html" method="post">
+        <form id = "experience-form" action="/beginnerChoice" method="post">
           <table class="formtable">
-            <form>
               <tr>
-
-                <td>
+                <td id="experience-0">
                   <label>
                     <h4>Beginner</h4>
                     <input type="radio" name="level-of-experience" id="beginner-radio"  value="024" checked="checked">
@@ -30,7 +28,7 @@
                   </label>
                   <p>You're a complete beginner, just starting on your fitness and healthy lifestyle journey.</p>
                 </td>
-                <td>
+                <td id="experience-1">
                   <label>
                     <h4>Intermediate</h4>
                     <input type="radio" name="level-of-experience" id="intermediate-radio" value="131">
@@ -38,7 +36,7 @@
                   </label>
                   <p>You're an intermediate. You exercise or play sports once or twice a week, but aren't an expert.</p>
                 </td>
-                <td>
+                <td id="experience-2">
                   <label>
                     <h4>Advanced</h4>
                     <input type="radio" name="level-of-experience" id="advanced-radio" value="321">
@@ -55,7 +53,6 @@
                   <p><i>(Its goal is to determine which workout routine is the best pick for you, based on your preferences and experience.)</i></p>
                 </td>
               </tr>
-            </form>
             <tr>
               <td colspan="3">
                 <button type="submit" name="continue-button" id="continue-button">Continue</button>

@@ -28,7 +28,7 @@ express()
     if ( ans.rowCount == 0)
     {
       res.render('pages/errorPage', {
-        msg: "No exsit account"
+        msg: "No account exists"
       })
     } else if ( ans.rowCount == 1 )
     {
@@ -39,19 +39,21 @@ express()
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
-        var status = ans.rows[0].status;
+        // var status = ans.rows[0].status;
+        var routine = ans.rows[0].routine;
         res.render('pages/profile', {
               username:username,
               age:age,
               gender:gender,
               weight:weight,
               height:height,
-              status:status,
+              //status:status,
+              routine:routine,
         })
       } else
       {
         res.render('pages/errorPage', {
-          msg: "OH SHIT !"
+          msg: "An error occured!"
         })
       }
     }
@@ -62,7 +64,7 @@ express()
   var username = req.body.username;
   globalName = req.body.username;
   var password = req.body.pw;
-  var gender = req.body.Gender;
+  var gender = req.body.gender;
   var age = req.body.age;
   var weight = req.body.weight;
   var height = req.body.height;
@@ -70,23 +72,24 @@ express()
 
   const accountInfo = "INSERT INTO account(username,password) values ($1,$2)"
   const accountVal = [username,password]
-  //pool.query(accountInfo, accountVal)
+  // pool.query(accountInfo, accountVal)
 
-  const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height) values ($1,$2,$3,$4,$5,$6)"
-  const userVal = [username,password,gender,age,weight,height]
-  //pool.query(userInfo,userVal)
+  const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
+  const userVal = [username,password,gender,age,weight,height," "]
+  // pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
     if ( ans.rowCount == 0)
     {
       pool.query(accountInfo, accountVal);
       pool.query(userInfo,userVal);
-      res.render('pages/welcomePage')
+      //res.render('pages/welcomePage')
+      res.redirect('questionnaire-start.html');
 
     } else if (ans.rowCount == 1 )
     {
       res.render('pages/SignUpError',{
-        msg:'Exsiting Account'
+        msg:'Existing Account'
       })
     }
   })
@@ -94,12 +97,56 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  res.render('pages/questionarie')
-  pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
-
+  //res.render('pages/questionarie')
+  //pool.query("UPDATE user_info SET status = 'beginner' WHERE username = '" + globalName + "'");
+  res.redirect('questionnaire-main.html');
 })
 
-.post('/beginnerQuestion', function(req,res){
+.post('/intermediateChoice', function(req,res){
+  //res.render('pages/proquestion')
+  //pool.query("UPDATE user_info SET status = 'intermediate' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/advancedChoice', function(req,res){
+  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/advancedChoiceSkip', function(req,res){
+  //pool.query("UPDATE user_info SET status = 'advanced' WHERE username = '" + globalName + "'" );
+  res.redirect('questionnaire-end.html');
+})
+
+
+
+.post('/finishQuestionnaire', function(req,res){
+  const newRoutine = req.body.routineRecommendation;
+  const updateRoutineQuery = "UPDATE user_info SET routine = '" + newRoutine + "' WHERE username = '" + globalName + "'";
+  pool.query(updateRoutineQuery);
+
+  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
+    console.log(ans.rows[0]);
+      var username = ans.rows[0].username;
+      var gender = ans.rows[0].gender;
+      var age = ans.rows[0].age;
+      var weight = ans.rows[0].weight;
+      var height = ans.rows[0].height
+      //var status = ans.rows[0].status;
+      var routine = ans.rows[0].routine;
+    res.render('pages/profile', {
+          username:username,
+          age:age,
+          gender:gender,
+          weight:weight,
+          height:height,
+          //status:status,
+          routine:routine,
+    })
+  })
+})
+
+/*.post('/experienceQuestion', function(req,res){
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       var username = ans.rows[0].username;
@@ -108,6 +155,7 @@ express()
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
       var status = ans.rows[0].status;
+
     res.render('pages/profile', {
           username:username,
           age:age,
@@ -117,33 +165,7 @@ express()
           status:status,
     })
   })
-})
-
-.post('/experienceChoice', function(req,res){
-  res.render('pages/proquestion')
-  pool.query("UPDATE user_info SET status = 'experience' WHERE username = '" + globalName + "'" );
-})
-
-.post('/experienceQuestion', function(req,res){
-
-  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
-      var username = ans.rows[0].username;
-      var gender = ans.rows[0].gender;
-      var age = ans.rows[0].age;
-      var weight = ans.rows[0].weight;
-      var height = ans.rows[0].height;
-      var status = ans.rows[0].status;
-
-    res.render('pages/profile', {
-          username:username,
-          age:age,
-          gender:gender,
-          weight:weight,
-          height:height,
-          status:status,
-    })
-  })
-})
+})*/
 
 .post('/1', function(req,res){
   var exercise = req.body.exercise;
@@ -189,14 +211,16 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      var status = ans.rows[0].status;
+      //var status = ans.rows[0].status;
+      var routine = ans.rows[0].routine;
     res.render('pages/profile', {
           username:username,
           age:age,
           gender:gender,
           weight:weight,
           height:height,
-          status:status,
+          // status:status,
+          routine:routine
     })
   })
 })
@@ -261,6 +285,32 @@ express()
   pool.query(mealInfo, mealVal);
   res.redirect('diet.html');
 })
+
+
+/* =============================
+ *  Questionnaire-Related Code:
+ * ============================= */
+
+.post('/questionnaire-main.html', function (req, res){
+
+
+  res.redirect('questionnaire-main.html');
+})
+
+.post('/questionnaire-end.html', function (req, res){
+  res.redirect('questionnaire-end.html');
+})
+
+.post('/workout-physique.html', function (req, res){
+  res.redirect('workout-physique.html');
+})
+
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
 
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
