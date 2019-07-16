@@ -136,7 +136,7 @@ express()
   //const newRoutine = "test";
   //pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
 
-  pool.query("UPDATE user_info SET routine = 'test' WHERE username = '" + globalName + "'");
+  pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
     console.log(ans.rows[0]);
