@@ -79,6 +79,21 @@ select #gender{
 /* learned how to use image as radio input from
 https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons */
 
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+[type=radio]:checked + img {
+  box-shadow: 0 0 3pt 2pt red;
+}
+
 h3 {
   font-size: 2.5em;
   margin: 0.25em;
@@ -98,15 +113,26 @@ h4 {
   font-size: 1.25em;
 }
 
-.questionnaire-column-1{
-  width: 70%;
-  text-align: left;
-  vertical-align: top;
-  font-size: 1.5em;
+table {
+   border-collapse: collapse;
 }
 
-.questionnaire-column-2{
-  width: 30%;
-  text-align: left;
+#recommendation-0, #recommendation-0-header{
+  background-color: #8e8e72;
+}
+
+#recommendation-0, #recommendation-1, #recommendation-2{
+  width: 33%;
+  vertical-align: top;
+}
+
+h5 {
   font-size: 1.25em;
+  margin-bottom: 0em;
+  margin-left: 1.5em;
+  text-align: left;
+}
+
+li {
+  text-align: left;
 }
