@@ -284,6 +284,7 @@ express()
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date]
 
   pool.query(mealInfo, mealVal);
+  console.log("added to db: " + {foodName, cals, fat, carbs, protien, meal, date})
   res.redirect('diet.html');
 })
 
