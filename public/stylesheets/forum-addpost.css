@@ -15,18 +15,76 @@
 }
 
 #popupInner {
-  background-color: #fefefe;
+  /* background-color: #1D1D1D; */
+  background-color: #888;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 70%;
 }
 
-#cancel {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
+#addForm {
+  width: 90%;
+  border-radius: 2px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+label {
+  margin-top: 5px;
+    margin-left: 7px;
+}
+
+input, #postContent {
+  width: 90%;
+  border: 1px solid #ccc;
+  background-color: #ededed;
+  border-radius: 2px;
+  padding: 5px;
+  margin-top: 7px;
+  margin-bottom: 15px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+#postContent {
+    height: 400px;
+}
+
+#submitButton {
+  height: 40px;
   font-weight: bold;
+  font-size: 15px;
+
+}
+
+#addButton {
+  color: #d6d6d6;
+  text-decoration: underline;
+  display: inline-block;
+  float: right;
+  height: 40px;
+  font-weight: bold;
+  font-size: 24px;
+
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+.submitdiv {
+  margin-top: 30px;
+}
+#cancel {
+  text-decoration: none;
+  display: inline-block;
+  float: right;
+  height: 40px;
+  font-weight: bold;
+  font-size: 15px;
 }
 
 #cancel:hover,

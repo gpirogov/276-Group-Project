@@ -288,7 +288,7 @@ express()
 //   username VARCHAR(30)
 // );
 
-.get('diet.html', function(req,res){
+.post('diet.html', function(req,res){
   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
     if(err){ throw err;}
     console.log(result)
