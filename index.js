@@ -402,8 +402,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
 
 
 
+.get('/homepage',(req,res)=> res.render('pages/homepage'))
 
-.get('/homepage',(req,res)=>{
+.get('/gen_graph',(req,res)=>{
     var routine = res.boby.routine_option;
     var exercise = res.body.exercise_option;
     var record = res.body.record_option;
