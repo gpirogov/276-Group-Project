@@ -5,6 +5,27 @@
       <title>Burning +</title>
       <link rel="stylesheet" href="./stylesheets/starterpage.css">
       <link rel="stylesheet" href="./stylesheets/question.css">
+      <script>
+      function change_exercise_option(value){
+          if(value == "condition"){
+            document.getElementById("table_condition_exercise_option").style.display = "inline-block";
+            document.getElementById("table_physique_exercise_option").style.display = "none";
+            document.getElementById("table_strength_exercise_option").style.display = "none";
+            document.getElementById("routine_option").value ="condition";
+          }else if(value == "physique"){
+            document.getElementById("table_condition_exercise_option").style.display = "none";
+            document.getElementById("table_physique_exercise_option").style.display = "inline-block";
+            document.getElementById("table_strength_exercise_option").style.display = "none";
+            document.getElementById("routine_option").value ="physique";
+          }else{
+            document.getElementById("table_condition_exercise_option").style.display = "none";
+            document.getElementById("table_physique_exercise_option").style.display = "none";
+            document.getElementById("table_strength_exercise_option").style.display = "inline-block";
+            document.getElementById("routine_option").value ="strength";
+          }
+        }s
+
+      </script>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
 
@@ -53,14 +74,16 @@
       <div class="formdiv">
         <div>
           <h1>Homepage</h1>
-          <div class="table_option">
-              <select id="routine_option">
+          <div id="table_condition_exercise_option" style=" display: inline-block">
+            <form class="exercise_graph_form" action="/homepage" method="get">
+
+              <select id="routine_option" onchange="change_exercise_option(value);">
                 <option value="condition">Conditioning</option>
                 <option value="physique">Physique</option>
                 <option value="strength">strength</option>
               </select>
 
-              <select id="condition_exercise_option">
+              <select id="exercise_option">
                 <option disabled>      ---    Part One: Physique    ---      </option>
                 <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
                 <option value="Incline Dumbell Shoulder Press">Incline Dumbell Shoulder Press</option>
@@ -73,9 +96,27 @@
                 <option value="Preacher Curls">Preacher Curls</option>
               </select>
 
-              <select id="physique_exercise_option">
+              <select id="record_option">
+                <option value="normal">Normal</option>
+                <option value="max">Max</option>
+              </select>
+
+              <button type="submit" name="refreshbut">Refresh</button>
+            </form>
+          </div>
+
+          <div id="table_physique_exercise_option" style=" display: none">
+            <form class="exercise_graph_form" action="/homepage" method="get">
+
+              <select id="routine_option" onchange="change_exercise_option(value);">
+                <option value="physique" >Physique</option>
+                <option value="condition">Conditioning</option>
+                <option value="strength">strength</option>
+              </select>
+
+              <select id="exercise_option">
                 <!-- shoulder day -->
-                <option disabled>      ---  Shoulder Day  ---      </option>
+                <option disabled>      ---   Shoulder Day   ---      </option>
                 <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
                 <option value="Incline Dumbell Shoulder Press">Incline Dumbell Shoulder Press</option>
                 <option value="Overhead Press">Overhead Press</option>
@@ -106,7 +147,7 @@
                 <option value="Hammer Curls">Hammer Curls</option>
                 <option value="Incline Dumbbell Curl">Incline Dumbbell Curl</option>
                 <option value="Preacher Curls">Preacher Curls</option>
-                <p>ad<p>
+
                 <!-- tricep -->
                 <option disabled>      ---    Tricep    ---      </option>
                 <option value="Tricep Pulldowns">Tricep Pulldowns</option>
@@ -114,24 +155,45 @@
                 <option value="Lower Chest Cable Crossovers">Lower Chest Cable Crossovers</option>
               </select>
 
-              <select id="strength_exercise_option">
-                <option disabled>      ---  Workout Cycle  ---      </option>
-                <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
-                <option value="Incline Dumbell Shoulder Press">Incline Dumbell Shoulder Press</option>
-                <option value="Overhead Press">Overhead Press</option>
-                <option value="Rear Delt Cable Crossovers">Rear Delt Cable Crossovers</option>
-
-              </select>
-
-
-
-
 
               <select id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
+
+              <button type="submit" name="refreshbut">Refresh</button>
+            </form>
           </div>
+
+          <div id="table_strength_exercise_option" style=" display: none">
+            <form class="exercise_graph_form" action="/homepage" method="get">
+
+              <select id="routine_option" onchange="change_exercise_option(value);">
+                <option value="strength">strength</option>
+                <option value="condition">Conditioning</option>
+                <option value="physique" >Physique</option>
+              </select>
+
+              <select id="exercise_option">
+                <option disabled>      ---  Workout Cycle  ---      </option>
+                <option value="45-Degree Back Extension">45-Degree Back Extension</option>
+                <option value="Back Squat">Back Squat</option>
+                <option value="Bench Press">Bench Press</option>
+                <option value="Deadlift">Deadlift</option>
+              </select>
+
+              <select id="record_option">
+                <option value="normal">Normal</option>
+                <option value="max">Max</option>
+              </select>
+
+              <button type="submit" name="refreshbut">Refresh</button>
+            </form>
+          </div>
+
+
+
+
           <div id="chart_div" style=" margin:5% "></div>
           <br>
       </div>

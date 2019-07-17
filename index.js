@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  //ssl : true
 });
 
 var globalName;
@@ -164,7 +164,7 @@ express()
 
 .post('/1', function(req,res){
   var exercise = req.body.exercise;
-  var routine = req.body.routine
+  var routine = req.body.routine;
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
@@ -180,7 +180,7 @@ express()
 
 .post('/2', function(req,res){
   var exercise = req.body.exercise;
-  var routine = req.body.routine
+  var routine = req.body.routine;
   var weight = req.body.weight;
   var unit = req.body.wType;
   var rep = req.body.setsAndReps;
@@ -273,7 +273,7 @@ express()
   var meal = req.body.meal;
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
-  const mealVal =[foodName, cals, fat, carbs, protien, meal, date]
+  const mealVal = [foodName, cals, fat, carbs, protien, meal, date]
 
   pool.query(mealInfo, mealVal);
   res.redirect('diet.html');
@@ -319,6 +319,42 @@ for (var key in req.body) {
 
 
 
-.get('/homepage',(req,res)=> res.render('pages/homepage'))
+.get('/homepage',(req,res)=>{
+    var routine = res.boby.routine_option;
+    var exercise = res.body.exercise_option;
+    var record = res.body.record_option;
+    if(record == 'normal'){
+      const info = "SELECT * FROM  workout_table where username = $1 and routine = $2 and exercise = $3";
+      const value = [globalName,routine,exercise];
+      pool.query(info,value,(err,ans)=>{
+        var exercise = ans.rows[0].username;
+        var gender = ans.rows[0].gender;
+        var age = ans.rows[0].age;
+        res.render('pages/profile', {
+            ex_list:exercise,
+            routine:routine
+        })
+      })
+    }else{
+      const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
+      const value = [globalName,routine,exercise];
+      pool.query(info,value,(err,ans)=>{
+        var exercise = ans.rows[0].username;
+        var gender = ans.rows[0].gender;
+        var age = ans.rows[0].age;
+        res.render('pages/profile', {
+            ex_list:exercise,
+            routine:routine
+        })
+      })
+    }
+})
+
+
+
+
+
+
+
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
