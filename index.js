@@ -226,9 +226,13 @@ express()
 
 
 // forums
+.get('/forums', (req,res) => {
+  res.sendFile(path.join(__dirname + '/public/forum.html'));
+})
+
 .get('/forums/:topic', (req,res) => {
   // topic in req.params.topic
-  var topic = JSON.stringify(req.params.topic);
+  var topic = req.params.topic;
   console.log(topic);
   var text = 'SELECT * FROM forums WHERE topic = $1';
   var values = [ req.params.topic ];
@@ -255,7 +259,16 @@ express()
 
   pool.query("SELECT * FROM forums", (err, result) => {
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
-  })})
+  })
+})
+.post('/forumAddPost', (req, res) => {
+  var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
+  var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
+
+  pool.query(text, values, (err, result) => {
+    res.redirect('/forums');
+  });
+})
 
 
   /* ====================
