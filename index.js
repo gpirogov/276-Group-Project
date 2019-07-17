@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  //ssl : true
 });
 
 var globalName;
@@ -23,6 +23,7 @@ express()
 .use(express.static(path.join(__dirname, 'public')))
 .use(express.json())
 .use(express.urlencoded({extended:false}))
+
 .post('/burning-plus.html', function(req,res){
   var loginname = req.body.username;
   var password = req.body.pw;
@@ -43,6 +44,7 @@ express()
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
         var routine = ans.rows[0].routine;
+        console.log("hello");
         res.render('pages/profile', {
               username:username,
               age:age,
@@ -115,8 +117,6 @@ express()
 .post('/advancedChoiceSkip', function(req,res){
   res.render('pages/questionnaire-end-skip');
 })
-
-
 
 .post('/finishQuestionnaire', function(req,res){
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
@@ -194,10 +194,9 @@ express()
 })
 
 
-
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/profile'))
+.get('/', (req, res) => res.render('pages/index'))
 .get('/profile',(req,res)=>{
   if(globalRoutine == " "){
     res.render('pages/not-logged-in');
