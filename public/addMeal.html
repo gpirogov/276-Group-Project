@@ -5,7 +5,6 @@
   <title> Burning + </title>
   <link rel="stylesheet" href="./stylesheets/starterpage.css">
   <link rel="stylesheet" href="./stylesheets/diet.css">
-  <link rel="stylesheet" href="./stylesheets/nav-bar.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
   <script src="js/caloriecalc.js" defer></script>
 </head>
@@ -14,9 +13,7 @@
     <a href="homepage"><img src="images/logo-inverted.png"class="logo"></a>
     <a href="logout" class="navbar">Signout</a>
     <a href="profile" class="navbar">Profile</a>
-      <form class="go-to-workout-page" action="/go-to-workout-page" method="post">
-        <button type="submit" class="navbar">Workout</button>
-      </form>
+    <a href="workout-physique.html" class="navbar">Workout</a>
     <a href="diet.html" class="navbar">Diet</a>
     <a href="forum.html" class="navbar">Forum</a>
     <a href="homepage" class="navbar">Homepage</a>
@@ -26,20 +23,9 @@
 
   <div class="formdiv">
 
-    <div id = "date"> Today's Date</div>
+    <!-- <div id = "date"> Today's Date</div>
 
     <div id = "dietMain">
-
-
-      <table id = "tableMeal" class = "meals">
-        <tr id = "linkRow">
-            <th><a href = './breakfast' class = "tableLink">Breakfast</a></th>
-            <th><a href = './lunch' class = "tableLink">Lunch</a></th>
-            <th><a href = './dinner' class = "tableLink">Dinner</a></th>
-            <th><a href = './snacks' class = "tableLink">Snacks</a></th>
-        </tr>
-      </table>
-
       <div id = "calorieCounter">
         <p id = "calorieGoal">Goal</p>
         <p id = "calorieNet">Goal = Food - Excercise</p>
@@ -49,10 +35,86 @@
         <button id = "addMealButton"> Add Meal </button>
       </div>
 
-    </div>
+      <table id = "tableBreakfast" class = "meals">
+        <p class = "tableTitle">Breakfast</p>
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
 
-    <div id="addMeal" hidden>
-      <a id = "backButton"> Back </a>
+        <tr class =  "mealRow">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table id = "tableLunch" class = "meals">
+        <p class = "tableTitle">Lunch</p>
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table id = "tableDinner" class = "meals">
+        <p class = "tableTitle">Dinner</p>
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+      <table id = "tableSnacks" class = "meals">
+        <p class = "tableTitle">Snacks</p>
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+
+    </div> -->
+
+    <div id="addMeal">
+      <button id = "backButton" href = "pages/diet"> Back </button>
 
       <div class = "search">
         <input type="text" id="searchBar" placeholder="Search for foods">
@@ -71,7 +133,7 @@
             </select>
         </div>
 
-        <table id = "tableAddMeal">
+        <table id = "tableAddMeal" class = "meals">
           <tr>
               <th>Food</th>
               <th>Calories</th>

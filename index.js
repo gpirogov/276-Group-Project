@@ -256,7 +256,11 @@ express()
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
   })})
 
-//add meal to db
+
+  /* ====================
+   *  Diet Add/Retrieve
+   * ====================*/
+
 // CREATE TABLE meals_table (
 //   foodName VARCHAR(30) NOT NULL,
 //   cals real,
@@ -283,6 +287,33 @@ express()
   res.redirect('diet.html');
 })
 
+.get('/breakfast', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableBreakfast' ,{ data: result, date: date});
+  })
+})
+
+.get('/lunch', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableLunch' ,{ data: result, date: date});
+  })
+})
+
+.get('/dinner', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableDinner' ,{ data: result, date: date});
+  })
+})
+
+.get('/snacks', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableSnacks' ,{ data: result, date: date});
+  })
+})
 
 
 /* =============================
