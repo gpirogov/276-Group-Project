@@ -36,15 +36,16 @@ express()
       })
     } else if ( ans.rowCount == 1 )
     {
+
       if ( password == ans.rows[0].password)
       {
+
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
         var routine = ans.rows[0].routine;
-        console.log("hello");
         res.render('pages/profile', {
               username:username,
               age:age,
@@ -75,11 +76,11 @@ express()
 
   const accountInfo = "INSERT INTO account(username,password) values ($1,$2)"
   const accountVal = [username,password]
-  pool.query(accountInfo, accountVal)
+  // pool.query(accountInfo, accountVal)
 
   const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
   const userVal = [username,password,gender,age,weight,height," "]
-  pool.query(userInfo,userVal)
+  // pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
     if ( ans.rowCount == 0)
