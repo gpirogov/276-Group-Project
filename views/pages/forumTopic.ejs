@@ -3,9 +3,11 @@
   <title>Forum Burning + </title>
   <link rel="stylesheet" href="/stylesheets/starterpage.css">
   <link rel="stylesheet" href="/stylesheets/forumMain.css">
+  <link rel="stylesheet" href="/stylesheets/forum-addpost.css">
   <link rel="stylesheet" href="/stylesheets/nav-bar.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <script src="signup.js" charset="utf-8"></script>
+  <script src="/js/forum-addpost.js" charset="utf-8"></script>
 </head>
 <body>
   <div class="topnav">
@@ -21,11 +23,43 @@
     <h2>WORKOUT FORUM</h2>
   </div>
   <div id="forumTopic">
-      <!-- <a href="forum.html"> Home </a> -->
-      <!-- <h3>< results[0].topic %></h3> -->
-      <!-- <p>Discuss everything < r.topic %> related here!</p> -->
+      <a href="/forums"> Home </a>
+      <span>
+        <h3><%= topic.toUpperCase() %></h3>
+        <button type="button" id="addButton" name="addButton">New Post</button>
+      </span>
+      <p>Discuss everything <%= topic %> related here! </p>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
-      <!-- <p> <ans%> </p> -->
+
+      <div class="popup" id="popup">
+        <div class="popupInner" id="popupInner">
+          <button type="button" id="cancel" name="cancel">Cancel</button>
+
+          <form id="addForm" method="post" action="/forumAddPost" >
+            <h1> Add New Post </h1>
+            <label for="title"><b>Title</b></label> <br />
+            <input type="text" name="title" /> <br />
+
+            <!-- <input type="text" name="content" /> <br /> -->
+            <textarea id="postContent" name="content"></textarea> <br />
+
+
+            <!-- will eventually be removed -->
+            <label for="username"><b>Username</b></label> <br />
+            <input type="text" name="username" /> <br />
+
+            <!-- hidden input - topic -->
+            <input type="hidden" name="topic" value="<%= topic %>"/>
+
+            <div class="submitdiv">
+              <input id="submitButton" value="SUBMIT" type="submit" />
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+
 
       <% if(results) { %>
         <% results.forEach(function(r) { %>
@@ -89,6 +123,7 @@
           <p> Sit amet massa vitae tortor condimentum lacinia quis vel. Semper viverra nam libero justo laoreet. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis </p>
         </div>
       </div>
+
 
     </div>
 </body>

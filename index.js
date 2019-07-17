@@ -40,6 +40,8 @@ express()
 
       if ( password == ans.rows[0].password)
       {
+        globalRoutine = ans.rows[0].routine;
+        globalName = ans.rows[0].username;
 
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
@@ -226,9 +228,13 @@ express()
 
 
 // forums
+.get('/forums', (req,res) => {
+  res.sendFile(path.join(__dirname + '/public/forum.html'));
+})
+
 .get('/forums/:topic', (req,res) => {
   // topic in req.params.topic
-  var topic = JSON.stringify(req.params.topic);
+  var topic = req.params.topic;
   console.log(topic);
   var text = 'SELECT * FROM forums WHERE topic = $1';
   var values = [ req.params.topic ];
@@ -255,7 +261,16 @@ express()
 
   pool.query("SELECT * FROM forums", (err, result) => {
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
-  })})
+  })
+})
+.post('/forumAddPost', (req, res) => {
+  var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
+  var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
+
+  pool.query(text, values, (err, result) => {
+    res.redirect('/forums');
+  });
+})
 
 
   /* ====================
@@ -270,16 +285,17 @@ express()
 //   protien real,
 //   meal VARCHAR(10) NOT NULL,
 //   date VARCHAR(30),
-//   PRIMARY KEY(date, meal, foodName)
+//   username VARCHAR(30)
 // );
 
-.get('diet.html', function(req,res){
-  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
-    if(err){ throw err;}
-    console.log(result)
-    globalFoodCal = result.rows[0].totalCals
-  })
-})
+// .post('diet.html', function(req,res){
+//   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+//     if(err){ throw err;}
+//     console.log(result)
+//     globalFoodCal = result.rows[0].totalCals
+//     console.log("after query for cals " + globalFoodCal)
+//   })
+// })
 
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
@@ -289,37 +305,47 @@ express()
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
 
-  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
-  const mealVal = [foodName, cals, fat, carbs, protien, meal, date]
+  if(cals == ""){cals = 0};
+  if(fat == ""){fat = 0};
+  if(carbs == ""){carbs = 0};
+  if(protien == ""){protien = 0};
+
+
+  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
+  const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
   pool.query(mealInfo, mealVal);
-  console.log("added to db: " + {foodName, cals, fat, carbs, protien, meal, date})
+  console.log("added to db: " + {foodName, cals, fat, carbs, protien, meal, date, globalName})
   res.redirect('diet.html');
 })
 
 .get('/breakfast', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
+  + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableBreakfast' ,{ data: result, date: date});
   })
 })
 
 .get('/lunch', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableLunch' ,{ data: result, date: date});
   })
 })
 
 .get('/dinner', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableDinner' ,{ data: result, date: date});
   })
 })
 
 .get('/snacks', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableSnacks' ,{ data: result, date: date});
   })
