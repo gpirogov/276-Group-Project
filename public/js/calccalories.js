@@ -3,7 +3,11 @@
 
 let goalCal = 2000 //will be set by questionaire
 let excercise = 0
-let net = globalFoodCal - excercise
+let food = 0
+let net = food - excercise
+
+
+
 
 function updateCalorieGoal(goal){
   document.getElementById('calorieGoal').innerHTML = "Daily Calories Goal: " + goalCal

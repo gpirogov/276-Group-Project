@@ -286,13 +286,14 @@ express()
 //   username VARCHAR(30)
 // );
 
-.post('diet.html', function(req,res){
-  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
-    if(err){ throw err;}
-    console.log(result)
-    globalFoodCal = result.rows[0].totalCals
-  })
-})
+// .post('diet.html', function(req,res){
+//   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+//     if(err){ throw err;}
+//     console.log(result)
+//     globalFoodCal = result.rows[0].totalCals
+//     console.log("after query for cals " + globalFoodCal)
+//   })
+// })
 
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
@@ -301,6 +302,12 @@ express()
   var carbs = req.body.mealCarbs;
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
+
+  if(cals == ""){cals = 0};
+  if(fat == ""){fat = 0};
+  if(carbs == ""){carbs = 0};
+  if(protien == ""){protien = 0};
+
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
