@@ -46,15 +46,15 @@
         <div>
           <h1>Homepage</h1>
           <div id="table_condition_exercise_option" style=" display: inline-block">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select  name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="condition">Conditioning</option>
                 <option value="physique">Physique</option>
                 <option value="strength">strength</option>
               </select>
 
-              <select id="exercise_option">
+              <select name ="exercise_option" id="exercise_option">
                 <option disabled>      ---    Part One: Physique    ---      </option>
                 <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
                 <option value="Incline Dumbell Shoulder Press">Incline Dumbell Shoulder Press</option>
@@ -67,7 +67,7 @@
                 <option value="Preacher Curls">Preacher Curls</option>
               </select>
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
@@ -77,15 +77,15 @@
           </div>
 
           <div id="table_physique_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="physique" >Physique</option>
                 <option value="condition">Conditioning</option>
                 <option value="strength">strength</option>
               </select>
 
-              <select id="exercise_option">
+              <select name="exercise_option" id="exercise_option">
                 <!-- shoulder day -->
                 <option disabled>      ---   Shoulder Day   ---      </option>
                 <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
@@ -98,7 +98,7 @@
                 <option value="Chin-ups">Chin-ups</option>
                 <option value="Dual Pulley Row">Dual Pulley Row</option>
                 <option value="Iso-Lateral Pulldown">Iso-Lateral Pulldow)n</option>
-                <option value="Rear Delt Cable Crossovers (back">Rear Delt Cable Crossovers</option>
+                <option value="Rear Delt Cable Crossovers (back)">Rear Delt Cable Crossovers</option>
 
                 <!-- leg day -->
                 <option disabled>      ---    Leg Day    ---      </option>
@@ -127,7 +127,7 @@
               </select>
 
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
@@ -137,15 +137,15 @@
           </div>
 
           <div id="table_strength_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="strength">strength</option>
                 <option value="condition">Conditioning</option>
                 <option value="physique" >Physique</option>
               </select>
 
-              <select id="exercise_option">
+              <select name ="exercise_option" id="exercise_option">
                 <option disabled>      ---  Workout Cycle  ---      </option>
                 <option value="45-Degree Back Extension">45-Degree Back Extension</option>
                 <option value="Back Squat">Back Squat</option>
@@ -153,7 +153,7 @@
                 <option value="Deadlift">Deadlift</option>
               </select>
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
