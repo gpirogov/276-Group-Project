@@ -10,6 +10,7 @@ const pool = new Pool({
 
 var globalName;
 var globalRoutine = " ";
+var globalFoodCal
 
 today = new Date();
 let day = today.getDate()
@@ -36,15 +37,16 @@ express()
       })
     } else if ( ans.rowCount == 1 )
     {
+
       if ( password == ans.rows[0].password)
       {
+
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
         var age = ans.rows[0].age;
         var weight = ans.rows[0].weight;
         var height = ans.rows[0].height;
         var routine = ans.rows[0].routine;
-        console.log("hello");
         res.render('pages/profile', {
               username:username,
               age:age,
@@ -257,7 +259,7 @@ express()
 
 
   /* ====================
-   *  Diet Add/Retrieve
+   *  Diet Functionalities
    * ====================*/
 
 // CREATE TABLE meals_table (
@@ -270,6 +272,14 @@ express()
 //   date VARCHAR(30),
 //   PRIMARY KEY(date, meal, foodName)
 // );
+
+.get('diet.html', function(req,res){
+  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    console.log(result)
+    globalFoodCal = result.rows[0].totalCals
+  })
+})
 
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
