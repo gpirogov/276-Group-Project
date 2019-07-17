@@ -25,14 +25,14 @@
   <div id="forumTopic">
       <a href="/forums"> Home </a>
       <span>
-        <h3><%= topic %></h3>
+        <h3><%= topic.toUpperCase() %></h3>
         <button type="button" id="addButton" name="addButton">New Post</button>
       </span>
       <p>Discuss everything <%= topic %> related here! </p>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
 
       <div class="popup" id="popup">
-        <div class="popupInner">
+        <div class="popupInner" id="popupInner">
           <button type="button" id="cancel" name="cancel">Cancel</button>
 
           <form id="addForm" method="post" action="/forumAddPost" >
@@ -40,7 +40,8 @@
             <label for="title"><b>Title</b></label> <br />
             <input type="text" name="title" /> <br />
 
-            <input type="text" name="content" /> <br />
+            <!-- <input type="text" name="content" /> <br /> -->
+            <textarea id="postContent" name="content"></textarea> <br />
 
 
             <!-- will eventually be removed -->
