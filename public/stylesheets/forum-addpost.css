@@ -1,6 +1,6 @@
 
 /* popup box css from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal */
-#popup {
+.popup {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -14,7 +14,7 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-#popupInner {
+.popupInner {
   /* background-color: #1D1D1D; */
   background-color: #888;
   margin: auto;
@@ -23,7 +23,7 @@
   width: 70%;
 }
 
-#addForm {
+.addForm {
   width: 90%;
   border-radius: 2px;
   margin-top: 20px;
@@ -35,7 +35,7 @@ label {
     margin-left: 7px;
 }
 
-input, #postContent {
+input, .postContent {
   width: 90%;
   border: 1px solid #ccc;
   background-color: #ededed;
@@ -47,18 +47,18 @@ input, #postContent {
   margin-right: 7px;
 }
 
-#postContent {
+.postContent {
     height: 400px;
 }
 
-#submitButton {
+.submitButton {
   height: 40px;
   font-weight: bold;
   font-size: 15px;
 
 }
 
-#addButton {
+.addButton {
   color: #d6d6d6;
   text-decoration: underline;
   display: inline-block;
@@ -78,7 +78,7 @@ input, #postContent {
 .submitdiv {
   margin-top: 30px;
 }
-#cancel {
+.cancel {
   text-decoration: none;
   display: inline-block;
   float: right;
@@ -87,8 +87,8 @@ input, #postContent {
   font-size: 15px;
 }
 
-#cancel:hover,
-#cancel:focus {
+.cancel:hover,
+.cancel:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
