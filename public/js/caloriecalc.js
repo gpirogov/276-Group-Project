@@ -1,12 +1,11 @@
 $(document).ready(function() {
 
   //calculating calories
-  
+
 
   let goalCal = 2000 //will be set by questionaire
-  let food= 0 //set by calculating foods
   let excercise = 0
-  let net = food - excercise
+  let net = globalFoodCal - excercise
 
   //api id and key
   var appId= "83211bdc";
