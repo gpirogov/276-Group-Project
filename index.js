@@ -197,7 +197,7 @@ express()
 
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/homepage'))
+.get('/', (req, res) => res.render('pages/profile'))
 .get('/profile',(req,res)=>{
   if(globalRoutine == " "){
     res.render('pages/not-logged-in');
@@ -433,12 +433,5 @@ req.body = JSON.parse(JSON.stringify(req.body));
       })
     }
 })
-
-
-
-
-
-
-
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
