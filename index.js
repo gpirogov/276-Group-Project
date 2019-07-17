@@ -10,6 +10,7 @@ const pool = new Pool({
 
 var globalName;
 var globalRoutine = " ";
+var globalFoodCal
 
 today = new Date();
 let day = today.getDate()
@@ -257,7 +258,7 @@ express()
 
 
   /* ====================
-   *  Diet Add/Retrieve
+   *  Diet Functionalities
    * ====================*/
 
 // CREATE TABLE meals_table (
@@ -270,6 +271,14 @@ express()
 //   date VARCHAR(30),
 //   PRIMARY KEY(date, meal, foodName)
 // );
+
+.get('diet.html', function(req,res){
+  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    console.log(result)
+    globalFoodCal = result.rows[0].totalCals
+  })
+})
 
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
