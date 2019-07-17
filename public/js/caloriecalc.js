@@ -1,18 +1,21 @@
 $(document).ready(function() {
-  let goal = 2000 //will be set by questionaire
-  let food= 0 //set by calculating foods
+
+  //calculating calories
+
+
+  let goalCal = 2000 //will be set by questionaire
   let excercise = 0
-  let net = food - excercise
+  let net = globalFoodCal - excercise
 
   //api id and key
   var appId= "83211bdc";
   var appKey = "af5b66e27d11815d0bb1d0f58651e563";
 
   function updateCalorieGoal(goal){
-    $('#calorieGoal').text("Daily Calories Goal: " + goal)
+    $('#calorieGoal').text("Daily Calories Goal: " + goalCal.toString())
   }
   function updateCalorieNet(){
-    $('#calorieNet').text("Net Calories: " + net)
+    $('#calorieNet').text("Daily Net Calories: " + net)
   }
 
   updateCalorieGoal()

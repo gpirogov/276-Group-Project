@@ -10,6 +10,7 @@ const pool = new Pool({
 
 var globalName;
 var globalRoutine = " ";
+var globalFoodCal
 
 today = new Date();
 let day = today.getDate()
@@ -23,6 +24,7 @@ express()
 .use(express.static(path.join(__dirname, 'public')))
 .use(express.json())
 .use(express.urlencoded({extended:false}))
+
 .post('/burning-plus.html', function(req,res){
   var loginname = req.body.username;
   var password = req.body.pw;
@@ -35,8 +37,10 @@ express()
       })
     } else if ( ans.rowCount == 1 )
     {
+
       if ( password == ans.rows[0].password)
       {
+
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
         var age = ans.rows[0].age;
@@ -73,11 +77,11 @@ express()
 
   const accountInfo = "INSERT INTO account(username,password) values ($1,$2)"
   const accountVal = [username,password]
-  pool.query(accountInfo, accountVal)
+  // pool.query(accountInfo, accountVal)
 
   const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
   const userVal = [username,password,gender,age,weight,height," "]
-  pool.query(userInfo,userVal)
+  // pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
     if ( ans.rowCount == 0)
@@ -115,8 +119,6 @@ express()
 .post('/advancedChoiceSkip', function(req,res){
   res.render('pages/questionnaire-end-skip');
 })
-
-
 
 .post('/finishQuestionnaire', function(req,res){
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
@@ -194,10 +196,9 @@ express()
 })
 
 
-
 .set('views', path.join(__dirname, 'views'))
 .set('view engine', 'ejs')
-.get('/', (req, res) => res.render('pages/profile'))
+.get('/', (req, res) => res.render('pages/index'))
 .get('/profile',(req,res)=>{
   if(globalRoutine == " "){
     res.render('pages/not-logged-in');
@@ -225,9 +226,13 @@ express()
 
 
 // forums
+.get('/forums', (req,res) => {
+  res.sendFile(path.join(__dirname + '/public/forum.html'));
+})
+
 .get('/forums/:topic', (req,res) => {
   // topic in req.params.topic
-  var topic = JSON.stringify(req.params.topic);
+  var topic = req.params.topic;
   console.log(topic);
   var text = 'SELECT * FROM forums WHERE topic = $1';
   var values = [ req.params.topic ];
@@ -254,11 +259,20 @@ express()
 
   pool.query("SELECT * FROM forums", (err, result) => {
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
-  })})
+  })
+})
+.post('/forumAddPost', (req, res) => {
+  var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
+  var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
+
+  pool.query(text, values, (err, result) => {
+    res.redirect('/forums');
+  });
+})
 
 
   /* ====================
-   *  Diet Add/Retrieve
+   *  Diet Functionalities
    * ====================*/
 
 // CREATE TABLE meals_table (
@@ -269,8 +283,16 @@ express()
 //   protien real,
 //   meal VARCHAR(10) NOT NULL,
 //   date VARCHAR(30),
-//   PRIMARY KEY(date, meal, foodName)
+//   username VARCHAR(30)
 // );
+
+.get('diet.html', function(req,res){
+  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    console.log(result)
+    globalFoodCal = result.rows[0].totalCals
+  })
+})
 
 .post('/a', function (req, res){
   var foodName = req.body.mealFood;
@@ -280,36 +302,41 @@ express()
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
 
-  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date) values ($1,$2,$3,$4,$5,$6,$7)"
-  const mealVal = [foodName, cals, fat, carbs, protien, meal, date]
+  const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
+  const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
   pool.query(mealInfo, mealVal);
+  console.log("added to db: " + {foodName, cals, fat, carbs, protien, meal, date, globalName})
   res.redirect('diet.html');
 })
 
 .get('/breakfast', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
+  + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableBreakfast' ,{ data: result, date: date});
   })
 })
 
 .get('/lunch', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableLunch' ,{ data: result, date: date});
   })
 })
 
 .get('/dinner', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableDinner' ,{ data: result, date: date});
   })
 })
 
 .get('/snacks', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='" + date + "'", (err,result) => {
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
+   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableSnacks' ,{ data: result, date: date});
   })
@@ -408,30 +435,40 @@ req.body = JSON.parse(JSON.stringify(req.body));
     var routine = res.boby.routine_option;
     var exercise = res.body.exercise_option;
     var record = res.body.record_option;
+    console.log(res);
+    console.log("hello hi");
+    console.log(res);
     if(record == 'normal'){
       const info = "SELECT * FROM  workout_table where username = $1 and routine = $2 and exercise = $3";
       const value = [globalName,routine,exercise];
       pool.query(info,value,(err,ans)=>{
-        var exercise = ans.rows[0].username;
-        var gender = ans.rows[0].gender;
-        var age = ans.rows[0].age;
-        res.render('pages/profile', {
-            ex_list:exercise,
-            routine:routine
+        console.log(ans.rows);
+        var weight_list=[];
+        var rep_list=[];
+        for(i = 0; i < ans.rows.length; i++){
+          weight_list.push(ans.row[i].weight);
+          rep_list.push(ans.row[i].rep)
+        }
+        res.render('pages/homepagegraph', {
+            test:weight_list,
+            test1:rep_list
         })
       })
-    }else{
-      const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
-      const value = [globalName,routine,exercise];
-      pool.query(info,value,(err,ans)=>{
-        var exercise = ans.rows[0].username;
-        var gender = ans.rows[0].gender;
-        var age = ans.rows[0].age;
-        res.render('pages/profile', {
-            ex_list:exercise,
-            routine:routine
-        })
-      })
+    // }else{
+    //   const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
+    //   const value = [globalName,routine,exercise];
+    //   pool.query(info,value,(err,ans)=>{
+    //     var weight_list=[];
+    //     var rep_list=[];
+    //     for(i = 0; i < ans.rows.length; i++){
+    //       weight_list.push(ans.row[i].weight);
+    //       rep_list.push(ans.row[i].rep)
+    //     }
+    //     res.render('pages/homepage', {
+    //         test:weight_list,
+    //         test1:rep_list
+    //     })
+    //   })
     }
 })
 
