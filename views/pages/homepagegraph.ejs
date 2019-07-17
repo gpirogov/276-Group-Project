@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <title>Burning +</title>
       <link rel="stylesheet" href="./stylesheets/starterpage.css">
+      <link rel="stylesheet" href="./stylesheets/nav-bar.css">
       <link rel="stylesheet" href="./stylesheets/question.css">
       <script>
       function change_exercise_option(value){
@@ -30,6 +31,7 @@
       <script type="text/javascript">
 
         google.charts.load('current', {'packages':['corechart']});
+
 
         google.charts.setOnLoadCallback(drawChart);
 
@@ -77,7 +79,7 @@
         <div>
           <h1>Homepage</h1>
           <div id="table_condition_exercise_option" style=" display: inline-block">
-            <form class="exercise_graph_form" action="/homepage" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="get">
 
               <select id="routine_option" onchange="change_exercise_option(value);">
                 <option value="condition">Conditioning</option>
@@ -108,7 +110,7 @@
           </div>
 
           <div id="table_physique_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/homepage" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="get">
 
               <select id="routine_option" onchange="change_exercise_option(value);">
                 <option value="physique" >Physique</option>
@@ -168,7 +170,7 @@
           </div>
 
           <div id="table_strength_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/homepage" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="get">
 
               <select id="routine_option" onchange="change_exercise_option(value);">
                 <option value="strength">strength</option>
@@ -193,9 +195,8 @@
             </form>
           </div>
 
-
-
-
+          <%=test%>
+          <%=test1>
           <div id="chart_div" style=" margin:5% "></div>
           <br>
       </div>

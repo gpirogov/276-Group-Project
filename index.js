@@ -75,11 +75,11 @@ express()
 
   const accountInfo = "INSERT INTO account(username,password) values ($1,$2)"
   const accountVal = [username,password]
-  pool.query(accountInfo, accountVal)
+  // pool.query(accountInfo, accountVal)
 
   const userInfo = "INSERT INTO user_info(username,password,gender,age,weight,height,routine) values ($1,$2,$3,$4,$5,$6,$7)"
   const userVal = [username,password,gender,age,weight,height," "]
-  pool.query(userInfo,userVal)
+  // pool.query(userInfo,userVal)
 
   pool.query("SELECT * from account WHERE username = '" + username + "'", (err,ans)=>{
     if ( ans.rowCount == 0)
@@ -408,30 +408,40 @@ req.body = JSON.parse(JSON.stringify(req.body));
     var routine = res.boby.routine_option;
     var exercise = res.body.exercise_option;
     var record = res.body.record_option;
+    console.log(res);
+    console.log("hello hi");
+    console.log(res);
     if(record == 'normal'){
       const info = "SELECT * FROM  workout_table where username = $1 and routine = $2 and exercise = $3";
       const value = [globalName,routine,exercise];
       pool.query(info,value,(err,ans)=>{
-        var exercise = ans.rows[0].username;
-        var gender = ans.rows[0].gender;
-        var age = ans.rows[0].age;
-        res.render('pages/profile', {
-            ex_list:exercise,
-            routine:routine
+        console.log(ans.rows);
+        var weight_list=[];
+        var rep_list=[];
+        for(i = 0; i < ans.rows.length; i++){
+          weight_list.push(ans.row[i].weight);
+          rep_list.push(ans.row[i].rep)
+        }
+        res.render('pages/homepagegraph', {
+            test:weight_list,
+            test1:rep_list
         })
       })
-    }else{
-      const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
-      const value = [globalName,routine,exercise];
-      pool.query(info,value,(err,ans)=>{
-        var exercise = ans.rows[0].username;
-        var gender = ans.rows[0].gender;
-        var age = ans.rows[0].age;
-        res.render('pages/profile', {
-            ex_list:exercise,
-            routine:routine
-        })
-      })
+    // }else{
+    //   const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
+    //   const value = [globalName,routine,exercise];
+    //   pool.query(info,value,(err,ans)=>{
+    //     var weight_list=[];
+    //     var rep_list=[];
+    //     for(i = 0; i < ans.rows.length; i++){
+    //       weight_list.push(ans.row[i].weight);
+    //       rep_list.push(ans.row[i].rep)
+    //     }
+    //     res.render('pages/homepage', {
+    //         test:weight_list,
+    //         test1:rep_list
+    //     })
+    //   })
     }
 })
 
