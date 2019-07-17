@@ -9,7 +9,7 @@
   text-align: center;*/
 }
 
-#forumMain > h3, #forumTopic > span > h3 {
+#forumMain > h3, .forumTopic > span > h3 {
   color: #d6d6d6;
   padding-left: 32px;
   margin: 20px 0;
@@ -19,11 +19,11 @@
   font-size: 42px;
 }
 
-#forumTopic > h3 {
+.forumTopic > h3 {
   font-size: 38px;
 }
 
-#forumMain > p, #forumMain > a, #forumTopic > a, #forumTopic > p{
+#forumMain > p, #forumMain > a, .forumTopic > a, .forumTopic > p{
   color: #d6d6d6;
   padding-left: 32px;
   padding-bottom: 10px;
@@ -49,13 +49,12 @@
   color: #829DA4;
 }
 
-#forumMain, #forumTopic {
+#forumMain, .forumTopic {
   background-color: #1D1D1D;
   padding-top: 20px;
   padding-bottom: 30px;
   margin-left: 10px;
   margin-top: 40px;
-  height: 100%;
 }
 
 .forumTopics, .postDesc {
@@ -72,6 +71,7 @@
 .postDesc {
   margin: 6px 10px;
   padding: 10px 40px;
+  min-height: 80px;
 }
 
 .icon {

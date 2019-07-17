@@ -1,5 +1,10 @@
 <!DOCTYPE html>
   <html lang="en" dir="ltr">
+  <% var i=0; var weight_list =new Array(test.legth); %>
+    <% test.forEach((post) =>{%>
+        <% weight_list[i] = post.weight; %>
+        <% i++; %>
+    <%}) %>
     <head>
       <meta charset="utf-8">
       <title>Burning +</title>
@@ -24,7 +29,7 @@
             document.getElementById("table_strength_exercise_option").style.display = "inline-block";
             document.getElementById("routine_option").value ="strength";
           }
-        }s
+        }
 
       </script>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -36,23 +41,25 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-
+          var gettest = "<%=weight_list%>";
+          var array_number = gettest.split(',').map(Number);
+          console.log(array_number);
+          console.log(array_number[3]);
           // Create the data table.
           var data = new google.visualization.DataTable();
-          data.addColumn('string', 'test');
+          data.addColumn('number', 'test');
           data.addColumn('number', 'num');
-          data.addRows([
-            ['do', 3],
-            ['ra', 1],
-            ['me', 1],
-            ['fa', 1],
-            ['so', 2]
-          ]);
+          for(var i=0; i<array_number.length;i++){
+            var y = array_number[i];
+            data.addRow([i,y]);
+          }
+
 
           // Set chart options
           var options = {
             'legend' : 'NONE',
-            'title':'Test title',
+            'title':'weight verses time',
+
             'chartArea':{width:'50%',height:'50%'}
           };
 
@@ -79,28 +86,29 @@
         <div>
           <h1>Homepage</h1>
           <div id="table_condition_exercise_option" style=" display: inline-block">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select  name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="condition">Conditioning</option>
                 <option value="physique">Physique</option>
                 <option value="strength">strength</option>
               </select>
 
-              <select id="exercise_option">
+              <select name ="exercise_option" id="exercise_option">
                 <option disabled>      ---    Part One: Physique    ---      </option>
-                <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
-                <option value="Incline Dumbell Shoulder Press">Incline Dumbell Shoulder Press</option>
-                <option value="Overhead Press">Overhead Press</option>
-                <option value="Rear Delt Cable Crossovers">Rear Delt Cable Crossovers</option>
+                <option value="Weighted Lunges">Weighted Lunges</option>
+                <option value="Squat Jump">Squat Jump</option>
+                <option value="Wall Sit With Calf Raise">Wall Sit With Calf Raise</option>
+                <option value="Farmer's Walks">Farmer's Walks</option>
 
                 <option disabled>      ---    Part two: Conditioning    ---      </option>
-                <option value="Hammer Curls">Hammer Curls</option>
-                <option value="Incline Dumbbell Curl">Incline Dumbbell Curl</option>
-                <option value="Preacher Curls">Preacher Curls</option>
+                <option value="Leg Press">Leg Press</option>
+                <option value="Mountain Climber">Mountain Climber</option>
+                <option value="High Knees">High Knees</option>
+                <option value="Frogger">Frogger</option>
               </select>
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
@@ -110,15 +118,15 @@
           </div>
 
           <div id="table_physique_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="physique" >Physique</option>
                 <option value="condition">Conditioning</option>
                 <option value="strength">strength</option>
               </select>
 
-              <select id="exercise_option">
+              <select name="exercise_option" id="exercise_option">
                 <!-- shoulder day -->
                 <option disabled>      ---   Shoulder Day   ---      </option>
                 <option value="Dumbbell Shoulder Flys">Dumbbell Shoulder Flys</option>
@@ -130,8 +138,8 @@
                 <option disabled>      ---    Back Day    ---      </option>
                 <option value="Chin-ups">Chin-ups</option>
                 <option value="Dual Pulley Row">Dual Pulley Row</option>
-                <option value="Iso-Lateral Pulldown">Iso-Lateral Pulldow)n</option>
-                <option value="Rear Delt Cable Crossovers (back">Rear Delt Cable Crossovers</option>
+                <option value="Iso-Lateral Pulldown">Iso-Lateral Pulldown</option>
+                <option value="Rear Delt Cable Crossovers (back)">Rear Delt Cable Crossovers</option>
 
                 <!-- leg day -->
                 <option disabled>      ---    Leg Day    ---      </option>
@@ -143,7 +151,7 @@
                 <!-- chest day -->
                 <option disabled>      ---    Chest Day    ---      </option>
                 <option value="Bench Press">Bench Press</option>
-                <option value="Chest Press">Chest Press</option>
+                <option value="Dumbbell Chest Press">Dumbbell Chest Press</option>
                 <option value="Dips">Dips</option>
 
                 <!-- biceps -->
@@ -160,7 +168,7 @@
               </select>
 
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
@@ -170,15 +178,15 @@
           </div>
 
           <div id="table_strength_exercise_option" style=" display: none">
-            <form class="exercise_graph_form" action="/gen_graph" method="get">
+            <form class="exercise_graph_form" action="/gen_graph" method="post">
 
-              <select id="routine_option" onchange="change_exercise_option(value);">
+              <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="strength">strength</option>
                 <option value="condition">Conditioning</option>
                 <option value="physique" >Physique</option>
               </select>
 
-              <select id="exercise_option">
+              <select name ="exercise_option" id="exercise_option">
                 <option disabled>      ---  Workout Cycle  ---      </option>
                 <option value="45-Degree Back Extension">45-Degree Back Extension</option>
                 <option value="Back Squat">Back Squat</option>
@@ -186,7 +194,7 @@
                 <option value="Deadlift">Deadlift</option>
               </select>
 
-              <select id="record_option">
+              <select name ="record_option" id="record_option">
                 <option value="normal">Normal</option>
                 <option value="max">Max</option>
               </select>
@@ -195,8 +203,6 @@
             </form>
           </div>
 
-          <%=test%>
-          <%=test1>
           <div id="chart_div" style=" margin:5% "></div>
           <br>
       </div>

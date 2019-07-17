@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  // ssl : true
 });
 
 var globalName;
@@ -440,45 +440,29 @@ req.body = JSON.parse(JSON.stringify(req.body));
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
 
-.get('/gen_graph',(req,res)=>{
-    var routine = res.boby.routine_option;
-    var exercise = res.body.exercise_option;
-    var record = res.body.record_option;
-    console.log(res);
-    console.log("hello hi");
-    console.log(res);
+.post('/gen_graph',(req,res)=>{
+    var routine = req.body.routine_option;
+    var exercise = req.body.exercise_option;
+    var record = req.body.record_option;
     if(record == 'normal'){
-      const info = "SELECT * FROM  workout_table where username = $1 and routine = $2 and exercise = $3";
+      const info = "SELECT weight,rep FROM workout_table where username = $1 and routine = $2 and exercise = $3";
       const value = [globalName,routine,exercise];
       pool.query(info,value,(err,ans)=>{
-        console.log(ans.rows);
-        var weight_list=[];
-        var rep_list=[];
-        for(i = 0; i < ans.rows.length; i++){
-          weight_list.push(ans.row[i].weight);
-          rep_list.push(ans.row[i].rep)
-        }
+        // console.log(ans.rows);
         res.render('pages/homepagegraph', {
-            test:weight_list,
-            test1:rep_list
+            test:ans.rows
         })
       })
-    // }else{
-    //   const info = "SELECT * FROM  workout_table_max where username = $1 and routine = $2 and exercise = $3";
-    //   const value = [globalName,routine,exercise];
-    //   pool.query(info,value,(err,ans)=>{
-    //     var weight_list=[];
-    //     var rep_list=[];
-    //     for(i = 0; i < ans.rows.length; i++){
-    //       weight_list.push(ans.row[i].weight);
-    //       rep_list.push(ans.row[i].rep)
-    //     }
-    //     res.render('pages/homepage', {
-    //         test:weight_list,
-    //         test1:rep_list
-    //     })
-    //   })
-    }
+    }else{
+      const info = "SELECT weight,rep FROM workout_table_max where username = $1 and routine = $2 and exercise = $3";
+      const value = [globalName,routine,exercise];
+      pool.query(info,value,(err,ans)=>{
+        // console.log(ans.rows);
+        res.render('pages/homepagegraph', {
+            test:ans.rows
+        })
+      })
+   }
 })
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
