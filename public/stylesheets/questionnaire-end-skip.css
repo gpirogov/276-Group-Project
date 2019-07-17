@@ -52,7 +52,7 @@ https://stackoverflow.com/questions/17541614/use-images-instead-of-radio-buttons
 }
 
 [type=radio]:checked + img {
-  box-shadow: 0 0 3pt 2pt red;
+  box-shadow: 0 0 15pt 10pt #db524b;
 }
 
 h3 {
