@@ -33,6 +33,14 @@
             <p> <strong>Current Routine:  </strong> <%=routine%> </p>
           </div>
           <br>
+
+          <form action="/questionnaire-restart" method="get">
+            <button type="submit">Re-do Questionnaire</button>
+          </form>
+          <br>
+          <form action="/advancedChoiceSkip" method="post">
+            <button type="submit">Choose New Workout Routine<br>(Skip Questionnaire)</button>
+          </form>
       </div>
 
 

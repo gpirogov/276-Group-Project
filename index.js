@@ -98,18 +98,18 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/intermediateChoice', function(req,res){
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoice', function(req,res){
   res.redirect('questionnaire-main.html');
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
 })
 
 .post('/advancedChoiceSkip', function(req,res){
@@ -129,11 +129,8 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      var routine = ans.rows[0].routine;
-      if (routine == ' '){
-      	routine = req.body.routineRecommendation;
-      }
-      //routine = questionnaireAnswers;	// TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for testing
+      //var routine = ans.rows[0].routine;
+      var routine = req.body.routineRecommendation;
     res.render('pages/profile', {
           username:username,
           age:age,
@@ -224,6 +221,7 @@ express()
 	}
 })
 .get('/logout',(req,res)=> res.render('pages/logout'))
+.get('/questionnaire-restart',(req,res)=> res.redirect('questionnaire-start.html'))
 
 
 // forums
@@ -366,12 +364,6 @@ req.body = JSON.parse(JSON.stringify(req.body));
     res.redirect('workout-' + globalRoutine + '.html');
   }
 })
-
-
-
-
-
-
 
 /* =============================
  * =============================
