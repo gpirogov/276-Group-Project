@@ -77,12 +77,7 @@ h4 {
 table {
    border-collapse: collapse;
 }
-
-#recommended-routine-cell, #recommended-routine-header{
-  background-color: #8e8e72;
-}
-
-.recommendation-cell{
+#recommendation-0, #recommendation-1, #recommendation-2{
   width: 33%;
   vertical-align: top;
 }
@@ -96,8 +91,4 @@ h5 {
 
 li {
   text-align: left;
-}
-
-#recommended-routine-cell h4{
-  background-color: #a1a15f;
 }

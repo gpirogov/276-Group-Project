@@ -4,12 +4,13 @@
     <meta charset="utf-8">
     <title>Signup Burning + </title>
     <link rel="stylesheet" href="./stylesheets/questionnaire-end.css">
+    <link rel="stylesheet" href="./stylesheets/nav-bar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <script src="js/questionnaire-end.js"></script>
+    <script src="./js/questionnaire-end.js"></script>
   </head>
   <body>
     <div class="topnav">
-      <a href="burning-plus.html"><img src="images/logo-inverted.png" class="logo"></a>
+      <a href="burning-plus.html"><img src="./images/logo-inverted.png" class="logo"></a>
       <h2>Welcome to Burning+ !!!!!</h2>
     </div>
 
@@ -31,22 +32,22 @@
               </td>
             </tr>
             <tr>
-              <td id="recommendation-0-header">
+              <td id="recommended-routine-header">
                   <h4>Physique-Focussed Routine</h4>
               </td>
-              <td id="recommendation-1-header">
+              <td id="">
                   <h4>Conditioning and Cardio</h4>
               </td>
-              <td id="recommendation-2-header">
+              <td id="">
                   <h4>Strength-Training</h4>
               </td>
             </tr>
             <tr>
-              <td id="recommendation-0">
+              <td class="recommendation-cell" id="recommended-routine-cell">
                 <label>
                   <input type="radio" name="routineRecommendation" id="physique-radio" value="physique" checked="checked">
                   <img class="questionnaire-image" src="./images/questionnaire/physique.png" alt="(image)">
-                  <h4><span>100<span>% fit</h4>
+                  <h4><span><%=physiqueRecommendationScore%><span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>
@@ -58,11 +59,11 @@
                   <li>Varies between 1.5 and 2.5 hours a day</li>
                 </ul>
               </td>
-              <td id="recommendation-1">
+              <td class="recommendation-cell">
                 <label>
                   <input type="radio" name="routineRecommendation" id="conditioning-radio" value="conditioning">
                   <img class="questionnaire-image" src="./images/questionnaire/conditioning.jpg" alt="(image)">
-                  <h4><span>78.6<span>% fit</h4>
+                  <h4><span><%=conditioningRecommendationScore%><span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>
@@ -73,11 +74,11 @@
                   <li>As little as 1 hour a day</li>
                 </ul>
               </td>
-              <td id="recommendation-2">
+              <td class="recommendation-cell">
                 <label>
                   <input type="radio" name="routineRecommendation" id="strength-radio" value="strength">
                   <img class="questionnaire-image" src="./images/questionnaire/strength.png" alt="(image)">
-                  <h4><span>61.5<span>% fit</h4>
+                  <h4><span><%=strengthRecommendationScore%><span>% fit</h4>
                 </label>
                 <h5>Main Attributes:</h5>
                 <ul>

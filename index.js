@@ -9,6 +9,7 @@ const pool = new Pool({
 });
 
 var globalName;
+var globalRoutine = " ";
 
 today = new Date();
 let day = today.getDate()
@@ -97,28 +98,29 @@ express()
 
 
 .post('/beginnerChoice', function(req,res){
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/intermediateChoice', function(req,res){
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
   res.redirect('questionnaire-main.html');
 })
 
 .post('/advancedChoice', function(req,res){
   res.redirect('questionnaire-main.html');
-  questionnaireAnswers += req.body.levelOfExperience;
+  questionnaireAnswers = req.body.levelOfExperience;
 })
 
 .post('/advancedChoiceSkip', function(req,res){
-  res.redirect('questionnaire-end.html');
+  res.render('pages/questionnaire-end-skip');
 })
 
 
 
 .post('/finishQuestionnaire', function(req,res){
   pool.query("UPDATE user_info SET routine = '" + req.body.routineRecommendation + "' WHERE username = '" + globalName + "'");
+  globalRoutine = req.body.routineRecommendation;
 
   pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
       console.log(ans.rows[0]);
@@ -127,11 +129,8 @@ express()
       var age = ans.rows[0].age;
       var weight = ans.rows[0].weight;
       var height = ans.rows[0].height;
-      var routine = ans.rows[0].routine;
-      if (routine == ' '){
-      	routine = req.body.routineRecommendation;
-      }
-      //routine = questionnaireAnswers;	// TEMPORARY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! for testing
+      //var routine = ans.rows[0].routine;
+      var routine = req.body.routineRecommendation;
     res.render('pages/profile', {
           username:username,
           age:age,
@@ -200,24 +199,29 @@ express()
 .set('view engine', 'ejs')
 .get('/', (req, res) => res.render('pages/homepage'))
 .get('/profile',(req,res)=>{
-  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
-      var username = ans.rows[0].username;
-      var gender = ans.rows[0].gender;
-      var age = ans.rows[0].age;
-      var weight = ans.rows[0].weight;
-      var height = ans.rows[0].height;
-      var routine = ans.rows[0].routine;
-    res.render('pages/profile', {
-          username:username,
-          age:age,
-          gender:gender,
-          weight:weight,
-          height:height,
-          routine:routine
-    })
-  })
+  if(globalRoutine == " "){
+    res.render('pages/not-logged-in');
+  }else{
+	  pool.query("SELECT * FROM user_info WHERE username = '" + globalName + "'", (err,ans)=>{
+	      var username = ans.rows[0].username;
+	      var gender = ans.rows[0].gender;
+	      var age = ans.rows[0].age;
+	      var weight = ans.rows[0].weight;
+	      var height = ans.rows[0].height;
+	      var routine = ans.rows[0].routine;
+	    res.render('pages/profile', {
+	          username:username,
+	          age:age,
+	          gender:gender,
+	          weight:weight,
+	          height:height,
+	          routine:routine
+	    })
+	  })
+	}
 })
 .get('/logout',(req,res)=> res.render('pages/logout'))
+.get('/questionnaire-restart',(req,res)=> res.redirect('questionnaire-start.html'))
 
 
 // forums
@@ -252,7 +256,11 @@ express()
     res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
   })})
 
-//add meal to db
+
+  /* ====================
+   *  Diet Add/Retrieve
+   * ====================*/
+
 // CREATE TABLE meals_table (
 //   foodName VARCHAR(30) NOT NULL,
 //   cals real,
@@ -279,38 +287,114 @@ express()
   res.redirect('diet.html');
 })
 
+.get('/breakfast', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableBreakfast' ,{ data: result, date: date});
+  })
+})
+
+.get('/lunch', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableLunch' ,{ data: result, date: date});
+  })
+})
+
+.get('/dinner', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableDinner' ,{ data: result, date: date});
+  })
+})
+
+.get('/snacks', (req, res) =>{
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='" + date + "'", (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableSnacks' ,{ data: result, date: date});
+  })
+})
+
 
 /* =============================
  *  Questionnaire-Related Code:
  * ============================= */
 
 .post('/questionnaire-main.html', function (req, res){
-
-
   res.redirect('questionnaire-main.html');
 })
 
 .post('/questionnaire-end.html', function (req, res){
-
 // found JSON parsing solution from https://stackoverflow.com/questions/28764822/req-body-cant-be-read-as-an-array
 // and https://github.com/expressjs/express/issues/3264#issuecomment-290480516
 req.body = JSON.parse(JSON.stringify(req.body));
 
-for (var key in req.body) {
-  if (req.body.hasOwnProperty(key)) {
-    item = req.body[key];
-    //console.log(item);
-    questionnaireAnswers += item;
+  for (var key in req.body) {
+    if (req.body.hasOwnProperty(key)) {
+      item = req.body[key];
+      //console.log(item);
+      questionnaireAnswers += item;
+    }
   }
-}
 
-  res.redirect('questionnaire-end.html');
+  var strengthRecommendationScore = 0;
+  var physiqueRecommendationScore = 0;
+  var conditioningRecommendationScore = 0;
+
+  for (var i = 0; i < questionnaireAnswers.length; i+=3){
+  	strengthRecommendationScore += parseInt(questionnaireAnswers[i]);
+  	physiqueRecommendationScore += parseInt(questionnaireAnswers[i+1]);
+  	conditioningRecommendationScore += parseInt(questionnaireAnswers[i+2]);
+  }
+
+  var highestScore = Math.max(strengthRecommendationScore, physiqueRecommendationScore, conditioningRecommendationScore);
+  strengthRecommendationScore = ((strengthRecommendationScore/highestScore)*100).toFixed(1);;
+  physiqueRecommendationScore = ((physiqueRecommendationScore/highestScore)*100).toFixed(1);;
+  conditioningRecommendationScore = ((conditioningRecommendationScore/highestScore)*100).toFixed(1);;
+
+  if(strengthRecommendationScore == 100.0){
+    res.render('pages/questionnaire-end-strength', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+    })
+  }else if(conditioningRecommendationScore == 100.0){
+    res.render('pages/questionnaire-end-conditioning', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+    })
+  }else{
+    res.render('pages/questionnaire-end-physique', {
+        strengthRecommendationScore:strengthRecommendationScore,
+        physiqueRecommendationScore:physiqueRecommendationScore,
+        conditioningRecommendationScore:conditioningRecommendationScore
+    })
+  }
+  //res.redirect('questionnaire-end.html');
 })
 
 .post('/workout-physique.html', function (req, res){
   res.redirect('workout-physique.html');
 })
 
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
+/* =============================
+ *     Nav-bar Related Code:
+ * ============================= */
+
+.post('/go-to-workout-page', function (req, res){
+  if(globalRoutine == " "){
+    res.render('pages/not-logged-in');
+  }else{
+    res.redirect('workout-' + globalRoutine + '.html');
+  }
+})
 
 /* =============================
  * =============================

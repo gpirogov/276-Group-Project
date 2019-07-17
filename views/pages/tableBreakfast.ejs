@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title> Burning + </title>
+  <link rel="stylesheet" href="./stylesheets/starterpage.css">
+  <link rel="stylesheet" href="./stylesheets/diet.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
+  <script src="js/caloriecalc.js" defer></script>
+</head>
+<body>
+  <div class="topnav">
+    <a href="homepage"><img src="images/logo-inverted.png"class="logo"></a>
+    <a href="logout" class="navbar">Signout</a>
+    <a href="profile" class="navbar">Profile</a>
+    <a href="workout-physique.html" class="navbar">Workout</a>
+    <a href="diet.html" class="navbar">Diet</a>
+    <a href="forum.html" class="navbar">Forum</a>
+    <a href="homepage" class="navbar">Homepage</a>
+    <!-- <h2>Nutrition</h2> -->
+  </div>
+
+
+  <div class="formdiv">
+    <a id = "backLink" href="/diet.html"> Back </a>
+    <h1>Breakfast</h1>
+    <p> <%= date %> </p>
+
+    <table id="breakfastTable" class="meals">
+          <tr>
+              <th>Food</th>
+              <th>Calories</th>
+              <th>Fat (g)</th>
+              <th>Carbs (g)</th>
+              <th>Protien (g)</th>
+          </tr>
+
+            <% for(var i = 0; i < data.rows.length; i++) { %>
+              <tr>
+              <td> <%= data.rows[i].foodname %> </td>
+              <td> <%= data.rows[i].cals %> </td>
+              <td> <%= data.rows[i].fat %> </td>
+              <td> <%= data.rows[i].carbs %> </td>
+              <td> <%= data.rows[i].protien %> </td>
+              <tr>
+            <% } %>
+    </table>
+  </div>
+</body>
+</html>

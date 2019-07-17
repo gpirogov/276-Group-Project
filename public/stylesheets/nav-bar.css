@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #363231;
+}
+
+h2 {
+  padding-top : 15px;
+  padding-right: 132px;
+}
+
+.topnav h2 {
+  padding-top : 15px;
+  padding-right: 132px;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #22201f;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  color: #dedcdc;
+}
+
+.topnav a{
+  float: left;
+  color: #f2f2f2;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 14px;
+  width: 125px;
+  height: 55px;
+}
+
+.topnav a:hover{
+  background-color: #605755;
+  color: black;
+}
+
+/* added by raymond for aligning the button */
+.topnav a.navbar{
+  float: right;
+  padding: 34px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  width: 80px;
+  height: 15px
+}
+
+.logo {
+    display: inline-block;
+    align: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* =================================================
+============== Nav Bar Workout Button ==============
+================================================= */
+
+.topnav button{
+	background-color: rgba(0,0,0,0);
+	padding-bottom: 3.25em !important;
+	padding-right: 6em !important;
+	padding-left: 2em !important;
+
+	border: none;
+	cursor: pointer;
+
+	float: left;
+	color: #f2f2f2;
+	text-decoration: none;
+	font-size: 14px;
+	width: 125px;
+	height: 55px;
+}
+
+.topnav button:hover{
+  background-color: #605755;
+  color: black;
+}
+
+.topnav button.navbar{
+  float: right;
+  padding: 34px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  width: 80px;
+  height: 15px
+}
+
+.go-to-workout-page{
+  display: block !important;
+}
