@@ -402,6 +402,7 @@ req.body = JSON.parse(JSON.stringify(req.body));
 
 
 
+.get('/homepage',(req,res)=> res.render('pages/homepage'))
 
 .get('/homepage',(req,res)=>{
     var routine = res.boby.routine_option;
