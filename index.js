@@ -40,6 +40,8 @@ express()
 
       if ( password == ans.rows[0].password)
       {
+        globalRoutine = ans.rows[0].routine;
+        globalName = ans.rows[0].username;
 
         var username = ans.rows[0].username;
         var gender = ans.rows[0].gender;
