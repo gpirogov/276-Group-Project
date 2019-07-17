@@ -51,19 +51,16 @@ $(document).ready(function() {
         var protien = res.hints[0].food.nutrients.PROCNT
         console.log({foodName, cals, carbs, fat, protien});
 
-        //add to tableAddMeal
-        // let tableAddMeal = document.getElementById('tableAddMeal')
-        // let row = tableAddMeal.insertRow(1)
-        // let cell0 = row.insertCell(0)
-        // let cell1 = row.insertCell(1)
-        // let cell2 = row.insertCell(2)
-        // let cell3 = row.insertCell(3)
-        // let cell4 = row.insertCell(4)
-        // cell0.innerHTML = foodName
-        // cell1.innerHTML = cals
-        // cell2.innerHTML = fat
-        // cell3.innerHTML = carbs
-        // cell4.innerHTML = protien
+        //adjusting values if needed to fit database
+        while(foodName.length>30){
+          foodName = foodName.substring(0, foodName.length - 1);
+        }
+        cals = cals.toFixed(2);
+        carbs = carbs.toFixed(2);
+        fat = fat.toFixed(2);
+        protien = protien.toFixed(2);
+
+        //add to to database
         document.getElementById('mealFoodCell').value = foodName
         document.getElementById('mealCaloriesCell').value = cals
         document.getElementById('mealFatCell').value = fat

@@ -10,7 +10,7 @@ const pool = new Pool({
 
 var globalName;
 var globalRoutine = " ";
-var globalFoodCal
+
 
 today = new Date();
 let day = today.getDate()
@@ -288,12 +288,12 @@ express()
 //   username VARCHAR(30)
 // );
 
-// .post('diet.html', function(req,res){
-//   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "'", (err,result) => {
+// .get('/diet', (req, res)=>{
+//   res.redirect('diet.html')
+//   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
 //     if(err){ throw err;}
-//     console.log(result)
-//     globalFoodCal = result.rows[0].totalCals
-//     console.log("after query for cals " + globalFoodCal)
+//     localStorage.setItem("foodCal", result.rows[0].totalCals)
+//     console.log("YEET")
 //   })
 // })
 
@@ -315,7 +315,7 @@ express()
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
   pool.query(mealInfo, mealVal);
-  console.log("added to db: " + {foodName, cals, fat, carbs, protien, meal, date, globalName})
+  console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName)
   res.redirect('diet.html');
 })
 

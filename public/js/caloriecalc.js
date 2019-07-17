@@ -1,6 +1,4 @@
 //calculating calories
-
-
 let goalCal = 2000 //will be set by questionaire
 let excercise = 0
 let food = 0
