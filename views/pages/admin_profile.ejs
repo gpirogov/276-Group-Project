@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Burning +</title>
+      <link rel="stylesheet" href="./stylesheets/adminpage.css">
+      <link rel="stylesheet" href="./stylesheets/nav-bar.css">
+    </head>
+    <body>
+      <div class="topnav">
+        <a href="admin"><img src="images/logo-inverted.png"class="logo"></a>
+        <a href="logout" class="navbar">Signout</a>
+        <a href="admin" class="navbar">All User</a>
+      </div>
+
+      <div class="centerdiv">
+        <div>
+          <h1> <%=username%> Profile</h1>
+
+          <div class="admindiv" style="height:280px;">
+            <div class="userprofile">
+              <p> <strong>Name:  </strong> <%=username%> </p>
+              <p> <strong>Age:   </strong> <%=age%> </p>
+              <p> <strong>Gender:</strong> <%=gender%> </p>
+              <p> <strong>Weight:</strong> <%=weight%> </p>
+              <p> <strong>Height:</strong> <%=height%> </p>
+              <p> <strong>Current Routine:  </strong> <%=routine%> </p>
+            </div>
+
+            <div class="pagebutton">
+              <form action="/admin_diet" method="get">
+                <button type="button" name="button">Diet</button>
+              </form>
+              <form action="/admin_wortout" method="get">
+                <button type="button" name="button">Workout</button>
+              </form>
+              <form action="/admin" method="get">
+                <button type="button" name="button">Back</button>
+              </form>
+            </div>
+          </div>
+
+      </div>
+    </body>
+  </html>

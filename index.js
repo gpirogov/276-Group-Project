@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL//,
-  // ssl : true
+  connectionString: process.env.DATABASE_URL,
+   ssl : true
 });
 
 var globalName;
@@ -478,6 +478,14 @@ req.body = JSON.parse(JSON.stringify(req.body));
         })
       })
    }
+})
+
+.get('/admin_profile',(req,res)=>{
+ res.render('pages/admin_profile')
+})
+
+.get('/admin',(req,res)=>{
+  res.render('pages/admin')
 })
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))

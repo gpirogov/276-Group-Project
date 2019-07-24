@@ -1,0 +1,44 @@
+.centerdiv{
+  margin: 10%;
+  margin-top: 5%;
+  background: grey;
+  text-align: center;
+  align-items: center;
+  height: 80%;
+  padding: 1%;
+}
+
+.admindiv{
+  padding-left: 8%;
+  padding-right: 8%;
+}
+
+table{
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+  width : 5%;
+}
+
+th{
+  height: 35px;
+  width : 5%;
+}
+
+.userprofile{
+  width : 50%;
+  float : left;
+  border: 1px solid black;
+}
+
+.pagebutton{
+  margin-left: 50%;
+  padding-top: 5%;
+}
+button{
+  margin: 2%;
+  width: 100px;
+}
