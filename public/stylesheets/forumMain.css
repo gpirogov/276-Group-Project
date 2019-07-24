@@ -19,8 +19,8 @@
   font-size: 42px;
 }
 
-.forumTopic > h3 {
-  font-size: 38px;
+.topicTitle {
+  font-size: 40px;
 }
 
 #forumMain > p, #forumMain > a, .forumTopic > a, .forumTopic > p{
@@ -36,18 +36,28 @@
   font-size: 24px;
 }
 
-.postDesc > a {
+.titlePreview {
     text-decoration: none;
     color: 	#C4D7DA;
     font-size: 18px;
 }
 
-.postDesc > p {
+.posterUsernamePreview {
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.3;
+  color: #829DA4;
+  float: right;
+}
+
+.postContentPreview {
   font-size: 14px;
   margin: 8px 0;
   line-height: 1.3;
   color: #829DA4;
 }
+
+
 
 #forumMain, .forumTopic {
   background-color: #1D1D1D;
@@ -60,7 +70,11 @@
 .forumTopics, .postDesc {
   display: table;
   background-color: #2C4348;
-  width: 100%;
+  width: 91%;
+}
+
+.forumTopics {
+  width: 97%;
 }
 
 .forumTopics {

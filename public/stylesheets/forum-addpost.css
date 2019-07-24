@@ -35,7 +35,7 @@ label {
     margin-left: 7px;
 }
 
-input, .postContent {
+input, .addPostContent {
   width: 90%;
   border: 1px solid #ccc;
   background-color: #ededed;
@@ -47,7 +47,7 @@ input, .postContent {
   margin-right: 7px;
 }
 
-.postContent {
+.addPostContent {
     height: 400px;
 }
 

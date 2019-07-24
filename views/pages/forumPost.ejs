@@ -26,22 +26,22 @@
   <div class="forumTopic">
       <a href="/forums"> Home </a>
       <span>
-        <h3><%= results[0].title %></h3>
-        <button type="button" id="addButton" name="addButton">New Post</button>
+        <h3 class="postTitle"><%= results[0].title %></h3>
+        <button type="button" class= "addbutton" id="addButton-post" name="addButton">Reply To This Post</button>
       </span>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
 
       <div class="popup" id="popup-post">
         <div class="popupInner" id="popupInner-post">
-          <button type="button" class="cancel id="cancel" name="cancel">Cancel</button>
+          <button type="button" class="cancel" id="cancel" name="cancel">Cancel</button>
 
-          <form class="addForm" id="addForm" method="post" action="/forumAddPostReply" >
-            <h1> Add New Post </h1>
-            <label for="title"><b>Title</b></label> <br />
-            <input type="text" name="title" /> <br />
+          <form class="addForm" id="addForm-post" method="post" action="/forumAddPostReply" >
+            <h1> Add a Comment </h1>
+            <!-- <label for="title"><b>Title</b></label> <br />
+            <input type="text" name="title" /> <br /> -->
 
             <!-- <input type="text" name="content" /> <br /> -->
-            <textarea class="postContent" id="postContent" name="content"></textarea> <br />
+            <textarea class="addPostContent" id="postContent-post" name="content"></textarea> <br />
 
 
             <!-- will eventually be removed -->
@@ -66,7 +66,12 @@
         <% results.forEach(function(r) { %>
           <div class="post">
             <div class="postDesc">
-              <p>  <%= r.content %>  </p>
+
+              <span>
+                <p class ="posterUsername"> <%= r.username %> </p>
+              </span>
+              <br>
+              <p class="postContent">  <%= r.content %>  </p>
             </div>
           </div>
           <% }); %>
@@ -75,7 +80,7 @@
 
 
 
-      <div class="post">
+      <!-- <div class="post">
         <div class="postDesc">
 
           <p> Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Egestadit volutpat maecenas volutpat. Pharetra vel turpis nunc eget lorem dolor sed. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tellus elementum sagittis vitae et. Tortor posuere ac u </p>
@@ -87,7 +92,7 @@
 
           <p> Vitae tempus quam pellentesque nec. Elementum sagittis vitae et leo. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Pellentesque habitant morbi tristique senectus. massa vitae tortor condim</p>
         </div>
-      </div>
+      </div> -->
 
 
 

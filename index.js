@@ -227,41 +227,56 @@ express()
 .get('/questionnaire-restart',(req,res)=> res.redirect('questionnaire-start.html'))
 
 
-// forums
+/* =============================
+ *  Forums:
+ * ============================= */
+
 .get('/forums', (req,res) => {
   res.sendFile(path.join(__dirname + '/public/forum.html'));
 })
 
 .get('/forums/:topic', (req,res) => {
-  // topic in req.params.topic
-  var topic = req.params.topic;
-  console.log(topic);
-  var text = 'SELECT * FROM forums WHERE topic = $1';
-  var values = [ req.params.topic ];
 
-  // pool.query('SELECT * FROM forums', (err, result) => {
-  // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
-  pool.query(text, values, (err, result) => {
-    // console.log(result.rows);
-    res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic });
-  });
+  if(globalRoutine == " ") {
+    res.render('pages/not-logged-in');
+  } else{
+    // topic in req.params.topic
+    var topic = req.params.topic;
+    var text = 'SELECT * FROM forums WHERE topic = $1';
+    var values = [ req.params.topic ];
+
+    // pool.query('SELECT * FROM forums', (err, result) => {
+    // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
+    pool.query(text, values, (err, result) => {
+      // console.log(result.rows);
+      res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic, username: globalName });
+    });
+  }
 })
 
 .get('/forums/:topic/:id', (req,res) => {
   // topic in req.params.topic
-  var id = req.params.id;
-  var topic = req.params.id;
-  var text = 'SELECT * FROM forums WHERE id = $1';
-  var values = id;
+
+  if (globalRoutine == " ") {
+    res.render('pages/not-logged-in');
+  } else {
+    var id = req.params.id;
+    var topic = req.params.id;
+    var text = 'SELECT * FROM forums WHERE id = $1';
+    var values = [ id ];
+    console.log(id);
 
 
-  // const result = pool.query(text, values);
-  // const results = { results: result ? result.rows : null, topic: topic };
-  // res.render('pages/forumPost', results);
+    // const result = pool.query(text, values);
+    // const results = { results: result ? result.rows : null, topic: topic };
+    // res.render('pages/forumPost', results);
 
-  pool.query("SELECT * FROM forums", (err, result) => {
-    res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic });
-  })
+    pool.query(text, values, (err, result) => {
+      res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic, id: id, username: globalName });
+    });
+    // console.log(req.params.id);
+    // res.render('pages/forumPost');
+  }
 })
 .post('/forumAddPost', (req, res) => {
   var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';

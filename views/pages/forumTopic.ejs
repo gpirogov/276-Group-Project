@@ -41,14 +41,15 @@
             <input type="text" name="title" /> <br />
 
             <!-- <input type="text" name="content" /> <br /> -->
-            <textarea class="postContent" id="postContent" name="content"></textarea> <br />
+            <textarea class="addPostContent" id="postContent" name="content"></textarea> <br />
 
 
             <!-- will eventually be removed -->
-            <label for="username"><b>Username</b></label> <br />
-            <input type="text" name="username" /> <br />
+            <!-- <label for="username"><b>Username</b></label> <br />
+            <input type="text" name="username" /> <br /> -->
 
             <!-- hidden input - topic -->
+            <input type="hidden" name="username" value="<%= username %>"/> <br />
             <input type="hidden" name="topic" value="<%= topic %>"/>
 
             <div class="submitdiv">
@@ -65,8 +66,12 @@
         <% results.forEach(function(r) { %>
           <div class="post">
             <div class="postDesc">
-              <a href="/forums/<%= r.topic %>/<%= r.id.toString() %>"> <%= r.title %> </a>
-              <p>  <%= r.content %>  </p>
+              <span>
+                <a class="titlePreview" href="/forums/<%= r.topic %>/<%= r.id.toString() %>"> <%= r.title %> </a>
+                <p class ="posterUsernamePreview"> <%= r.username %> </p>
+              </span>
+
+              <p class="postContentPreview">  <%= r.content %>  </p>
             </div>
           </div>
           <% }); %>
@@ -74,7 +79,7 @@
       <% } %>
 
 
-
+<!-- 
       <div class="post">
         <div class="postDesc">
           <a href=""> ipsum dolor </a>
@@ -122,7 +127,7 @@
           <a href=""> sectetur adipiscing eli </a>
           <p> Sit amet massa vitae tortor condimentum lacinia quis vel. Semper viverra nam libero justo laoreet. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis </p>
         </div>
-      </div>
+      </div> -->
 
 
     </div>

@@ -1,0 +1,21 @@
+.postTitle {
+  font-size: 40px;
+  color: #d6d6d6;
+  padding-left: 32px;
+  margin: 20px 0;
+}
+
+.posterUsername {
+  font-size: 16px;
+  margin: 8px 0;
+  line-height: 1.3;
+  color: #829DA4;
+  float: right;
+}
+
+.postContent {
+  font-size: 18px;
+  margin: 8px 0;
+  line-height: 1.3;
+  color: #829DA4;
+}
