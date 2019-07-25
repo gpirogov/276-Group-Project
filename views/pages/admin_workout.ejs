@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Burning +</title>
+      <link rel="stylesheet" href="./stylesheets/adminpage.css">
+      <link rel="stylesheet" href="./stylesheets/nav-bar.css">
+    </head>
+    <body>
+      <div class="topnav">
+        <a href="admin"><img src="images/logo-inverted.png"class="logo"></a>
+        <a href="logout" class="navbar">Signout</a>
+        <a href="admin" class="navbar">All User</a>
+      </div>
+
+      <div class="centerdiv">
+        <div>
+          <h1> <%=name%> Workout</h1>
+
+          <div class="admindiv" >
+
+            <div class="routine">
+              <table class="show">
+                <tr><th><u>Conditioning Routine</u></th></tr>
+                <% db.forEach((post) => {%>
+                  <% if(post.routine == "conditioning") { %>
+                    <tr><td><%=post.exercise%></td></tr>
+                  <% } %>
+                <% }) %>
+              </table>
+            </div>
+
+            <div class="routine">
+              <table class="show">
+                <tr><th><u>Physique Routine</u></th></tr>
+                <% db.forEach((post) => {%>
+                  <% if(post.routine == "physique") { %>
+                    <tr><td><%=post.exercise%></td></tr>
+                  <% } %>
+                <% }) %>
+              </table>
+            </div>
+
+            <div class="routine">
+              <table class="show">
+                <tr><th><u>Strength Routine</u></th></tr>
+                <% db.forEach((post) => {%>
+                  <% if(post.routine == "strength") { %>
+                    <tr><td><%=post.exercise%></td></tr>
+                  <% } %>
+                <% }) %>
+              </table>
+            </div>
+
+            <form action="/admin-profile" method="get">
+              <button type="submit" name="button">Back</button>
+            </form>
+
+          </div>
+      </div>
+    </body>
+  </html>
