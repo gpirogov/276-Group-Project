@@ -48,9 +48,10 @@
           var data = new google.visualization.DataTable();
           data.addColumn('number', 'test');
           data.addColumn('number', 'num');
+          data.addRow([0,0]);
           for(var i=0; i<array_number.length;i++){
             var y = array_number[i];
-            data.addRow([i,y]);
+            data.addRow([i+1,y]);
           }
 
 
