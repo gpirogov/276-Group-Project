@@ -73,7 +73,7 @@ express()
     if ( password == "admin" )
     {
       pool.query("SELECT * from account", (err ,correct) =>{
-        res.render('pages/errorPage', {
+        res.render('pages/adminPage', {
           db: correct.rows
         })
       })
