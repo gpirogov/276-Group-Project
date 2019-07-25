@@ -25,12 +25,12 @@ function toggleElementDisplay(elem) {
 }
 
 // set "visibilityNone" to true if element is hidden on document load (like 1-rep-max form).
-function updateButtons(buttonClassName, elementClassName, visibilityNone = false, classNameToToggle = "") {
+function updateButtons(buttonClassName, elementClassName = "", visibilityNone = false, classNameToToggle = "") {
 	// had to reset event listeners. removeEventListener wasnt working but this did.
 	// solution from https://stackoverflow.com/a/9251864
 	var myElements = document.getElementsByClassName(elementClassName);
 	var myButtons = document.getElementsByClassName(buttonClassName);
-	for(var i = 0; i < myElements.length; i++) {
+	for(var i = 0; i < myButtons.length; i++) {
 		(function () {
 			var counter = i;
 			var old_element = myButtons[counter];
@@ -40,7 +40,7 @@ function updateButtons(buttonClassName, elementClassName, visibilityNone = false
 	}
 
 	myButtons = document.getElementsByClassName(buttonClassName);
-	for(var i = 0; i < myElements.length; i++) {
+	for(var i = 0; i < myButtons.length; i++) {
 		(function () {
 			var counter = i;
 			myButtons[i].addEventListener('click', function(){ 
@@ -122,6 +122,7 @@ function updateDraggableExercises(){
 	updateButtons("exercise-comment-button", "exercise-comment-form", false, "show");
 	updateButtons("one-rep-max-exercise-submit-button", "draggable_tr", false, "completedOneRepMaxRow");
 	updateButtons("normal-exercise-submit-button", "draggable_tr", false, "completedNormalRow");
+	updateButtons("round-complete-button");
 
 }
 
