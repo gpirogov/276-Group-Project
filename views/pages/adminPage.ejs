@@ -28,18 +28,17 @@
 
 
               <!-- user list -->
-              <form class="" action="/seeUser" method="GET">
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td><button type="button" name="button">Show</button></td>
-                </tr>
-              </form>
-
-
-
-
+              <% db.forEach((post) => {%>
+                <form action="/seeUser" method="post">
+                  <tr>
+                    <td><%=post.username%></td>
+                    <td><%=post.age%></td>
+                    <td><%=post.gender%></td>
+                    <input type="hidden" name="searchingName" id="searchingName" value=<%=post.username%>>
+                    <td><button type="submit">Show</button></td>
+                  </tr>
+                </form>
+              <% }) %>
             </table>
           </div>
 

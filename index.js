@@ -72,7 +72,7 @@ express()
   {
     if ( password == "admin" )
     {
-      pool.query("SELECT * from account", (err ,correct) =>{
+      pool.query("SELECT * from user_info", (err ,correct) =>{
         res.render('pages/adminPage', {
           db: correct.rows
         })
@@ -494,21 +494,17 @@ req.body = JSON.parse(JSON.stringify(req.body));
    }
 })
 
-.get('/admin_profile',(req,res)=>{
- res.render('pages/admin_profile')
-})
-
 .get('/admin',(req,res)=>{
-  pool.query("SELECT * from user_info", (err,res)=>{
-    res.render('pages/admin', {
-      db : res.rows,
+  pool.query("SELECT * from user_info", (err,ans)=>{
+    res.render('pages/adminPage', {
+      db : ans.rows,
     })
   })
 })
 
-.get('/seeUser', (req,res)=>
+.post('/seeUser', (req,res)=>
 {
-  searchName = req.body.serachingName;
+  searchName = req.body.searchingName;
   pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
     var username = ans.rows[0].username;
     var gender = ans.rows[0].gender;
