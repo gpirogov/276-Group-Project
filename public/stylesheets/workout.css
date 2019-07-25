@@ -31,10 +31,6 @@ body {
 	margin-bottom: 1.5%;
 }
 
-table, th, td {
-	/*border: 1px solid black;*/
-}
-
 
 .day-div-exercises table{
 	border-collapse: collapse;	/* removing this causes lines to appear during selection */
@@ -111,7 +107,7 @@ table, th, td {
 
 
 .exercise-submit-button{
-	opacity: 0.5;
+	opacity: 0.375;
 	margin-left: 0.375em;
 	background-color: #9DC183;
 }
@@ -143,15 +139,6 @@ table, th, td {
 
 }
 
-.day-other-titles{
-	vertical-align: top;
-}
-
-.day-other-titles tr td button{
-	border: none;
-	font-size: 0.75em;
-}
-
 .exercise-data-cell {
 	width: 16em;
 }
@@ -177,10 +164,6 @@ table, th, td {
 	font-size: 1.25em;
 }
 
-/*.exercise-data-cell form input{ //use this color set somewhere else
-	background-color: #2e2b2a;
-	border-color: #3f3938;
-}*/
 
 .exercise-one-rep-max-button-cell {
 	width: 3.75em;
@@ -189,53 +172,6 @@ table, th, td {
 	border-top-right-radius: 0.5em;
 }
 
-/* =================================================
-================ Draggable Exercises ===============
-================================================= */
-
-/* learned how to add drag and droppable table rows from https://stackoverflow.com/a/21807833 */
-
-table, td, th{
-	/*border:1px solid black;*/
-}
-
-.childgrid tr {
-	cursor: pointer;
-}
-
-td {
-	/*background-color: #4b4342;*/
-}
-.selectedRow td{
-	/*background-color: #363231;*/
-
-}
-
-.selectedRow, .selectedRow:active{
-	background-color: #363231;
-	cursor: move;
-	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
-	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
-	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
-}
-
-.completedOneRepMaxRow td, .completedNormalRow td{
-	background-color: #697059;
-}
-
-.completedOneRepMaxRow.selectedRow td, .completedOneRepMaxRow.selectedRow:active td,
-.completedNormalRow.selectedRow td, .completedNormalRow.selectedRow:active td{
-	background-color: rgba(0,0,0,0);
-}
-
-.completedOneRepMaxRow.selectedRow, .completedOneRepMaxRow.selectedRow:active,
-.completedNormalRow.selectedRow, .completedNormalRow.selectedRow:active{
-	cursor: move;
-	background-color: #59634d;
-	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
-	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
-	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
-}
 
 /* =================================================
 =================== Comment Box ====================
@@ -315,13 +251,47 @@ td {
 }
 
 
+/* =================================================
+================ Draggable Exercises ===============
+================================================= */
 
-table .completedNormalRow{
+/* learned how to add drag and droppable table rows from https://stackoverflow.com/a/21807833 */
+
+.childgrid tr {
+	cursor: pointer;
+}
+
+.day-div-exercises td {
+	background-color: #4b4342;
 	border-radius: 0 0 0 0;
 }
 
+.selectedRow, .selectedRow:active{
+	background-color: #363231;
+	cursor: move;
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1);
+}
 
-.day-div-exercises td{
+.completedOneRepMaxRow td, .completedNormalRow td{
+	background-color: #59634d;
+}
+
+.selectedRow td, .selectedRow:active td{
+	background-color: rgba(0,0,0,0);
+}
+
+.completedOneRepMaxRow.selectedRow, .completedOneRepMaxRow.selectedRow:active,
+.completedNormalRow.selectedRow, .completedNormalRow.selectedRow:active{
+	cursor: move;
+	background-color: #59634d;
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+}
+
+table .completedNormalRow{
 	border-radius: 0 0 0 0;
 }
 
@@ -350,22 +320,43 @@ fixed problem by looking at https://www.endyourif.com/css3s-border-radius-proper
 */
 
 .selectedRow:last-child, .selectedRow:active:last-child{
-	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
-	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
-	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
 }
 
 .selectedRow:last-child, .selectedRow:active:last-child{
-	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
-	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
-	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
 }
 
 .completedOneRepMaxRow.selectedRow:last-child, .completedOneRepMaxRow.selectedRow:active:last-child,
 .completedNormalRow.selectedRow:last-child, .completedNormalRow.selectedRow:active:last-child{
 	cursor: move;
 	background-color: #59634d;
-	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
-	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
-	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+}
+
+.selectedRow:first-child, .selectedRow:active:first-child{
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+}
+
+.selectedRow:first-child, .selectedRow:active:first-child{
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1);
+}
+
+.completedOneRepMaxRow.selectedRow:first-child, .completedOneRepMaxRow.selectedRow:active:first-child,
+.completedNormalRow.selectedRow:first-child, .completedNormalRow.selectedRow:active:first-child{
+	cursor: move;
+	background-color: #59634d;
+	-webkit-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -4px rgba(54,50,49,1), 20px 0px 10px -4px rgba(54,50,49,1), 0px -20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
 }
