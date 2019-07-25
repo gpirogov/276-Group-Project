@@ -63,9 +63,8 @@ input, .addPostContent {
   text-decoration: underline;
   display: inline-block;
   float: right;
-  height: 40px;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
 
   background-color: Transparent;
   background-repeat:no-repeat;
