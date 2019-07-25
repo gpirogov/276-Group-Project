@@ -55,12 +55,18 @@ $(document).ready(function() {
         while(foodName.length>30){
           foodName = foodName.substring(0, foodName.length - 1);
         }
+
+        if(cals == undefined){cals = 0};
+        if(fat == undefined){fat = 0};
+        if(carbs == undefined){carbs = 0};
+        if(protien == undefined){protien = 0};
+
         cals = cals.toFixed(2);
         carbs = carbs.toFixed(2);
         fat = fat.toFixed(2);
         protien = protien.toFixed(2);
 
-        //add to to database
+        //display data
         document.getElementById('mealFoodCell').value = foodName
         document.getElementById('mealCaloriesCell').value = cals
         document.getElementById('mealFatCell').value = fat

@@ -4,15 +4,13 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-   ssl : true
+  connectionString: process.env.DATABASE_URL//,
+   //ssl : true
 });
 
 var globalName;
 var searchName;
 var globalRoutine = " ";
-var food_total_cal;
-var cal_goal;
 
 
 today = new Date();
@@ -74,9 +72,9 @@ express()
   {
     if ( password == "admin" )
     {
-      pool.query("SELECT * from user_info", (err ,correct) =>{
+      pool.query("SELECT * from account", (err ,correct) =>{
         res.render('pages/adminPage', {
-          db:correct.rows
+          db: correct.rows
         })
       })
     }
@@ -247,72 +245,61 @@ express()
  *  Forums:
  * ============================= */
 
- .get('/forums', (req,res) => {
-   res.sendFile(path.join(__dirname + '/public/forum.html'));
- })
+.get('/forums', (req,res) => {
+  res.sendFile(path.join(__dirname + '/public/forum.html'));
+})
 
- .get('/forums/:topic', (req,res) => {
+.get('/forums/:topic', (req,res) => {
 
-   if(globalRoutine == " ") {
-     res.render('pages/not-logged-in');
-   } else{
-     // topic in req.params.topic
-     var topic = req.params.topic;
-     var text = 'SELECT * FROM forums WHERE topic = $1';
-     var values = [ req.params.topic ];
+  if(globalRoutine == " ") {
+    res.render('pages/not-logged-in');
+  } else{
+    // topic in req.params.topic
+    var topic = req.params.topic;
+    var text = 'SELECT * FROM forums WHERE topic = $1';
+    var values = [ req.params.topic ];
 
-     // pool.query('SELECT * FROM forums', (err, result) => {
-     // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
-     pool.query(text, values, (err, result) => {
-       // console.log(result.rows);
-       res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic, username: globalName });
-     });
-   }
- })
+    // pool.query('SELECT * FROM forums', (err, result) => {
+    // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
+    pool.query(text, values, (err, result) => {
+      // console.log(result.rows);
+      res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic, username: globalName });
+    });
+  }
+})
 
- .get('/forums/:topic/:id', (req,res) => {
-   // topic in req.params.topic
+.get('/forums/:topic/:id', (req,res) => {
+  // topic in req.params.topic
 
-   if (globalRoutine == " ") {
-     res.render('pages/not-logged-in');
-   } else {
-     var id = req.params.id;
-     var topic = req.params.id;
-     var text = 'SELECT * FROM forums WHERE id = $1';
-     var values = [ id ];
-     console.log(id);
+  if (globalRoutine == " ") {
+    res.render('pages/not-logged-in');
+  } else {
+    var id = req.params.id;
+    var topic = req.params.id;
+    var text = 'SELECT * FROM forums WHERE id = $1';
+    var values = [ id ];
+    console.log(id);
 
 
-     // const result = pool.query(text, values);
-     // const results = { results: result ? result.rows : null, topic: topic };
-     // res.render('pages/forumPost', results);
+    // const result = pool.query(text, values);
+    // const results = { results: result ? result.rows : null, topic: topic };
+    // res.render('pages/forumPost', results);
 
-     pool.query(text, values, (err, result) => {
-       res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic, id: id, username: globalName });
-     });
-     // console.log(req.params.id);
-     // res.render('pages/forumPost');
-   }
- })
- .post('/forumAddPost', (req, res) => {
-   var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
-   var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
+    pool.query(text, values, (err, result) => {
+      res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic, id: id, username: globalName });
+    });
+    // console.log(req.params.id);
+    // res.render('pages/forumPost');
+  }
+})
+.post('/forumAddPost', (req, res) => {
+  var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
+  var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
 
-   pool.query(text, values, (err, result) => {
-     res.redirect('/forums');
-   });
- })
-
- .post('/forumAddPostReply', (req, res) => {
-   var text = 'INSERT INTO forums (id, title, content, topic, username) VALUES ($1, $2, $3, $4, $5)';
-   console.log("id of reply: " + req.body.id);
-   var values = [ parseInt(req.body.id), req.body.title, req.body.content, req.body.topic, req.body.username ];
-
-   pool.query(text, values, (err, result) => {
-     res.redirect('/forums');
-   });
- })
-
+  pool.query(text, values, (err, result) => {
+    res.redirect('/forums');
+  });
+})
 
 
   /* ====================
@@ -339,14 +326,13 @@ express()
 //   })
 // })
 
-.get('/diet', function (req,res){
+.get('/diet.html', function (req,res){
+  console.log(YEET);
   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
     if(err){ throw err;}
-    food_total_cal = result.rows[0].totalcals;
-    cal_goal = 2000;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg:""})
+    var food_total_cal = result.rows[0].totalCals;
+    res.send(food_total_cal);
   })
-
 })
 
 .post('/a', function (req, res){
@@ -362,26 +348,13 @@ express()
   if(carbs == ""){carbs = 0};
   if(protien == ""){protien = 0};
 
-  var addSuccessFlag = false;
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
-  pool.query(mealInfo, mealVal, (err, result)=>{
-    if(err){console.log("add not sucessful"); addSuccessFlag = true}
-    else(console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName))
-  });
-
-  if(addSuccessFlag == true){
-    addSuccessFlag = 0;
-    res.redirect('diet');
-  }
-  if(addSuccessFlag == false){
-    addSuccessFlag = 0;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg: 'add not successful'});
-  }
-
-
+  pool.query(mealInfo, mealVal);
+  console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName)
+  res.redirect('diet.html');
 })
 
 .get('/breakfast', (req, res) =>{
@@ -530,27 +503,22 @@ req.body = JSON.parse(JSON.stringify(req.body));
    }
 })
 
-.get('/adminPage',(req,res)=>{
-  pool.query("SELECT * from user_info", (err,ans)=>{
-    res.render('pages/adminPage', {
-      db : ans.rows,
+.get('/admin_profile',(req,res)=>{
+ res.render('pages/admin_profile')
+})
+
+.get('/admin',(req,res)=>{
+  pool.query("SELECT * from user_info", (err,res)=>{
+    res.render('pages/admin', {
+      db : res.rows,
     })
   })
 })
 
-.post('/admin',(req,res)=>{
-  pool.query("SELECT * from user_info", (err,ans)=>{
-    res.render('pages/adminPage', {
-      db : ans.rows,
-    })
-  })
-})
-
-.post('/seeUser', (req,res)=>
+.get('/seeUser', (req,res)=>
 {
-  searchName = req.body.searchingName;
+  searchName = req.body.serachingName;
   pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
-    // console.log(ans.rows[0]);
     var username = ans.rows[0].username;
     var gender = ans.rows[0].gender;
     var age = ans.rows[0].age;
@@ -568,71 +536,5 @@ req.body = JSON.parse(JSON.stringify(req.body));
     })
   })
 })
-
-.post('/admin-profile', (req,res)=>
-{
-  pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
-    // console.log(ans.rows[0]);
-    var username = ans.rows[0].username;
-    var gender = ans.rows[0].gender;
-    var age = ans.rows[0].age;
-    var weight = ans.rows[0].weight;
-    var height = ans.rows[0].height;
-    var routine = ans.rows[0].routine;
-
-    res.render('pages/admin_profile', {
-      username : username,
-      age : age,
-      gender : gender,
-      weight : weight,
-      height : height,
-      routine : routine,
-    })
-  })
-})
-
-.post('/admin-workout',(req,res)=>{
-  pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "'", (err,ans)=>{
-    console.log(ans.rows);
-    res.render('pages/admin_workout', {
-      db : ans.rows,
-      name:searchName
-    })
-  })
-})
-
-.post('/admin-graph',(req,res)=>{
-  var routine = req.body.routine;
-  var exercise = req.body.exercise;
-  const info = "SELECT weight FROM workout_table where username = $1 and routine = $2 and exercise = $3";
-  const value = [searchName,routine,exercise];
-  pool.query(info,value,(err,ans)=>{
-    console.log(routine);
-    console.log(exercise);
-    console.log(ans.rows);
-    res.render('pages/admin_workoutgraph', {
-        name:searchName,
-        routine:routine,
-        exercise:exercise,
-        test:ans.rows
-    })
-  })
-})
-
-.post('/admin-diet',(req,res)=>{
-  //pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
-    res.render('pages/admin_diet', {
-    //  db : ans.rows,
-      name:searchName
-    })
-  //})
-})
-
-
-
-
-
-
-
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))

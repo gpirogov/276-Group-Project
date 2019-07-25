@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Workout Planner Page</title>
+  <link rel="stylesheet" href="stylesheets/workout.css">
   <link rel="stylesheet" href="stylesheets/workout-physique.css">
   <link rel="stylesheet" href="stylesheets/nav-bar.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -19,7 +20,7 @@
     <form class="go-to-workout-page" action="/go-to-workout-page" method="post">
       <button type="submit" class="navbar">Workout</button>
     </form>
-    <a href="diet.html" class="navbar">Diet</a>
+    <a href="diet" class="navbar">Diet</a>
     <a href="forum.html" class="navbar">Forum</a>
     <a href="homepage" class="navbar">Homepage</a>
     <!-- <h2>WORKOUT PLANNER</h2> -->
@@ -78,7 +79,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -100,7 +101,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -144,7 +145,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -166,7 +167,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -210,7 +211,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -232,7 +233,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -276,7 +277,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -298,7 +299,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -361,7 +362,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -383,7 +384,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -427,7 +428,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -449,7 +450,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -493,7 +494,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -515,7 +516,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -578,7 +579,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -600,7 +601,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -644,7 +645,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -666,7 +667,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
 
               </form>
             </td>
@@ -711,7 +712,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -733,7 +734,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
 
               </form>
             </td>
@@ -778,7 +779,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -800,7 +801,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
 
               </form>
             </td>
@@ -864,7 +865,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -886,7 +887,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
 
               </form>
             </td>
@@ -931,7 +932,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -953,7 +954,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                <button type="submit" class="exercise-submit-button" >✔️</button>
+                <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
 
               </form>
             </td>
@@ -998,7 +999,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1020,7 +1021,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1084,7 +1085,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1106,7 +1107,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1150,7 +1151,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1172,7 +1173,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1216,7 +1217,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1238,7 +1239,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1299,7 +1300,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1321,7 +1322,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1365,7 +1366,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1387,7 +1388,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1431,7 +1432,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1453,7 +1454,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1496,7 +1497,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1518,7 +1519,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">
@@ -1576,7 +1577,7 @@
                   <option>3&times;12</option>
                   <option>8,10,12</option>
                 </datalist>
-                <button type="submit" class="exercise-submit-button">✔️</button>
+                <button type="submit" class="normal-exercise-submit-button exercise-submit-button">✔️</button>
               </form>
 
               <form class="one-rep-max-weight-form" action="/2" method="post">
@@ -1598,7 +1599,7 @@
                   <!-- <option value="kg">kg</option> -->
                 </select>
                 <input class="exercise-sets-and-reps" type="text" name="setsAndReps" placeholder="1">
-                  <button type="submit" class="exercise-submit-button" >✔️</button>
+                  <button type="submit" class="one-rep-max-exercise-submit-button exercise-submit-button" >✔️</button>
               </form>
             </td>
             <td class="exercise-one-rep-max-button-cell">

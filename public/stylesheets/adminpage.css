@@ -46,6 +46,19 @@ button{
 .routine{
   padding:2%;
 }
+
 .show{
   border: 0px;
+  padding: 0px;
+}
+
+.exercise-link{
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    width: auto;
 }

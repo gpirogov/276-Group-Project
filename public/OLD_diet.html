@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title> Burning + </title>
+  <link rel="stylesheet" href="./stylesheets/starterpage.css">
+  <link rel="stylesheet" href="./stylesheets/diet.css">
+  <link rel="stylesheet" href="./stylesheets/nav-bar.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
+  <script src="js/caloriecalc.js" defer></script>
+  <script src="js/diet.js" defer></script>
+</head>
+<body>
+  <div class="topnav">
+    <a href="homepage"><img src="images/logo-inverted.png"class="logo"></a>
+    <a href="logout" class="navbar">Signout</a>
+    <a href="profile" class="navbar">Profile</a>
+      <form class="go-to-workout-page" action="/go-to-workout-page" method="post">
+        <button type="submit" class="navbar">Workout</button>
+      </form>
+    <a href="diet.html" class="navbar">Diet</a>
+    <a href="forum.html" class="navbar">Forum</a>
+    <a href="homepage" class="navbar">Homepage</a>
+    <!-- <h2>Nutrition</h2> -->
+  </div>
+
+
+  <div class="formdiv">
+
+    <div id = "date"> Today's Date</div>
+
+    <div id = "dietMain">
+
+
+      <table id = "tableMeal" class = "meals">
+        <tr id = "linkRow">
+            <th><a href = './breakfast' class = "tableLink">Breakfast</a></th>
+            <th><a href = './lunch' class = "tableLink">Lunch</a></th>
+            <th><a href = './dinner' class = "tableLink">Dinner</a></th>
+            <th><a href = './snacks' class = "tableLink">Snacks</a></th>
+        </tr>
+      </table>
+
+      <div id = "calorieCounter">
+        <p id = "calorieGoal">Goal</p>
+        <p id = "calorieNet">Goal = Food - Excercise</p>
+      </div>
+
+      <div id = "addMealToggle">
+        <button id = "addMealButton"> Add Meal </button>
+      </div>
+
+    </div>
+
+    <div id="addMeal" hidden>
+      <a id = "backButton"> Back </a>
+
+      <div class = "search">
+        <input type="text" id="searchBar" placeholder="Search for foods">
+        <button id = "apiSearchButton"> Search </button>
+      </div>
+
+      <form name = "addMealForm" action ="/a" method="post">
+
+        <div id = "mealSelector">
+            <select  name="meal">
+              <option value="" disabled selected>Select Meal</option>
+              <option value="breakfast">Breakfast</option>
+              <option value="lunch">Lunch</option>
+              <option value="dinner">Dinner</option>
+              <option value="snack">Snack</option>
+            </select>
+        </div>
+
+        <table id = "tableAddMeal">
+          <tr>
+              <th>Food</th>
+              <th>Calories</th>
+              <th>Fat (g)</th>
+              <th>Carbs (g)</th>
+              <th>Protien (g)</th>
+          </tr>
+
+          <tr class =  "mealRow">
+            <td><input id = "mealFoodCell" type ="text" name = "mealFood", placeholder = ""></td>
+            <td><input id = "mealCaloriesCell" type ="number" step="0.01" name = "mealCalories", placeholder = ""></td>
+            <td><input id = "mealFatCell" type ="number" step="0.01" name = "mealFat", placeholder = ""></td>
+            <td><input id = "mealCarbsCell" type ="number" step="0.01" name = "mealCarbs", placeholder = ""></td>
+            <td><input id = "mealProtienCell" type ="number" step="0.01" name = "mealProtien", placeholder = ""></td>
+          </tr>
+        </table>
+        <button type = "submit" id="addButton" >Add</button>
+      </form>
+      <!-- <table id = "tableAddMeal" class = "meals">
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td id = "mealFood"></td>
+          <td id = "mealCalories"></td>
+          <td id = "mealFat"></td>
+          <td id = "mealCarbs"></td>
+          <td id = "mealProtien"></td>
+        </tr>
+      </table> -->
+
+
+    </div>
+
+      <!-- <button id = "apiTestButton"> API TEST BUTTON </button> -->
+  </div>
+</body>
+</html>

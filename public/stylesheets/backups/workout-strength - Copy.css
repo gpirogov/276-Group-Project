@@ -111,6 +111,7 @@ table, th, td {
 
 
 .exercise-submit-button{
+	opacity: 0.5;
 	margin-left: 0.375em;
 	background-color: #9DC183;
 }
@@ -213,12 +214,28 @@ td {
 .selectedRow, .selectedRow:active{
 	background-color: #363231;
 	cursor: move;
-	-webkit-box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
-	-moz-box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
-	box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
+	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1);
 }
 
+.completedOneRepMaxRow td, .completedNormalRow td{
+	background-color: #697059;
+}
 
+.completedOneRepMaxRow.selectedRow td, .completedOneRepMaxRow.selectedRow:active td,
+.completedNormalRow.selectedRow td, .completedNormalRow.selectedRow:active td{
+	background-color: rgba(0,0,0,0);
+}
+
+.completedOneRepMaxRow.selectedRow, .completedOneRepMaxRow.selectedRow:active,
+.completedNormalRow.selectedRow, .completedNormalRow.selectedRow:active{
+	cursor: move;
+	background-color: #59634d;
+	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+}
 
 /* =================================================
 =================== Comment Box ====================
@@ -269,7 +286,7 @@ td {
 	opacity: 0.20;
 }
 
-.exercise-comment-button-empty:hover, .one-rep-max-button-unclicked:hover {
+.exercise-comment-button-empty:hover, .one-rep-max-button-unclicked:hover, .exercise-submit-button:hover{
 	opacity: 1;
 	transition: opacity 0.25s;
 }
@@ -290,4 +307,65 @@ td {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+
+.clicked-button{
+	opacity: 1 !important;
+}
+
+
+
+table .completedNormalRow{
+	border-radius: 0 0 0 0;
+}
+
+
+.day-div-exercises td{
+	border-radius: 0 0 0 0;
+}
+
+/* had problems with border-radiuses (table rows didnt have radius while table overall did) 
+fixed problem by looking at https://www.endyourif.com/css3s-border-radius-property-and-border-collapsecollapse-dont-mix/?source=post_page--------------------------- */
+.day-div-exercises table tr:first-child td:last-child {
+    border-top-right-radius: 0.5em;
+}
+
+.day-div-exercises table tr:last-child td:first-child {
+    border-bottom-left-radius: 0.5em;
+}
+
+.day-div-exercises table tr:last-child td:last-child {
+    border-bottom-right-radius: 0.5em;
+}
+
+
+
+/*
+
+	this might seem really complicated, but all its doing is making sure that the shadows are removed if 
+	the last or first rows of the table are selected, and making sure this works w/ completed rows.
+
+
+*/
+
+.selectedRow:last-child, .selectedRow:active:last-child{
+	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+}
+
+.selectedRow:last-child, .selectedRow:active:last-child{
+	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1);
+}
+
+.completedOneRepMaxRow.selectedRow:last-child, .completedOneRepMaxRow.selectedRow:active:last-child,
+.completedNormalRow.selectedRow:last-child, .completedNormalRow.selectedRow:active:last-child{
+	cursor: move;
+	background-color: #59634d;
+	-webkit-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	-moz-box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
+	box-shadow: -20px 0px 10px -5px rgba(54,50,49,1), 20px 0px 10px -5px rgba(54,50,49,1), 0px 20px 10px 0px rgba(54,50,49,1), inset 0 0 16px 14px rgba(54,50,49,1);
 }

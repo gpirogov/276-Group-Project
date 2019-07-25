@@ -12,8 +12,8 @@
 
 
 
-var oneRepMaxButtons = [];	//global vars
-var oneRepMaxForms = [];
+var oneRepMaxButtons = [];	
+var oneRepMaxForms = [];//global vars
 
 
 function toggleElementDisplay(elem) {
@@ -24,59 +24,42 @@ function toggleElementDisplay(elem) {
 	}
 }
 
-function updateOneRepMaxButton() {
-
+// set "visibilityNone" to true if element is hidden on document load (like 1-rep-max form).
+function updateButtons(buttonClassName, elementClassName = "", visibilityNone = false, classNameToToggle = "") {
 	// had to reset event listeners. removeEventListener wasnt working but this did.
 	// solution from https://stackoverflow.com/a/9251864
-	oneRepMaxForms = document.getElementsByClassName("one-rep-max-weight-form");
-	oneRepMaxButtons = document.getElementsByClassName("one-rep-max-button");
-	for(var i = 0; i < oneRepMaxForms.length; i++) {
+	var myElements = document.getElementsByClassName(elementClassName);
+	var myButtons = document.getElementsByClassName(buttonClassName);
+	for(var i = 0; i < myButtons.length; i++) {
 		(function () {
 			var counter = i;
-			var old_element = oneRepMaxButtons[counter];
+			var old_element = myButtons[counter];
 			var new_element = old_element.cloneNode(true);
 			old_element.parentNode.replaceChild(new_element, old_element);
 		}());
 	}
 
-	oneRepMaxButtons = document.getElementsByClassName("one-rep-max-button");
-	for(var i = 0; i < oneRepMaxForms.length; i++) {
+	myButtons = document.getElementsByClassName(buttonClassName);
+	for(var i = 0; i < myButtons.length; i++) {
 		(function () {
 			var counter = i;
-			oneRepMaxButtons[i].addEventListener('click', function(){ toggleElementDisplay(oneRepMaxForms[counter]); });
-		}());
-	}
-	//console.log("test2");
-}
+			myButtons[i].addEventListener('click', function(){ 
+				if(visibilityNone) toggleElementDisplay(myElements[counter]);
+				myButtons[counter].classList.toggle("clicked-button");
+				myElements[counter].classList.toggle(classNameToToggle);
+			});
 
-function updateCommentButton() {
-	var commentButtons = document.getElementsByClassName("exercise-comment-button");
-	var commentForms = document.getElementsByClassName("exercise-comment-form");
-	for(var i = 0; i < commentForms.length; i++) {
-		(function () {
-			var counter = i;
-			var old_element = commentButtons[counter];
-			var new_element = old_element.cloneNode(true);
-			old_element.parentNode.replaceChild(new_element, old_element);
-		}());
-	}
-
-	var commentButtons = document.getElementsByClassName("exercise-comment-button");
-	for(var i = 0; i < commentForms.length; i++) {
-		(function () {
-			var counter = i;
-			commentButtons[i].addEventListener('click', function(){ commentForms[counter].classList.toggle("show"); });
 		}());
 	}
 }
-
 
 
 
 window.addEventListener("load", function(){
-	oneRepMaxForms = document.getElementsByClassName("one-rep-max-weight-form");
+	var oneRepMaxForms = document.getElementsByClassName("one-rep-max-weight-form");
 	for(var i = 0; i < oneRepMaxForms.length; i++) {
 		(function () {	// adding this (the "function") fixed a big bug. solution from https://stackoverflow.com/a/19586183
+			//oneRepMaxForms[i].style.display="none";\
 			oneRepMaxForms[i].style.display="none";
 		}());
 	}
@@ -134,8 +117,13 @@ function updateDraggableExercises(){
 
 	});
 
-	updateCommentButton();
-	updateOneRepMaxButton();
+	
+	updateButtons("one-rep-max-button", "one-rep-max-weight-form", true);
+	updateButtons("exercise-comment-button", "exercise-comment-form", false, "show");
+	updateButtons("one-rep-max-exercise-submit-button", "draggable_tr", false, "completedOneRepMaxRow");
+	updateButtons("normal-exercise-submit-button", "draggable_tr", false, "completedNormalRow");
+	updateButtons("round-complete-button");
+
 }
 
 
