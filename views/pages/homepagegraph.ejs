@@ -34,15 +34,14 @@
       </script>
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
-
+        var gettest = "<%=weight_list%>";
         google.charts.load('current', {'packages':['corechart']});
-
 
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-          var gettest = "<%=weight_list%>";
           var array_number = gettest.split(',').map(Number);
+          console.log(gettest);
           console.log(array_number);
           console.log(array_number[3]);
           // Create the data table.
@@ -64,9 +63,18 @@
           };
 
           // Instantiate and draw our chart, passing in some options.
-          var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          var chart =  new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
         }
+
+        // if(gettest==""){
+        //   document.getElementById("chart_div").style.display = "inline-block";
+        //   document.getElementById("nodata").style.display = "none";
+        // } else {
+        //   document.getElementById("nodata").style.display = "inline-block";
+        //   document.getElementById("chart_div").style.display = "none";
+        // }
+
       </script>
     </head>
     <body>
@@ -204,7 +212,10 @@
           </div>
 
           <div id="chart_div" style="margin:5% "></div>
-          <br>
+          <!-- <div id="nodata" style=" display: none"> -->
+            <h3>You do not have data in this exercise !!</h3>
+          </div>
+
       </div>
     </body>
   </html>
