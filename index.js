@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-   ssl : true
+  connectionString: process.env.DATABASE_URL//,
+   //ssl : true
 });
 
 var globalName;
@@ -31,7 +31,7 @@ express()
   var password = req.body.pw;
   globalName = loginname;
 
-  if ( globalName != "csadmin")
+  if ( globalName != "admin")
   {
   pool.query("SELECT * from user_info WHERE username = '" + loginname + "'", (err,ans) =>{
     if ( ans.rowCount == 0)
@@ -68,19 +68,14 @@ express()
         })
       }
     }
-  })} else if ( globalName == "csadmin" )
+  })} else if ( globalName == "admin" )
   {
-    if ( password == "csadmin" )
+    if ( password == "admin" )
     {
-      pool.query("SELECT * from user_info", (err,res)=>{
-        res.render('pages/admin', {
-          db : res.rows,
+      pool.query("SELECT * from account", (err ,correct) =>{
+        res.render('pages/errorPage', {
+          db: correct.rows
         })
-      })
-    } else ( password != "csadmin" )
-    {
-      res.render('pages/errorPage', {
-        msg: "Incorrect inforamtion"
       })
     }
   }
