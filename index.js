@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL//,
-   //ssl : true
+  connectionString: process.env.DATABASE_URL,
+   ssl : true
 });
 
 var globalName;
@@ -494,6 +494,10 @@ req.body = JSON.parse(JSON.stringify(req.body));
    }
 })
 
+.get('/admin_profile',(req,res)=>{
+ res.render('pages/admin_profile')
+})
+
 .get('/admin',(req,res)=>{
   pool.query("SELECT * from user_info", (err,ans)=>{
     res.render('pages/adminPage', {
@@ -502,10 +506,12 @@ req.body = JSON.parse(JSON.stringify(req.body));
   })
 })
 
+
 .post('/seeUser', (req,res)=>
 {
   searchName = req.body.searchingName;
   pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
+    // console.log(ans.rows[0]);
     var username = ans.rows[0].username;
     var gender = ans.rows[0].gender;
     var age = ans.rows[0].age;
@@ -523,5 +529,52 @@ req.body = JSON.parse(JSON.stringify(req.body));
     })
   })
 })
+
+.get('/admin-profile', (req,res)=>
+{
+  pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
+    // console.log(ans.rows[0]);
+    var username = ans.rows[0].username;
+    var gender = ans.rows[0].gender;
+    var age = ans.rows[0].age;
+    var weight = ans.rows[0].weight;
+    var height = ans.rows[0].height;
+    var routine = ans.rows[0].routine;
+
+    res.render('pages/admin_profile', {
+      username : username,
+      age : age,
+      gender : gender,
+      weight : weight,
+      height : height,
+      routine : routine,
+    })
+  })
+})
+
+
+.get('/admin-workout',(req,res)=>{
+  pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
+    res.render('pages/admin_workout', {
+      db : ans.rows,
+      name:searchName
+    })
+  })
+})
+
+.get('/admin-diet',(req,res)=>{
+  //pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
+    res.render('pages/admin_diet', {
+    //  db : ans.rows,
+      name:searchName
+    })
+  //})
+})
+
+
+
+
+
+
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))

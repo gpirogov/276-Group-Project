@@ -42,3 +42,10 @@ button{
   margin: 2%;
   width: 100px;
 }
+
+.routine{
+  padding:2%;
+}
+.show{
+  border: 0px;
+}
