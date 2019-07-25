@@ -66,14 +66,15 @@
           var chart =  new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
         }
-
-        // if(gettest==""){
-        //   document.getElementById("chart_div").style.display = "inline-block";
-        //   document.getElementById("nodata").style.display = "none";
-        // } else {
-        //   document.getElementById("nodata").style.display = "inline-block";
-        //   document.getElementById("chart_div").style.display = "none";
-        // }
+        window.addEventListener("load", function(){
+          if(gettest==""){
+            document.getElementById("chart_div").style.display = "none";
+            document.getElementById("nodata").style.display = "inline-block";
+          } else {
+            document.getElementById("nodata").style.display = "none";
+            document.getElementById("chart_div").style.display = "inline-block";
+          }
+        });
 
       </script>
     </head>
@@ -212,9 +213,9 @@
           </div>
 
           <div id="chart_div" style="margin:5% "></div>
-          <!-- <div id="nodata" style=" display: none">
+          <div id="nodata">
             <h3>You do not have data in this exercise !!</h3>
-          </div> -->
+          </div>
 
       </div>
     </body>
