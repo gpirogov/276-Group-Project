@@ -11,8 +11,6 @@ const pool = new Pool({
 var globalName;
 var searchName;
 var globalRoutine = " ";
-var food_total_cal;
-var cal_goal;
 
 
 today = new Date();
@@ -328,14 +326,13 @@ express()
 //   })
 // })
 
-.get('/diet', function (req,res){
+.get('/diet.html', function (req,res){
+  console.log(YEET);
   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
     if(err){ throw err;}
-    food_total_cal = result.rows[0].totalcals;
-    cal_goal = 2000;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg:""})
+    var food_total_cal = result.rows[0].totalCals;
+    res.send(food_total_cal);
   })
-
 })
 
 .post('/a', function (req, res){
@@ -351,26 +348,13 @@ express()
   if(carbs == ""){carbs = 0};
   if(protien == ""){protien = 0};
 
-  var addSuccessFlag = false;
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
-  pool.query(mealInfo, mealVal, (err, result)=>{
-    if(err){console.log("add not sucessful"); addSuccessFlag = true}
-    else(console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName))
-  });
-
-  if(addSuccessFlag == true){
-    addSuccessFlag = 0;
-    res.redirect('diet');
-  }
-  if(addSuccessFlag == false){
-    addSuccessFlag = 0;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg: 'add not successful'});
-  }
-
-
+  pool.query(mealInfo, mealVal);
+  console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName)
+  res.redirect('diet.html');
 })
 
 .get('/breakfast', (req, res) =>{
