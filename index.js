@@ -9,6 +9,7 @@ const pool = new Pool({
 });
 
 var globalName;
+var searchName;
 var globalRoutine = " ";
 
 
@@ -29,6 +30,9 @@ express()
   var loginname = req.body.username;
   var password = req.body.pw;
   globalName = loginname;
+
+  if ( globalName != "csadmin")
+  {
   pool.query("SELECT * from user_info WHERE username = '" + loginname + "'", (err,ans) =>{
     if ( ans.rowCount == 0)
     {
@@ -64,7 +68,22 @@ express()
         })
       }
     }
-  })
+  })} else if ( globalName == "csadmin" )
+  {
+    if ( password == "csadmin" )
+    {
+      pool.query("SELECT * from user_info", (err,res)=>{
+        res.render('pages/admin', {
+          db : res.rows,
+        })
+      })
+    } else ( password != "csadmin" )
+    {
+      res.render('pages/errorPage', {
+        msg: "Incorrect inforamtion"
+      })
+    }
+  }
 })
 
 .post('/signup.html', function(req,res) {
@@ -484,8 +503,34 @@ req.body = JSON.parse(JSON.stringify(req.body));
  res.render('pages/admin_profile')
 })
 
-.get('/admin',(req,res)=>{
-  res.render('pages/admin')
+.get('/back_admin_page',(req,res)=>{
+  pool.query("SELECT * from user_info", (err,res)=>{
+    res.render('pages/admin', {
+      db : res.rows,
+    })
+  })
+})
+
+.get('/seeUser', (req,res)=>
+{
+  searchName = req.body.serachingName;
+  pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
+    var username = ans.rows[0].username;
+    var gender = ans.rows[0].gender;
+    var age = ans.rows[0].age;
+    var weight = ans.rows[0].weight;
+    var height = ans.rows[0].height;
+    var routine = ans.rows[0].routine;
+
+    res.render('pages/admin_profile', {
+      username : username,
+      age : age,
+      gender : gender,
+      weight : weight,
+      height : height,
+      routine : routine,
+    })
+  })
 })
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
