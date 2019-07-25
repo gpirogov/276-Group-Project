@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="/stylesheets/forum-post.css">
   <link rel="stylesheet" href="/stylesheets/nav-bar.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <script src="signup.js" charset="utf-8"></script>
+  <!-- <script src="signup.js" charset="utf-8"></script> -->
   <script src="/js/forum-addpost.js" charset="utf-8"></script>
 </head>
 <body>
@@ -27,7 +27,10 @@
       <a href="/forums"> Home </a>
       <span>
         <h3 class="postTitle"><%= results[0].title %></h3>
-        <button type="button" class= "addbutton" id="addButton-post" name="addButton">Reply To This Post</button>
+        <div align="right">
+          <button type="button" class= "addbutton" id="addButton-post" name="addButton">Reply To This Post</button>
+        </div>
+        <br />
       </span>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
 
@@ -45,12 +48,13 @@
 
 
             <!-- will eventually be removed -->
-            <label for="username"><b>Username</b></label> <br />
-            <input type="text" name="username" /> <br />
+            <!-- <label for="username"><b>Username</b></label> <br />
+            <input type="text" name="username" /> <br /> -->
 
             <!-- hidden input - topic -->
             <input type="hidden" name="topic" value="<%= topic %>"/>
             <input type="hidden" name="id" value="<%= id %>"/>
+            <input type="hidden" name="username" value="<%= username %>"/> <br />
 
             <div class="submitdiv">
               <input class="submitButton" id="submitButton" value="SUBMIT" type="submit" />

@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL//,
-   //ssl : true
+  connectionString: process.env.DATABASE_URL,
+   ssl : true
 });
 
 var globalName;
@@ -74,7 +74,7 @@ express()
   {
     if ( password == "admin" )
     {
-      pool.query("SELECT * from account", (err ,correct) =>{
+      pool.query("SELECT * from user_info", (err ,correct) =>{
         res.render('pages/adminPage', {
           db: correct.rows
         })
@@ -247,61 +247,72 @@ express()
  *  Forums:
  * ============================= */
 
-.get('/forums', (req,res) => {
-  res.sendFile(path.join(__dirname + '/public/forum.html'));
-})
+ .get('/forums', (req,res) => {
+   res.sendFile(path.join(__dirname + '/public/forum.html'));
+ })
 
-.get('/forums/:topic', (req,res) => {
+ .get('/forums/:topic', (req,res) => {
 
-  if(globalRoutine == " ") {
-    res.render('pages/not-logged-in');
-  } else{
-    // topic in req.params.topic
-    var topic = req.params.topic;
-    var text = 'SELECT * FROM forums WHERE topic = $1';
-    var values = [ req.params.topic ];
+   if(globalRoutine == " ") {
+     res.render('pages/not-logged-in');
+   } else{
+     // topic in req.params.topic
+     var topic = req.params.topic;
+     var text = 'SELECT * FROM forums WHERE topic = $1';
+     var values = [ req.params.topic ];
 
-    // pool.query('SELECT * FROM forums', (err, result) => {
-    // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
-    pool.query(text, values, (err, result) => {
-      // console.log(result.rows);
-      res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic, username: globalName });
-    });
-  }
-})
+     // pool.query('SELECT * FROM forums', (err, result) => {
+     // pool.query("SELECT * FROM forums WHERE topic = '" + topic + + "'", (err, result) => {
+     pool.query(text, values, (err, result) => {
+       // console.log(result.rows);
+       res.render('pages/forumTopic', { results: result ? result.rows : null, topic: topic, username: globalName });
+     });
+   }
+ })
 
-.get('/forums/:topic/:id', (req,res) => {
-  // topic in req.params.topic
+ .get('/forums/:topic/:id', (req,res) => {
+   // topic in req.params.topic
 
-  if (globalRoutine == " ") {
-    res.render('pages/not-logged-in');
-  } else {
-    var id = req.params.id;
-    var topic = req.params.id;
-    var text = 'SELECT * FROM forums WHERE id = $1';
-    var values = [ id ];
-    console.log(id);
+   if (globalRoutine == " ") {
+     res.render('pages/not-logged-in');
+   } else {
+     var id = req.params.id;
+     var topic = req.params.id;
+     var text = 'SELECT * FROM forums WHERE id = $1';
+     var values = [ id ];
+     console.log(id);
 
 
-    // const result = pool.query(text, values);
-    // const results = { results: result ? result.rows : null, topic: topic };
-    // res.render('pages/forumPost', results);
+     // const result = pool.query(text, values);
+     // const results = { results: result ? result.rows : null, topic: topic };
+     // res.render('pages/forumPost', results);
 
-    pool.query(text, values, (err, result) => {
-      res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic, id: id, username: globalName });
-    });
-    // console.log(req.params.id);
-    // res.render('pages/forumPost');
-  }
-})
-.post('/forumAddPost', (req, res) => {
-  var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
-  var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
+     pool.query(text, values, (err, result) => {
+       res.render('pages/forumPost', { results: result ? result.rows : null, topic: topic, id: id, username: globalName });
+     });
+     // console.log(req.params.id);
+     // res.render('pages/forumPost');
+   }
+ })
+ .post('/forumAddPost', (req, res) => {
+   var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
+   var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
 
-  pool.query(text, values, (err, result) => {
-    res.redirect('/forums');
-  });
-})
+   pool.query(text, values, (err, result) => {
+     res.redirect('/forums');
+   });
+ })
+
+ .post('/forumAddPostReply', (req, res) => {
+   var text = 'INSERT INTO forums (id, title, content, topic, username) VALUES ($1, $2, $3, $4, $5)';
+   console.log("id of reply: " + req.body.id);
+   var values = [ parseInt(req.body.id), req.body.title, req.body.content, req.body.topic, req.body.username ];
+
+   pool.query(text, values, (err, result) => {
+     res.redirect('/forums');
+   });
+ })
+
 
 
   /* ====================
@@ -524,17 +535,19 @@ req.body = JSON.parse(JSON.stringify(req.body));
 })
 
 .get('/admin',(req,res)=>{
-  pool.query("SELECT * from user_info", (err,res)=>{
-    res.render('pages/admin', {
-      db : res.rows,
+  pool.query("SELECT * from user_info", (err,ans)=>{
+    res.render('pages/adminPage', {
+      db : ans.rows,
     })
   })
 })
 
-.get('/seeUser', (req,res)=>
+
+.post('/seeUser', (req,res)=>
 {
-  searchName = req.body.serachingName;
+  searchName = req.body.searchingName;
   pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
+    // console.log(ans.rows[0]);
     var username = ans.rows[0].username;
     var gender = ans.rows[0].gender;
     var age = ans.rows[0].age;
@@ -552,5 +565,52 @@ req.body = JSON.parse(JSON.stringify(req.body));
     })
   })
 })
+
+.get('/admin-profile', (req,res)=>
+{
+  pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
+    // console.log(ans.rows[0]);
+    var username = ans.rows[0].username;
+    var gender = ans.rows[0].gender;
+    var age = ans.rows[0].age;
+    var weight = ans.rows[0].weight;
+    var height = ans.rows[0].height;
+    var routine = ans.rows[0].routine;
+
+    res.render('pages/admin_profile', {
+      username : username,
+      age : age,
+      gender : gender,
+      weight : weight,
+      height : height,
+      routine : routine,
+    })
+  })
+})
+
+
+.get('/admin-workout',(req,res)=>{
+  pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
+    res.render('pages/admin_workout', {
+      db : ans.rows,
+      name:searchName
+    })
+  })
+})
+
+.get('/admin-diet',(req,res)=>{
+  //pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
+    res.render('pages/admin_diet', {
+    //  db : ans.rows,
+      name:searchName
+    })
+  //})
+})
+
+
+
+
+
+
 
 .listen(PORT, () => console.log(`Listening on ${ PORT }`))
