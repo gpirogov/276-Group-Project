@@ -111,6 +111,7 @@ table, th, td {
 
 
 .exercise-submit-button{
+	opacity: 0.5;
 	margin-left: 0.375em;
 	background-color: #9DC183;
 }
@@ -218,6 +219,18 @@ td {
 	box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
 }
 
+.completedOneRepMaxRow, .completedNormalRow{
+	background-color: green;
+}
+
+.completedOneRepMaxRow.selectedRow, .completedOneRepMaxRow.selectedRow:active,
+.completedNormalRow.selectedRow, .completedNormalRow.selectedRow:active{
+	background-color: red;
+	cursor: move;
+	-webkit-box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
+	-moz-box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
+	box-shadow: 0px 0px 10px 18px rgba(54,50,49,1);
+}
 
 
 /* =================================================
@@ -269,7 +282,7 @@ td {
 	opacity: 0.20;
 }
 
-.exercise-comment-button-empty:hover, .one-rep-max-button-unclicked:hover {
+.exercise-comment-button-empty:hover, .one-rep-max-button-unclicked:hover, .exercise-submit-button:hover{
 	opacity: 1;
 	transition: opacity 0.25s;
 }
@@ -290,4 +303,9 @@ td {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+
+.clicked-button{
+	opacity: 1 !important;
 }

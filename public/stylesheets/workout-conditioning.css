@@ -114,6 +114,7 @@ table, th, td {
 }
 
 .round-complete-button, .exercise-submit-button{
+	opacity: 0.5;
 	margin-left: 0.375em;
 	background-color: #9DC183;
 }
@@ -272,7 +273,7 @@ td {
 	opacity: 0.20;
 }
 
-.exercise-comment-button-empty:hover, .round-complete-button-unclicked:hover, .one-rep-max-button-unclicked:hover{
+.exercise-comment-button-empty:hover, .round-complete-button-unclicked:hover, .one-rep-max-button-unclicked:hover, .exercise-submit-button{
 	opacity: 1;
 	transition: opacity 0.25s;
 }
@@ -293,4 +294,8 @@ td {
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+.clicked-button{
+	opacity: 1 !important;
 }
