@@ -503,7 +503,7 @@ req.body = JSON.parse(JSON.stringify(req.body));
  res.render('pages/admin_profile')
 })
 
-.get('/back_admin_page',(req,res)=>{
+.get('/admin',(req,res)=>{
   pool.query("SELECT * from user_info", (err,res)=>{
     res.render('pages/admin', {
       db : res.rows,
