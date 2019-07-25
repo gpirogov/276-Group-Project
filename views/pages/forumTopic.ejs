@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/stylesheets/forum-addpost.css">
   <link rel="stylesheet" href="/stylesheets/nav-bar.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- <script src="signup.js" charset="utf-8"></script> -->
   <script src="/js/forum-addpost.js" charset="utf-8"></script>
 </head>
 <body>
@@ -24,8 +25,10 @@
   <div class="forumTopic">
       <a href="/forums"> Home </a>
       <span>
-        <h3><%= topic.toUpperCase() %></h3>
-        <button type="button" class= "addbutton" id="addButton" name="addButton">New Post</button>
+        <h3 class="topicTitle"><%= topic.toUpperCase() %></h3>
+        <div align="right">
+          <button type="button" class= "addbutton" id="addButton" name="addButton">New Post</button>
+        </div>
       </span>
       <p>Discuss everything <%= topic %> related here!</p>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
