@@ -395,7 +395,24 @@ express()
       res.render('pages/addMealPost', {date:date, msg: 'Error: Please ensure meal is selected and all fields are filled.'});
     }
   });
+})
 
+.post('/delete', function (req, res){
+  var keyUser = req.body.keyUser;
+  var keyMeal = req.body.keyMeal;
+  var keyDate = req.body.keyDate;
+  var keyFood = req.body.keyFood;
+
+  console.log("keys to delete")
+  console.log({keyUser, keyMeal, keyDate, keyFood});
+
+  pool.query("DELETE FROM meals_table WHERE username ='" + keyUser + "' AND meal = '" + keyMeal + "' AND date = '"+ keyDate + "' AND foodname = '" + keyFood + "'", (err, result) =>{
+    if(err){throw err;}
+    if(!err){
+      console.log("deleted row with keys")
+      console.log({keyUser, keyMeal, keyDate, keyFood});
+    }
+  })
 })
 
 .get('/addMeal', (req, res) =>{
@@ -404,18 +421,21 @@ express()
 
 //display breakfast table for today
 .get('/breakfast', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'breakfast' AND date ='"
   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
-    res.render('pages/tableBreakfast' ,{ data: result, date: date});
+    let meal = result.rows[0].meal
+    // console.log(result)
+    res.render('pages/tableBreakfast' ,{data: result, date: date});
   })
 })
 
 //display breakfast past table
 .post('/breakfastDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'breakfast' AND date ='"
   + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    // console.log(result)
     if(err){ throw err;}
     res.render('pages/tableBreakfast' ,{ data: result, date: mealDate});
   })
@@ -423,7 +443,7 @@ express()
 
 //display lunch table for today
 .get('/lunch', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'lunch' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableLunch' ,{ data: result, date: date});
@@ -433,7 +453,7 @@ express()
 //display past lunch table
 .post('/lunchDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'lunch' AND date ='"
   + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableLunch' ,{ data: result, date: mealDate});
@@ -442,7 +462,7 @@ express()
 
 //display dinner table today
 .get('/dinner', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'dinner' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableDinner' ,{ data: result, date: date});
@@ -452,7 +472,7 @@ express()
 //display past dinner table
 .post('/dinnerDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'dinner' AND date ='"
   + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableDinner' ,{ data: result, date: mealDate});
@@ -461,7 +481,7 @@ express()
 
 //display snack table today
 .get('/snacks', (req, res) =>{
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'snack' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableSnacks' ,{ data: result, date: date});
@@ -471,7 +491,7 @@ express()
 //display past snack table
 .post('/snacksDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
-  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
+  pool.query("SELECT * FROM meals_table WHERE meal = 'snack' AND date ='"
   + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableSnacks' ,{ data: result, date: mealDate});

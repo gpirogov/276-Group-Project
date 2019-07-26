@@ -16,7 +16,7 @@ a{
   padding-bottom: 0.5%;
   background-color: #363231;
 	width: 25%;
-  margin-top: 5%;
+  margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -64,21 +64,46 @@ a{
 }
 
 
-/*meal table views */
-
-#linkRow{
-  border-bottom: 3px solid white;
-  line-height: 300%;
+#formdsdsdiv{
+  margin: 10%;
+  background: grey;
+  text-align: center;
+  align-items: center;
+  height: 80%;
+  padding: 1%;
+  top: 50%
 }
 
-.tableLink{
-  text-decoration: none;
+
+
+/*dietMenu */
+
+#dietMenu{
+  color: #dedcdc;
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
+  font-size: 18px;
+  color: white;
+  background: #22201f;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  margin-top: 2%%;
+  margin-bottom: 5%;
+}
+#dietMenu a{
+  padding: 14px 16px;
+  margin: 0%;
   width: 125px;
   height: 55px;
+  text-decoration: none;
 }
 
-#linkRow a:hover{
-  background-color: #ddd;
+#dietMenu a:hover{
+  background-color: #605755;
   color: black;
 }
 
@@ -112,6 +137,9 @@ a{
   color: white;
   background: #373b40;
   padding: 25px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #backButton{

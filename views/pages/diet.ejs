@@ -34,25 +34,29 @@
   </div>
 
 
-  <div class="formdiv">
 
-    <form name = "dietPastForm" action ="dietPast" method="post">
-      <!-- date picker -->
-      <span>Date: <input size = '10' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
-      <button type = "submit" id="dateMealSearchButton" >Go </button>
-    </form>
+  <div class="formdiv">
 
     <div id = "dietMain">
 
 
-      <table id = "tableMeal" class = "meals">
-        <tr id = "linkRow">
-            <th><a href = './breakfast' class = "tableLink">Breakfast</a></th>
-            <th><a href = './lunch' class = "tableLink">Lunch</a></th>
-            <th><a href = './dinner' class = "tableLink">Dinner</a></th>
-            <th><a href = './snacks' class = "tableLink">Snacks</a></th>
-        </tr>
-      </table>
+      <form name = "dietPastForm" action ="dietPast" method="post">
+        <!-- date picker -->
+        <span>Date: <input size = '11' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
+        <button type = "submit" id="dateMealSearchButton" >Go </button>
+      </form>
+
+      <h1> Diet </h1>
+      
+      <div id="dietMenu">
+        <a href = './breakfast'>Breakfast</a>
+        <a href = './lunch'>Lunch</a>
+        <a href = './dinner'>Dinner</a>
+        <a href = './snacks'>Snacks</a>
+      </div>
+
+
+
 
       <div id = "calorieCounter">
         <p>Total calories consumed today:  </p>

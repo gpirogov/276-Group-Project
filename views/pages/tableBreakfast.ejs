@@ -47,6 +47,7 @@
     </form>
 
 
+
     <table id="dynamicMealTable" class="meals">
           <tr>
               <th>Food</th>
@@ -57,9 +58,9 @@
           </tr>
 
             <% for(var i = 0; i < data.rows.length; i++) { %>
-            <tr>
-              <td> <%= data.rows[i].foodname %> </td>
-              <td> <%= data.rows[i].cals %> </td>
+            <tr class = "<%= data.rows[i].username %>">
+              <td class = "<%= data.rows[i].meal %>"> <%= data.rows[i].foodname %> </td>
+              <td class = "<%= data.rows[i].date %>"> <%= data.rows[i].cals %> </td>
               <td> <%= data.rows[i].fat %> </td>
               <td> <%= data.rows[i].carbs %> </td>
               <td> <%= data.rows[i].protien %> </td>
