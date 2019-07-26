@@ -6,16 +6,16 @@ $(document).ready(function() {
 
 
   // set Date
-  today = new Date();
-  let day = today.getDate()
-  let monthNum = today.getMonth()//Jan = 0, Dec = 11
-  let year = today.getFullYear()
-
-  //changing monthNum to monthNames
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let month = monthNames[monthNum]
-
-  $('#date').html(month + " " + day.toString() + " " + year.toString())
+  // today = new Date();
+  // let day = today.getDate()
+  // let monthNum = today.getMonth()//Jan = 0, Dec = 11
+  // let year = today.getFullYear()
+  //
+  // //changing monthNum to monthNames
+  // const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  // let month = monthNames[monthNum]
+  //
+  // $('#date').html(month + " " + day.toString() + " " + year.toString())
   // document.getElementById("date").innerHTML = DATE
 
   // //toggle add meal page

@@ -9,6 +9,16 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"  ></script>
   <script src="js/diet.js"></script>
   <script src="js/mealCalorieCalc.js"></script>
+
+  <!-- datepicker from  https://jqueryui.com/datepicker/-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 </head>
 <body>
   <div class="topnav">
@@ -27,7 +37,7 @@
     <a id = "backLink" href="/diet"> Back </a>
     <h1>Lunch</h1>
     <h3 id= "totalTableCals">totalTableCals</h3>
-    
+
     <form name = "lunchDateMealForm" action ="lunchDateMealSearch" method="post">
       <!-- date picker -->
       <span>Date: <input size = '10' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>

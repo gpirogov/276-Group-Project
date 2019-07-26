@@ -345,6 +345,7 @@ express()
 //   })
 // })
 
+//display today's total calories
 .get('/diet', function (req,res){
   let dietQuery = ("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'")
   pool.query(dietQuery, (err,result) => {
@@ -352,9 +353,19 @@ express()
     if(err){ throw err;}
     food_total_cal = result.rows[0].totalcals;
     if(food_total_cal == null){food_total_cal = 0}
-    res.render('pages/diet', {food_total_cal: food_total_cal})
+    res.render('pages/diet', {food_total_cal: food_total_cal, date:date})
   })
+})
 
+.post('/dietPast', (req, res) =>{
+  let mealDate = req.body.dateMealSearch;
+  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    // console.log(result)
+    if(err){ throw err;}
+    food_total_cal = result.rows[0].totalcals;
+    if(food_total_cal == null){food_total_cal = 0}
+    res.render('pages/diet', {food_total_cal: food_total_cal, date:mealDate})
+  })
 })
 
 .post('/add', function (req, res){
@@ -391,6 +402,7 @@ express()
   res.render('pages/addMeal', {date:date})
 })
 
+//display breakfast table for today
 .get('/breakfast', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
@@ -399,6 +411,7 @@ express()
   })
 })
 
+//display breakfast past table
 .post('/breakfastDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
@@ -408,6 +421,7 @@ express()
   })
 })
 
+//display lunch table for today
 .get('/lunch', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
@@ -416,6 +430,7 @@ express()
   })
 })
 
+//display past lunch table
 .post('/lunchDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
@@ -425,6 +440,7 @@ express()
   })
 })
 
+//display dinner table today
 .get('/dinner', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
@@ -433,6 +449,7 @@ express()
   })
 })
 
+//display past dinner table
 .post('/dinnerDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
@@ -442,6 +459,7 @@ express()
   })
 })
 
+//display snack table today
 .get('/snacks', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
@@ -450,6 +468,7 @@ express()
   })
 })
 
+//display past snack table
 .post('/snacksDateMealSearch', (req, res) =>{
   let mealDate = req.body.dateMealSearch;
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
