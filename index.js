@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-   ssl : true
+  connectionString: process.env.DATABASE_URL//,
+   //ssl : true
 });
 
 var globalName;
@@ -76,7 +76,7 @@ express()
     {
       pool.query("SELECT * from user_info", (err ,correct) =>{
         res.render('pages/adminPage', {
-          db: correct.rows
+          db:correct.rows
         })
       })
     }
@@ -501,6 +501,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
  * ============================= */
 
 
+ /* =============================
+          homepage Related
+  * ============================= */
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
 
@@ -529,11 +532,17 @@ req.body = JSON.parse(JSON.stringify(req.body));
    }
 })
 
-.get('/admin_profile',(req,res)=>{
- res.render('pages/admin_profile')
-})
+/* =============================
+ * =============================
+ * ============================= */
 
-.get('/admin',(req,res)=>{
+
+
+/* =============================
+            admin Related
+ * ============================= */
+
+.get('/adminPage',(req,res)=>{
   pool.query("SELECT * from user_info", (err,ans)=>{
     res.render('pages/adminPage', {
       db : ans.rows,
@@ -541,6 +550,13 @@ req.body = JSON.parse(JSON.stringify(req.body));
   })
 })
 
+.post('/admin',(req,res)=>{
+  pool.query("SELECT * from user_info", (err,ans)=>{
+    res.render('pages/adminPage', {
+      db : ans.rows,
+    })
+  })
+})
 
 .post('/seeUser', (req,res)=>
 {
@@ -565,7 +581,7 @@ req.body = JSON.parse(JSON.stringify(req.body));
   })
 })
 
-.get('/admin-profile', (req,res)=>
+.post('/admin-profile', (req,res)=>
 {
   pool.query("SELECT * FROM user_info WHERE username = '" + searchName + "'", (err,ans)=>{
     // console.log(ans.rows[0]);
@@ -587,9 +603,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
   })
 })
 
-
-.get('/admin-workout',(req,res)=>{
-  pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
+.post('/admin-workout',(req,res)=>{
+  pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "'", (err,ans)=>{
+    console.log(ans.rows);
     res.render('pages/admin_workout', {
       db : ans.rows,
       name:searchName
@@ -597,7 +613,25 @@ req.body = JSON.parse(JSON.stringify(req.body));
   })
 })
 
-.get('/admin-diet',(req,res)=>{
+.post('/admin-graph',(req,res)=>{
+  var routine = req.body.routine;
+  var exercise = req.body.exercise;
+  console.log(req.body);
+  console.log(exercise);
+  const info = "SELECT weight FROM workout_table where username = $1 and routine = $2 and exercise = $3";
+  const value = [searchName,routine,exercise];
+  pool.query(info,value,(err,ans)=>{
+    console.log(ans.rows);
+    res.render('pages/admin_workoutgraph', {
+        name:searchName,
+        routine:routine,
+        exercise:exercise,
+        test:ans.rows
+    })
+  })
+})
+
+.post('/admin-diet',(req,res)=>{
   //pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
     res.render('pages/admin_diet', {
     //  db : ans.rows,
@@ -607,7 +641,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
 })
 
 
-
+/* =============================
+ * =============================
+ * ============================= */
 
 
 
