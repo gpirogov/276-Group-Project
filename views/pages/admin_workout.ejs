@@ -28,7 +28,7 @@
                       <tr>
                         <td class="show">
                           <input type="hidden" name ="routine" id="routine" value="condition">
-                          <input type="hidden" name="exercise" id="exercise" value=<%=post.exercise%>>
+                          <input type="hidden" name="exercise" id="exercise" value= "<%-post.exercise%>" >
                           <button type="submit" class="exercise-link"><%=post.exercise%></button>
                         </td>
                       </tr>
@@ -48,7 +48,7 @@
                         <td class="show">
                           <% var ex_name = post.exercise; %>
                           <input type="hidden" name ="routine" id="routine" value="physique">
-                          <input type="hidden" name="exercise" id="exercise" value=<%-ex_name%>>
+                          <input type="hidden" name="exercise" id="exercise" value=<%=post.exercise%>>
                           <button type="submit" class="exercise-link"><%=post.exercise%></button>
                         </td>
                       </tr>
