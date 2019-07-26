@@ -30,12 +30,12 @@
   padding: 10px;
 }
 
-label {
+.addPost-label {
   margin-top: 5px;
     margin-left: 7px;
 }
 
-input, .addPostContent {
+.addPostInput {
   width: 90%;
   border: 1px solid #ccc;
   background-color: #ededed;
@@ -47,7 +47,8 @@ input, .addPostContent {
   margin-right: 7px;
 }
 
-.addPostContent {
+/* .addPostContent { */
+#addPostInput-content {
     height: 400px;
 }
 
@@ -55,6 +56,15 @@ input, .addPostContent {
   height: 40px;
   font-weight: bold;
   font-size: 15px;
+
+  width: 90%;
+  border: 1px solid #ccc;
+  background-color: #ededed;
+  border-radius: 2px;
+  padding: 5px;
+  margin-bottom: 15px;
+  margin-left: 7px;
+  margin-right: 7px;
 
 }
 
