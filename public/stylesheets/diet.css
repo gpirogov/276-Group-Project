@@ -11,22 +11,30 @@ a{
 }
 #calorieCounter {
   justify-content: center;
-  color: black;
+  color: white;
   padding-top:0.5%;
   padding-bottom: 0.5%;
-  background-color: #FF6010;
+  background-color: #363231;
 	width: 25%;
   margin-top: 5%;
-  margin-left: 37.5%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #addMealButton{
-  /* text-align: center; */
-  width: 25%;
-  /* margin-left: 12.5%; */
   margin-top: 5%;
-  padding-top:0.5%;
-  padding-bottom: 0.5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 25%;
+  height: 25px;
+  background: #FF6010;
+  padding: 20px;
+  text-align: center;
+  border-radius: 50px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .meals{
@@ -43,18 +51,18 @@ a{
 #meals th, td{
   border: 1px solid white;
   padding: 10px;
-  width: 10%;
+  width: auto;
   text-align: left;
 }
 
 #tableAddMeal{
   margin-top: 1%;
   border-collapse: collapse;
-  width: 50%;
   margin-left: auto;
   margin-right: auto;
   /* margin-left: 17.5%; */
 }
+
 
 /*meal table views */
 
@@ -97,6 +105,13 @@ a{
   margin-top: 1%;
   margin-bottom: 1%;
   width: 50%;
+}
+
+#displayMsg{
+  font-size: 24px;
+  color: white;
+  background: #373b40;
+  padding: 25px;
 }
 
 #backButton{

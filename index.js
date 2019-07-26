@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-   ssl : true
+  ssl : true
 });
 
 var globalName;
@@ -19,7 +19,13 @@ today = new Date();
 let day = today.getDate()
 let month = today.getMonth()//Jan = 0, Dec = 11
 let year = today.getFullYear()
-var date = (year + "-" + month + "-" + day)
+
+// adjusting dates
+month = month + 1;
+if(month.toString().length<2){
+  month = "0" + month
+}
+var date = (month + "-" + day + "-" + year)
 
 var questionnaireAnswers = "";
 
@@ -343,13 +349,14 @@ express()
   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
     if(err){ throw err;}
     food_total_cal = result.rows[0].totalcals;
+    if(food_total_cal == null){food_total_cal = 0}
     cal_goal = 2000;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg:""})
+    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal})
   })
 
 })
 
-.post('/a', function (req, res){
+.post('/add', function (req, res){
   var foodName = req.body.mealFood;
   var cals = req.body.mealCalories;
   var fat = req.body.mealFat;
@@ -362,26 +369,24 @@ express()
   if(carbs == ""){carbs = 0};
   if(protien == ""){protien = 0};
 
-  var addSuccessFlag = false;
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
   pool.query(mealInfo, mealVal, (err, result)=>{
-    if(err){console.log("add not sucessful"); addSuccessFlag = true}
-    else(console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName))
+    if(!err){
+      console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName);
+      res.render('pages/addMealPost', {date:date, msg: "Sucessfully added meal!"});
+    }
+    if(err){
+      res.render('pages/addMealPost', {date:date, msg: 'Error: Please ensure meal is selected and all fields are filled.'});
+    }
   });
 
-  if(addSuccessFlag == true){
-    addSuccessFlag = 0;
-    res.redirect('diet');
-  }
-  if(addSuccessFlag == false){
-    addSuccessFlag = 0;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg: 'add not successful'});
-  }
+})
 
-
+.get('/addMeal', (req, res) =>{
+  res.render('pages/addMeal', {date:date})
 })
 
 .get('/breakfast', (req, res) =>{
@@ -518,7 +523,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
       pool.query(info,value,(err,ans)=>{
         // console.log(ans.rows);
         res.render('pages/homepagegraph', {
-            test:ans.rows
+            test:ans.rows,
+            routine:routine,
+            exercise:exercise
         })
       })
     }else{
@@ -527,7 +534,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
       pool.query(info,value,(err,ans)=>{
         // console.log(ans.rows);
         res.render('pages/homepagegraph', {
-            test:ans.rows
+            test:ans.rows,
+            routine:routine,
+            exercise:exercise
         })
       })
    }
@@ -617,12 +626,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
 .post('/admin-graph',(req,res)=>{
   var routine = req.body.routine;
   var exercise = req.body.exercise;
-  console.log(req.body);
-  console.log(exercise);
   const info = "SELECT weight FROM workout_table where username = $1 and routine = $2 and exercise = $3";
   const value = [searchName,routine,exercise];
   pool.query(info,value,(err,ans)=>{
-    console.log(ans.rows);
     res.render('pages/admin_workoutgraph', {
         name:searchName,
         routine:routine,
@@ -633,12 +639,15 @@ req.body = JSON.parse(JSON.stringify(req.body));
 })
 
 .post('/admin-diet',(req,res)=>{
-  //pool.query("select distinct exercise, routine from  workout_table where username = '" + searchName + "' UNION select distinct exercise, routine from  workout_table_max where username= '" + searchName + "'", (err,ans)=>{
-    res.render('pages/admin_diet', {
-    //  db : ans.rows,
-      name:searchName
+  pool.query("SELECT distinct date FROM meals_table WHERE username = '" + searchName + "'", (err_date,ans_date)=>{
+    pool.query("SELECT * FROM meals_table WHERE username = '" + searchName + "'", (err,ans) =>{
+      res.render('pages/admin_diet', {
+          db_date : ans_date.rows,
+          db : ans.rows,
+          name:searchName
+      })
     })
-  //})
+  })
 })
 
 
