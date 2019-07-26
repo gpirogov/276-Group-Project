@@ -502,6 +502,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
  * ============================= */
 
 
+ /* =============================
+          homepage Related
+  * ============================= */
 
 .get('/homepage',(req,res)=> res.render('pages/homepage'))
 
@@ -529,6 +532,16 @@ req.body = JSON.parse(JSON.stringify(req.body));
       })
    }
 })
+
+/* =============================
+ * =============================
+ * ============================= */
+
+
+
+/* =============================
+            admin Related
+ * ============================= */
 
 .get('/adminPage',(req,res)=>{
   pool.query("SELECT * from user_info", (err,ans)=>{
@@ -629,8 +642,9 @@ req.body = JSON.parse(JSON.stringify(req.body));
 })
 
 
-
-
+/* =============================
+ * =============================
+ * ============================= */
 
 
 
