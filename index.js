@@ -617,11 +617,11 @@ req.body = JSON.parse(JSON.stringify(req.body));
 .post('/admin-graph',(req,res)=>{
   var routine = req.body.routine;
   var exercise = req.body.exercise;
+  console.log(req.body);
+  console.log(exercise);
   const info = "SELECT weight FROM workout_table where username = $1 and routine = $2 and exercise = $3";
   const value = [searchName,routine,exercise];
   pool.query(info,value,(err,ans)=>{
-    console.log(routine);
-    console.log(exercise);
     console.log(ans.rows);
     res.render('pages/admin_workoutgraph', {
         name:searchName,
