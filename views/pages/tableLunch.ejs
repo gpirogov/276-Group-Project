@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./stylesheets/nav-bar.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"  ></script>
   <script src="js/diet.js"></script>
+  <script src="js/mealCalorieCalc.js"></script>
 </head>
 <body>
   <div class="topnav">
@@ -26,8 +27,12 @@
     <a id = "backLink" href="/diet"> Back </a>
     <h1>Lunch</h1>
     <h3 id= "totalTableCals">totalTableCals</h3>
-
-    <p> <%= date %> </p>
+    
+    <form name = "lunchDateMealForm" action ="lunchDateMealSearch" method="post">
+      <!-- date picker -->
+      <span>Date: <input size = '10' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
+      <button type = "submit" id="dateMealSearchButton" >Go </button>
+    </form>
 
     <table id="dynamicMealTable" class="meals">
           <tr>

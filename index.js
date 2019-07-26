@@ -4,8 +4,8 @@ const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl : true
+  connectionString: process.env.DATABASE_URL//,
+  // ssl : true
 });
 
 var globalName;
@@ -399,11 +399,29 @@ express()
   })
 })
 
+.post('/breakfastDateMealSearch', (req, res) =>{
+  let mealDate = req.body.dateMealSearch;
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'breakfast' AND date ='"
+  + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableBreakfast' ,{ data: result, date: mealDate});
+  })
+})
+
 .get('/lunch', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableLunch' ,{ data: result, date: date});
+  })
+})
+
+.post('/lunchDateMealSearch', (req, res) =>{
+  let mealDate = req.body.dateMealSearch;
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'lunch' AND date ='"
+  + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableLunch' ,{ data: result, date: mealDate});
   })
 })
 
@@ -415,11 +433,29 @@ express()
   })
 })
 
+.post('/dinnerDateMealSearch', (req, res) =>{
+  let mealDate = req.body.dateMealSearch;
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'dinner' AND date ='"
+  + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableDinner' ,{ data: result, date: mealDate});
+  })
+})
+
 .get('/snacks', (req, res) =>{
   pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
    + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
     res.render('pages/tableSnacks' ,{ data: result, date: date});
+  })
+})
+
+.post('/snacksDateMealSearch', (req, res) =>{
+  let mealDate = req.body.dateMealSearch;
+  pool.query("SELECT foodname, cals, fat, carbs, protien FROM meals_table WHERE meal = 'snack' AND date ='"
+  + mealDate + "' AND username = '" +  globalName + "'" , (err,result) => {
+    if(err){ throw err;}
+    res.render('pages/tableSnacks' ,{ data: result, date: mealDate});
   })
 })
 

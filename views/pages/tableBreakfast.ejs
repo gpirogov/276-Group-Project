@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./stylesheets/nav-bar.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" ></script>
   <script src="js/diet.js"></script>
+  <script src="js/mealCalorieCalc.js"></script>
 
   <!-- datepicker from  https://jqueryui.com/datepicker/-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -39,10 +40,11 @@
     <h1>Breakfast</h1>
     <h3 id= "totalTableCals">totalTableCals</h3>
 
-    <p> <%= date %> </p>
-
-    <!-- date picker -->
-    <p>Date: <input type="text" id="datepicker" value = <%= date %> ></p>
+    <form name = "breakfastDateMealForm" action ="breakfastDateMealSearch" method="post">
+      <!-- date picker -->
+      <span>Date: <input size = '10' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
+      <button type = "submit" id="dateMealSearchButton" >Go </button>
+    </form>
 
 
     <table id="dynamicMealTable" class="meals">
