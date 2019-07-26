@@ -343,8 +343,9 @@ express()
   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
     if(err){ throw err;}
     food_total_cal = result.rows[0].totalcals;
+    if(food_total_cal == null){food_total_cal = 0}
     cal_goal = 2000;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg:""})
+    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal})
   })
 
 })
@@ -362,26 +363,24 @@ express()
   if(carbs == ""){carbs = 0};
   if(protien == ""){protien = 0};
 
-  var addSuccessFlag = false;
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
   const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
 
   pool.query(mealInfo, mealVal, (err, result)=>{
-    if(err){console.log("add not sucessful"); addSuccessFlag = true}
-    else(console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName))
+    if(!err){
+      console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName);
+      res.render('pages/addMeal', {msg: "Sucessfully added meal!"});
+    }
+    if(err){
+      res.render('pages/addMeal', {msg: 'Error: Add meal not successful. Please check all fields are filled.'});
+    }
   });
 
-  if(addSuccessFlag == true){
-    addSuccessFlag = 0;
-    res.redirect('diet');
-  }
-  if(addSuccessFlag == false){
-    addSuccessFlag = 0;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal, msg: 'add not successful'});
-  }
+})
 
-
+.get('/addMeal', (req, res) =>{
+  res.render('pages/addMeal', {msg: ""})
 })
 
 .get('/breakfast', (req, res) =>{

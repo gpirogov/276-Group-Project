@@ -18,16 +18,16 @@ $(document).ready(function() {
   $('#date').html(month + " " + day.toString() + " " + year.toString())
   // document.getElementById("date").innerHTML = DATE
 
-  //toggle add meal page
-  $('#addMealButton').on("click",function(){
-    $('#dietMain').hide()
-    $('#addMeal').show()
-  })
-  //return to main diet page
-  $('#backButton').on("click",function(){
-    $('#dietMain').show()
-    $('#addMeal').hide()
-  })
+  // //toggle add meal page
+  // $('#addMealButton').on("click",function(){
+  //   $('#dietMain').hide()
+  //   $('#addMeal').show()
+  // })
+  // //return to main diet page
+  // $('#backButton').on("click",function(){
+  //   $('#dietMain').show()
+  //   $('#addMeal').hide()
+  // })
 
 //api search for food
   $('#apiSearchButton').on("click",function(){

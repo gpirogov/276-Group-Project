@@ -28,33 +28,11 @@
 
     <div id = "date"> Today's Date</div>
 
-    <div id = "dietMain">
-
-
-      <table id = "tableMeal" class = "meals">
-        <tr id = "linkRow">
-            <th><a href = './breakfast' class = "tableLink">Breakfast</a></th>
-            <th><a href = './lunch' class = "tableLink">Lunch</a></th>
-            <th><a href = './dinner' class = "tableLink">Dinner</a></th>
-            <th><a href = './snacks' class = "tableLink">Snacks</a></th>
-        </tr>
-      </table>
-
-      <div id = "calorieCounter">
-        <p>Daily calorie goal: <%= cal_goal %> </p>
-        <p>Total calories consumed: <%= food_total_cal %> </p>
-      </div>
-
-
-      <a id = "addMealButton" href = "/addMeal"> Add Meal </a>
-
-
-    </div>
-
-    <!-- <div id="addMeal" hidden>
-      <a id = "backButton"> Back </a>
+    <div id="addMeal">
+      <a id = "backButton" href="/diet"> Back </a>
 
       <div class = "search">
+        <p id = "displayMsg"> <%= msg %> </p>
         <input type="text" id="searchBar" placeholder="Search for foods">
         <button id = "apiSearchButton"> Search </button>
       </div>
@@ -89,9 +67,29 @@
           </tr>
         </table>
         <button type = "submit" id="addButton" >Add</button>
-      </form> -->
+      </form>
+      <!-- <table id = "tableAddMeal" class = "meals">
+        <tr>
+            <th>Food</th>
+            <th>Calories</th>
+            <th>Fat (g)</th>
+            <th>Carbs (g)</th>
+            <th>Protien (g)</th>
+        </tr>
+
+        <tr class =  "mealRow">
+          <td id = "mealFood"></td>
+          <td id = "mealCalories"></td>
+          <td id = "mealFat"></td>
+          <td id = "mealCarbs"></td>
+          <td id = "mealProtien"></td>
+        </tr>
+      </table> -->
+
 
     </div>
+
+      <!-- <button id = "apiTestButton"> API TEST BUTTON </button> -->
   </div>
 </body>
 </html>
