@@ -51,18 +51,18 @@ a{
 #meals th, td{
   border: 1px solid white;
   padding: 10px;
-  width: 10%;
+  width: auto;
   text-align: left;
 }
 
 #tableAddMeal{
   margin-top: 1%;
   border-collapse: collapse;
-  width: 50%;
   margin-left: auto;
   margin-right: auto;
   /* margin-left: 17.5%; */
 }
+
 
 /*meal table views */
 
@@ -110,7 +110,6 @@ a{
 #displayMsg{
   font-size: 24px;
   color: white;
-  font-style: italic;
   background: #373b40;
   padding: 25px;
 }

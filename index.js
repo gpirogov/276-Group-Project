@@ -19,7 +19,13 @@ today = new Date();
 let day = today.getDate()
 let month = today.getMonth()//Jan = 0, Dec = 11
 let year = today.getFullYear()
-var date = (year + "-" + month + "-" + day)
+
+// adjusting dates
+month = month + 1;
+if(month.toString().length<2){
+  month = "0" + month
+}
+var date = (month + "-" + day + "-" + year)
 
 var questionnaireAnswers = "";
 
@@ -350,7 +356,7 @@ express()
 
 })
 
-.post('/a', function (req, res){
+.post('/add', function (req, res){
   var foodName = req.body.mealFood;
   var cals = req.body.mealCalories;
   var fat = req.body.mealFat;
@@ -370,17 +376,17 @@ express()
   pool.query(mealInfo, mealVal, (err, result)=>{
     if(!err){
       console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName);
-      res.render('pages/addMeal', {msg: "Sucessfully added meal!"});
+      res.render('pages/addMealPost', {date:date, msg: "Sucessfully added meal!"});
     }
     if(err){
-      res.render('pages/addMeal', {msg: 'Error: Add meal not successful. Please check all fields are filled.'});
+      res.render('pages/addMealPost', {date:date, msg: 'Error: Please ensure meal is selected and all fields are filled.'});
     }
   });
 
 })
 
 .get('/addMeal', (req, res) =>{
-  res.render('pages/addMeal', {msg: ""})
+  res.render('pages/addMeal', {date:date})
 })
 
 .get('/breakfast', (req, res) =>{

@@ -76,21 +76,6 @@ $(document).ready(function() {
       })
     })
 
-
-  // $('#apiTestButton').on("click",function(){
-  //   $.ajax({
-  //     type:"GET",
-  //     url:"https://api.edamam.com/api/food-database/parser",
-  //     data:{
-  //       ingr: "ham sandwich",
-  //       app_id: appId,
-  //       app_key: appKey
-  //     },
-  //     success: function(res){
-  //       console.log(res);
-  //     }
-  //
-  //   })
-  // })
+    //delete db rows
 
 })
