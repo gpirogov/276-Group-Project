@@ -62,3 +62,7 @@ button{
     font-size: inherit;
     width: auto;
 }
+
+.date{
+  float: right;
+}

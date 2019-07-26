@@ -5,6 +5,12 @@
       <title>Burning +</title>
       <link rel="stylesheet" href="./stylesheets/adminpage.css">
       <link rel="stylesheet" href="./stylesheets/nav-bar.css">
+      <script>
+      function change_data(value){
+          
+        }
+
+      </script>
     </head>
     <body>
       <div class="topnav">
@@ -16,22 +22,123 @@
       <div class="centerdiv">
         <div>
           <h1><%=name%> Diet</h1>
-
-          <div class="admindiv">
-
-            
-
-
-
-
-
-
-
-            <form action="/admin-profile" method="post">
-              <button type="submit" name="button">Back</button>
-            </form>
-
+          <div class="date">
+            <select  name ="date" id="date" onchange="change_data(value);">
+              <% db_date.forEach((post) => {%>
+                <option value="<%-post.date%>"><%-post.date%></option>
+              <% }) %>
+            </select>
           </div>
+
+          <!--  need loop for different date  -->
+
+              <div class="admindiv">
+
+                <div class="breakfast">
+                  <div><h3><u>Breakfast</u></h3></div>
+                  <table class="show">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "breakfast") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                      <% } %>
+                    <% }) %>
+                  </table>
+                </div>
+
+                <div class="lunch">
+                  <div><h3><u>Lunch</u></h3></div>
+                  <table class="show">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "lunch") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                      <% } %>
+                    <% }) %>
+                  </table>
+                </div>
+
+                <div class="dinner">
+                  <div><h3><u>Dinner</u></h3></div>
+                  <table class="show">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "dinner") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                      <% } %>
+                    <% }) %>
+                  </table>
+                </div>
+
+                <div class="snacks">
+                  <div><h3><u>Snacks</u></h3></div>
+                  <table class="show">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "snack") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                      <% } %>
+                    <% }) %>
+                  </table>
+                </div>
+
+              </div>
+
+        <!-- loop for date -->
+
+          <form action="/admin-profile" method="post">
+            <button type="submit" name="button">Back</button>
+          </form>
+
+        </div>
       </div>
     </body>
   </html>
