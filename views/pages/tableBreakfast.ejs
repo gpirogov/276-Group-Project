@@ -6,8 +6,19 @@
   <link rel="stylesheet" href="./stylesheets/starterpage.css">
   <link rel="stylesheet" href="./stylesheets/diet.css">
   <link rel="stylesheet" href="./stylesheets/nav-bar.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
-  <script src="js/caloriecalc.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" ></script>
+  <script src="js/diet.js" defer></script>
+
+  <!-- datepicker from  https://jqueryui.com/datepicker/-->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+
 </head>
 <body>
   <div class="topnav">
@@ -27,6 +38,10 @@
     <h1>Breakfast</h1>
     <p> <%= date %> </p>
 
+    <!-- date picker -->
+    <p>Date: <input type="text" id="datepicker" value = <%= date %> ></p>
+
+
     <table id="breakfastTable" class="meals">
           <tr>
               <th>Food</th>
@@ -43,9 +58,11 @@
               <td> <%= data.rows[i].fat %> </td>
               <td> <%= data.rows[i].carbs %> </td>
               <td> <%= data.rows[i].protien %> </td>
-              <tr>
+              <td class = "deleteCell"> <button>Remove</button> </td>
+            </tr>
             <% } %>
     </table>
   </div>
 </body>
+
 </html>

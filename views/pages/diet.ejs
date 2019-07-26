@@ -45,17 +45,16 @@
         <p>Total calories consumed: <%= food_total_cal %> </p>
       </div>
 
-      <div id = "addMealToggle">
-        <button id = "addMealButton"> Add Meal </button>
-      </div>
+
+      <a id = "addMealButton" href = "/addMeal"> Add Meal </a>
+
 
     </div>
 
-    <div id="addMeal" hidden>
+    <!-- <div id="addMeal" hidden>
       <a id = "backButton"> Back </a>
 
       <div class = "search">
-        <p> <%= msg %> </p>
         <input type="text" id="searchBar" placeholder="Search for foods">
         <button id = "apiSearchButton"> Search </button>
       </div>
@@ -90,29 +89,9 @@
           </tr>
         </table>
         <button type = "submit" id="addButton" >Add</button>
-      </form>
-      <!-- <table id = "tableAddMeal" class = "meals">
-        <tr>
-            <th>Food</th>
-            <th>Calories</th>
-            <th>Fat (g)</th>
-            <th>Carbs (g)</th>
-            <th>Protien (g)</th>
-        </tr>
-
-        <tr class =  "mealRow">
-          <td id = "mealFood"></td>
-          <td id = "mealCalories"></td>
-          <td id = "mealFat"></td>
-          <td id = "mealCarbs"></td>
-          <td id = "mealProtien"></td>
-        </tr>
-      </table> -->
-
+      </form> -->
 
     </div>
-
-      <!-- <button id = "apiTestButton"> API TEST BUTTON </button> -->
   </div>
 </body>
 </html>
