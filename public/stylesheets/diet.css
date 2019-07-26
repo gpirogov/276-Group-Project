@@ -56,7 +56,7 @@ a{
 }
 
 #tableAddMeal{
-  margin-top: 1%;
+  margin-top: 3%;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
@@ -122,12 +122,12 @@ a{
 
 /* Add Meal */
 #mealSelector {
-  margin-top: 1%;
+  margin-top: 3%;
   margin-bottom: 0.5%;
 }
 
 #addButton{
-  margin-top: 1%;
+  margin-top: 3%;
   margin-bottom: 1%;
   width: 50%;
 }
@@ -154,4 +154,9 @@ a{
   color: white;
   text-decoration: none;
   font-weight: bold;
+}
+
+/* dynamic meal tables */
+#dynamicMealTable{
+  margin-top: 3%
 }
