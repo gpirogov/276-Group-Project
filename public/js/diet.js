@@ -29,6 +29,17 @@ $(document).ready(function() {
   //   $('#addMeal').hide()
   // })
 
+  //sum calories for each meal
+  var table = document.getElementById("dynamicMealTable");
+  var totalTableCals = 0;
+  for(var i = 1; i < table.rows.length; i++)
+  {
+    totalTableCals = totalTableCals + parseInt(table.rows[i].cells[1].innerHTML);
+  }
+  document.getElementById("totalTableCals").innerHTML = "Calories: " + totalTableCals;
+
+
+
 //api search for food
   $('#apiSearchButton').on("click",function(){
     let selectedMeal = $('#mealSelector :selected').val()
@@ -77,5 +88,8 @@ $(document).ready(function() {
     })
 
     //delete db rows
+    $('.deleteCell').on("click",function(e){
+      console.log($(e.target).text());
+    });
 
 })

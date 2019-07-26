@@ -12,6 +12,11 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
 </head>
 <body>
   <div class="topnav">
@@ -65,7 +70,7 @@
           </tr>
 
           <tr class =  "mealRow">
-            <td><input size = '7' type="text" id="datepicker" value = <%= date %> ></td>
+            <td><input size = '7' type="text" name = "mealDate" id="datepicker" value = <%= date %> ></td>
             <td><input size = '10' id = "mealFoodCell" type ="text" name = "mealFood", placeholder = ""></td>
             <td><input style="width: 75px" id = "mealCaloriesCell" type ="number" step="0.01" name = "mealCalories", placeholder = ""></td>
             <td><input style="width: 75px" id = "mealFatCell" type ="number" step="0.01" name = "mealFat", placeholder = ""></td>

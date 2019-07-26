@@ -6,7 +6,8 @@
   <link rel="stylesheet" href="./stylesheets/starterpage.css">
   <link rel="stylesheet" href="./stylesheets/diet.css">
   <link rel="stylesheet" href="./stylesheets/nav-bar.css">
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" defer ></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"  ></script>
+  <script src="js/diet.js" ></script>
 </head>
 <body>
   <div class="topnav">
@@ -24,9 +25,11 @@
   <div class="formdiv">
     <a id = "backLink" href="/diet"> Back </a>
     <h1>Snacks</h1>
+    <h3 id= "totalTableCals">totalTableCals</h3>
+
     <p> <%= date %> </p>
 
-    <table id="snacksTable" class="meals">
+    <table id="dynamicMealTable" class="meals">
           <tr>
               <th>Food</th>
               <th>Calories</th>
@@ -36,13 +39,14 @@
           </tr>
 
             <% for(var i = 0; i < data.rows.length; i++) { %>
-              <tr>
+            <tr>
               <td> <%= data.rows[i].foodname %> </td>
               <td> <%= data.rows[i].cals %> </td>
               <td> <%= data.rows[i].fat %> </td>
               <td> <%= data.rows[i].carbs %> </td>
               <td> <%= data.rows[i].protien %> </td>
-              <tr>
+              <td class = "deleteCell"> <button>Remove</button> </td>
+            </tr>
             <% } %>
     </table>
   </div>

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./stylesheets/diet.css">
   <link rel="stylesheet" href="./stylesheets/nav-bar.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" ></script>
-  <script src="js/diet.js" defer></script>
+  <script src="js/diet.js"></script>
 
   <!-- datepicker from  https://jqueryui.com/datepicker/-->
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -35,14 +35,17 @@
 
   <div class="formdiv">
     <a id = "backLink" href="/diet"> Back </a>
+
     <h1>Breakfast</h1>
+    <h3 id= "totalTableCals">totalTableCals</h3>
+
     <p> <%= date %> </p>
 
     <!-- date picker -->
     <p>Date: <input type="text" id="datepicker" value = <%= date %> ></p>
 
 
-    <table id="breakfastTable" class="meals">
+    <table id="dynamicMealTable" class="meals">
           <tr>
               <th>Food</th>
               <th>Calories</th>
@@ -52,7 +55,7 @@
           </tr>
 
             <% for(var i = 0; i < data.rows.length; i++) { %>
-              <tr>
+            <tr>
               <td> <%= data.rows[i].foodname %> </td>
               <td> <%= data.rows[i].cals %> </td>
               <td> <%= data.rows[i].fat %> </td>

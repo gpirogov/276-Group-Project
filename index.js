@@ -25,7 +25,7 @@ month = month + 1;
 if(month.toString().length<2){
   month = "0" + month
 }
-var date = (month + "-" + day + "-" + year)
+var date = (month + "/" + day + "/" + year)
 
 var questionnaireAnswers = "";
 
@@ -346,12 +346,13 @@ express()
 // })
 
 .get('/diet', function (req,res){
-  pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
+  let dietQuery = ("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'")
+  pool.query(dietQuery, (err,result) => {
+    // console.log(result)
     if(err){ throw err;}
     food_total_cal = result.rows[0].totalcals;
     if(food_total_cal == null){food_total_cal = 0}
-    cal_goal = 2000;
-    res.render('pages/diet', {food_total_cal: food_total_cal, cal_goal: cal_goal})
+    res.render('pages/diet', {food_total_cal: food_total_cal})
   })
 
 })
@@ -363,6 +364,7 @@ express()
   var carbs = req.body.mealCarbs;
   var protien = req.body.mealProtien;
   var meal = req.body.meal;
+  var mealDate = req.body.mealDate
 
   if(cals == ""){cals = 0};
   if(fat == ""){fat = 0};
@@ -371,11 +373,11 @@ express()
 
 
   const mealInfo = "INSERT INTO meals_table(foodName, cals, fat, carbs, protien, meal, date, username) values ($1,$2,$3,$4,$5,$6,$7,$8)"
-  const mealVal = [foodName, cals, fat, carbs, protien, meal, date, globalName]
+  const mealVal = [foodName, cals, fat, carbs, protien, meal, mealDate, globalName]
 
   pool.query(mealInfo, mealVal, (err, result)=>{
     if(!err){
-      console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " +date + " " +globalName);
+      console.log("added to db: " + foodName + " " +cals + " " +fat +" " + carbs + " " +protien + " " +meal + " " + mealDate + " " +globalName);
       res.render('pages/addMealPost', {date:date, msg: "Sucessfully added meal!"});
     }
     if(err){
