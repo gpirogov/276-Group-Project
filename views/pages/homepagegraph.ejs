@@ -13,11 +13,11 @@
       <link rel="stylesheet" href="./stylesheets/question.css">
       <script>
       function change_exercise_option(value){
-          if(value == "condition"){
+          if(value == "conditioning"){
             document.getElementById("table_condition_exercise_option").style.display = "inline-block";
             document.getElementById("table_physique_exercise_option").style.display = "none";
             document.getElementById("table_strength_exercise_option").style.display = "none";
-            document.getElementById("routine_option").value ="condition";
+            document.getElementById("routine_option").value ="conditioning";
           }else if(value == "physique"){
             document.getElementById("table_condition_exercise_option").style.display = "none";
             document.getElementById("table_physique_exercise_option").style.display = "inline-block";
@@ -99,7 +99,7 @@
             <form class="exercise_graph_form" action="/gen_graph" method="post">
 
               <select  name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
-                <option value="condition">Conditioning</option>
+                <option value="conditioning">Conditioning</option>
                 <option value="physique">Physique</option>
                 <option value="strength">strength</option>
               </select>
@@ -132,7 +132,7 @@
 
               <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="physique" >Physique</option>
-                <option value="condition">Conditioning</option>
+                <option value="conditioning">Conditioning</option>
                 <option value="strength">strength</option>
               </select>
 
@@ -192,7 +192,7 @@
 
               <select name ="routine_option" id="routine_option" onchange="change_exercise_option(value);">
                 <option value="strength">strength</option>
-                <option value="condition">Conditioning</option>
+                <option value="conditioning">Conditioning</option>
                 <option value="physique" >Physique</option>
               </select>
 
