@@ -63,6 +63,7 @@ button{
     width: auto;
 }
 
-.date{
-  float: right;
+.showDiet{
+  border: 0px;
+  padding: 10px;
 }
