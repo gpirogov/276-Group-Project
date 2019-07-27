@@ -161,6 +161,9 @@ a{
 #mealSelector {
   margin-top: 5%;
   margin-bottom: 5%;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #mealSelector select{

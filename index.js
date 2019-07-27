@@ -335,13 +335,13 @@ express()
 //   date VARCHAR(30),
 //   username VARCHAR(30)
 // );
-
+//
 // .get('/diet', (req, res)=>{
 //   res.redirect('diet.html')
-  // pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
-  //   if(err){ throw err;}
-  //   localStorage.setItem("foodCal", result.rows[0].totalCals)
-  //   console.log("YEET")
+//   pool.query("SELECT SUM(cals) as totalCals FROM meals_table WHERE date ='" + date + "' AND username = '" +  globalName + "'", (err,result) => {
+//     if(err){ throw err;}
+//     localStorage.setItem("foodCal", result.rows[0].totalCals)
+//     console.log("YEET")
 //   })
 // })
 
