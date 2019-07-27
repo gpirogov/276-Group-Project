@@ -406,7 +406,8 @@ express()
   console.log("keys to delete")
   console.log({keyUser, keyMeal, keyDate, keyFood});
 
-  pool.query("DELETE FROM meals_table WHERE username ='" + keyUser + "' AND meal = '" + keyMeal + "' AND date = '"+ keyDate + "' AND foodname = '" + keyFood + "'", (err, result) =>{
+  pool.query("DELETE FROM meals_table WHERE ctid IN (SELECT ctid FROM meals_table WHERE username ='"
+  + keyUser + "' AND meal = '" + keyMeal + "' AND date = '"+ keyDate + "' AND foodname = '" + keyFood + "' LIMIT 1)", (err, result) =>{
     if(err){throw err;}
     if(!err){
       console.log("deleted row with keys")

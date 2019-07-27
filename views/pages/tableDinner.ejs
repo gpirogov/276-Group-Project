@@ -35,10 +35,10 @@
 
   <div class="formdiv">
     <a id = "backLink" href="/diet"> Back </a>
-    <h1>DINNER</h1>
+    <h1 id = "tableHeader">DINNER</h1>
     <h3 id= "totalTableCals">totalTableCals</h3>
 
-    <form name = "dinnerDateMealForm" action ="dinnerDateMealSearch" method="post">
+    <form id = "date" name = "dinnerDateMealForm" action ="dinnerDateMealSearch" method="post">
       <!-- date picker -->
       <span>Date: <input size = '10' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
       <button type = "submit" id="dateMealSearchButton" >Go </button>
@@ -60,7 +60,7 @@
                 <td> <%= data.rows[i].fat %> </td>
                 <td> <%= data.rows[i].carbs %> </td>
                 <td> <%= data.rows[i].protien %> </td>
-                <td class = "deleteCell"> <button>X</button> </td>
+                <td class = "deleteCell"> <button class = "deleteButton" style="display: none">Remove</button> </td>
               </tr>
             <% } %>
     </table>

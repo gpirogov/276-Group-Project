@@ -46,7 +46,7 @@
         <button type = "submit" id="dateMealSearchButton" >Go </button>
       </form>
 
-      <h1> DIET </h1>
+      <h1 id = "tableHeader"> DIET </h1>
 
       <div id="dietMenu">
         <a href = './breakfast'>Breakfast</a>
@@ -59,7 +59,7 @@
 
 
       <div id = "calorieCounter">
-        <p>Total calories consumed today:  </p>
+        <p id = "calorieCounterTitle">Total Calories for <%= date %> </p>
         <p id = "foodTotalCal"> <%= food_total_cal %> </p>
       </div>
 
