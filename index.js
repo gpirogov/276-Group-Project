@@ -424,7 +424,6 @@ express()
   pool.query("SELECT * FROM meals_table WHERE meal = 'breakfast' AND date ='"
   + date + "' AND username = '" +  globalName + "'" , (err,result) => {
     if(err){ throw err;}
-    let meal = result.rows[0].meal
     // console.log(result)
     res.render('pages/tableBreakfast' ,{data: result, date: date});
   })

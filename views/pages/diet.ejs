@@ -40,14 +40,14 @@
     <div id = "dietMain">
 
 
-      <form name = "dietPastForm" action ="dietPast" method="post">
+      <form name = "dietPastForm" action ="dietPast" method="post" id = "dietDateSelector">
         <!-- date picker -->
         <span>Date: <input size = '11' type="text" id="datepicker" name = "dateMealSearch" value = <%= date %> ></span>
         <button type = "submit" id="dateMealSearchButton" >Go </button>
       </form>
 
-      <h1> Diet </h1>
-      
+      <h1> DIET </h1>
+
       <div id="dietMenu">
         <a href = './breakfast'>Breakfast</a>
         <a href = './lunch'>Lunch</a>
@@ -60,7 +60,7 @@
 
       <div id = "calorieCounter">
         <p>Total calories consumed today:  </p>
-        <p> <%= food_total_cal %> </p>
+        <p id = "foodTotalCal"> <%= food_total_cal %> </p>
       </div>
 
 
