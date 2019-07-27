@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Burning +</title>
+      <link rel="stylesheet" href="./stylesheets/adminpage.css">
+      <link rel="stylesheet" href="./stylesheets/nav-bar.css">
+    </head>
+    <body>
+      <div class="topnav">
+        <a href="admin"><img src="images/logo-inverted.png"class="logo"></a>
+        <a href="logout" class="navbar">Signout</a>
+        <a href="adminPage" class="navbar">All User</a>
+      </div>
+
+      <div class="centerdiv">
+        <div>
+          <h1><%=name%> Diet</h1>
+          <h1>Date : <%=date%></h1>
+
+
+              <div class="admindiv">
+
+                <div class="breakfast">
+                  <div><h3><u>Breakfast</u></h3></div>
+                  <table class="showDiet">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% var totalCal =0; %>
+                    <% var totalFat =0; %>
+                    <% var totalCarb =0; %>
+                    <% var totalProtein =0; %>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "breakfast") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                        <% totalCal += post.cals; %>
+                        <% totalFat += post.fat; %>
+                        <% totalCarb += post.carbs; %>
+                        <% totalProtein += post.protien; %>
+                      <% } %>
+                    <% }) %>
+                    <tr>
+                      <td><b><u>Totals</u></b></td>
+                      <td><b><%=totalCal%></b></td>
+                      <td><b><%=totalFat%></b></td>
+                      <td><b><%=totalCarb%></b></td>
+                      <td><b><%=totalProtein%></b></td>
+                    </tr>
+                  </table>
+                </div>
+                <br>
+
+                <div class="lunch">
+                  <div><h3><u>Lunch</u></h3></div>
+                  <table class="showDiet">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% var totalCal =0; %>
+                    <% var totalFat =0; %>
+                    <% var totalCarb =0; %>
+                    <% var totalProtein =0; %>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "lunch") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                        <% totalCal += post.cals; %>
+                        <% totalFat += post.fat; %>
+                        <% totalCarb += post.carbs; %>
+                        <% totalProtein += post.protien; %>
+                      <% } %>
+                    <% }) %>
+                    <tr>
+                      <td><b><u>Totals</u></b></td>
+                      <td><b><%=totalCal%></b></td>
+                      <td><b><%=totalFat%></b></td>
+                      <td><b><%=totalCarb%></b></td>
+                      <td><b><%=totalProtein%></b></td>
+                    </tr>
+                  </table>
+                </div>
+                <br>
+
+                <div class="dinner">
+                  <div><h3><u>Dinner</u></h3></div>
+                  <table class="showDiet">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% var totalCal =0; %>
+                    <% var totalFat =0; %>
+                    <% var totalCarb =0; %>
+                    <% var totalProtein =0; %>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "dinner") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                        <% totalCal += post.cals; %>
+                        <% totalFat += post.fat; %>
+                        <% totalCarb += post.carbs; %>
+                        <% totalProtein += post.protien; %>
+                        <% } %>
+                        <% }) %>
+                        <tr>
+                        <td><b><u>Totals</u></b></td>
+                        <td><b><%=totalCal%></b></td>
+                        <td><b><%=totalFat%></b></td>
+                        <td><b><%=totalCarb%></b></td>
+                        <td><b><%=totalProtein%></b></td>
+                        </tr>
+                  </table>
+                </div>
+                <br>
+
+                <div class="snacks">
+                  <div><h3><u>Snacks</u></h3></div>
+                  <table class="showDiet">
+                    <tr>
+                      <th>Food</th>
+                      <th>Calories</th>
+                      <th>Fat (g)</th>
+                      <th>Carbs (g)</th>
+                      <th>Protien (g)</th>
+                    </tr>
+                    <% var totalCal =0; %>
+                    <% var totalFat =0; %>
+                    <% var totalCarb =0; %>
+                    <% var totalProtein =0; %>
+                    <% db.forEach((post) => {%>
+                      <% if(post.meal == "snack") { %>
+                        <tr>
+                          <td><%=post.foodname%></td>
+                          <td><%=post.cals%></td>
+                          <td><%=post.fat%></td>
+                          <td><%=post.carbs%></td>
+                          <td><%=post.protien%></td>
+                        </tr>
+                        <% totalCal += post.cals; %>
+                        <% totalFat += post.fat; %>
+                        <% totalCarb += post.carbs; %>
+                        <% totalProtein += post.protien; %>
+                      <% } %>
+                    <% }) %>
+                    <tr>
+                      <td><b><u>Totals</u></b></td>
+                      <td><b><%=totalCal%></b></td>
+                      <td><b><%=totalFat%></b></td>
+                      <td><b><%=totalCarb%></b></td>
+                      <td><b><%=totalProtein%></b></td>
+                    </tr>
+                  </table>
+                </div>
+
+              </div>
+
+
+          <form action="/admin-diet" method="post">
+            <button type="submit" name="button">Back</button>
+          </form>
+
+        </div>
+      </div>
+    </body>
+  </html>

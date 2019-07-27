@@ -716,13 +716,22 @@ req.body = JSON.parse(JSON.stringify(req.body));
 
 .post('/admin-diet',(req,res)=>{
   pool.query("SELECT distinct date FROM meals_table WHERE username = '" + searchName + "'", (err_date,ans_date)=>{
-    pool.query("SELECT * FROM meals_table WHERE username = '" + searchName + "'", (err,ans) =>{
       res.render('pages/admin_diet', {
           db_date : ans_date.rows,
-          db : ans.rows,
           name:searchName
       })
-    })
+  })
+})
+
+
+.post('/diet-date',(req,res)=>{
+    var reqDate = req.body.date;
+    pool.query("SELECT * FROM meals_table WHERE username = '" + searchName + "' and date = '" + reqDate + "'", (err,ans) =>{
+      res.render('pages/admin_diet_date', {
+          db : ans.rows,
+          name:searchName,
+          date : reqDate
+      })
   })
 })
 
