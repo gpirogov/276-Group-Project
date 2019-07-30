@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="/stylesheets/forum-addpost.css">
   <link rel="stylesheet" href="/stylesheets/starterpage.css">
   <link rel="stylesheet" href="/stylesheets/nav-bar.css">
+  <link rel="stylesheet" href="/stylesheets/forum-search.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <!-- <script src="signup.js" charset="utf-8"></script> -->
   <script src="/js/forum-addpost.js" charset="utf-8"></script>
@@ -38,7 +39,7 @@
         <div class="popupInner" id="popupInner">
           <button type="button" class="cancel" id="cancel" name="cancel">Cancel</button>
 
-          <form class="addForm" id="addForm" method="post" action="/forumAddPost" >
+          <form class="addForm" id="addForm" method="post" onsubmit="return checkAddPostForm();" action="/forumAddPost" >
             <h1> Add New Post </h1>
             <label class="addPost-label" for="title"><b>Title</b></label> <br />
             <input class="addPostInput" type="text" name="title" /> <br />
@@ -55,7 +56,7 @@
             <input type="hidden" name="username" value="<%= username %>"/> <br />
             <input type="hidden" name="topic" value="<%= topic %>"/>
 
-            <div class="submitdiv">
+            <div class="submitdiv" onclick="checkAddPostForm()">
               <input class="submitButton" id="submitButton" value="SUBMIT" type="submit" />
 
             </div>
@@ -64,73 +65,29 @@
         </div>
       </div>
 
+      <div class="searchBox">
+        <form method="post" action="/forumSearch">
+          <input type="text" placeholder="Search" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
 
-      <% if(results) { %>
-        <% results.forEach(function(r) { %>
-          <div class="post">
-            <div class="postDesc">
-              <span>
-                <a class="titlePreview" href="/forums/<%= r.topic %>/<%= r.id.toString() %>"> <%= r.title %> </a>
-                <p class ="posterUsernamePreview"> <%= r.username %> </p>
-              </span>
+      <div class="forumLinks-container">
+        <% if(results) { %>
+          <% results.forEach(function(r) { %>
+            <div class="post">
+              <div class="postDesc">
+                <span>
+                  <a class="titlePreview" href="/forums/<%= r.topic %>/<%= r.id.toString() %>"> <%= r.title %> </a>
+                  <p class ="posterUsernamePreview"> <%= r.username %> </p>
+                </span>
 
-              <p class="postContentPreview">  <%= r.content %>  </p>
+                <p class="postContentPreview">  <%= r.content %>  </p>
+              </div>
             </div>
-          </div>
-          <% }); %>
-
-      <% } %>
-
-
-<!--
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> ipsum dolor </a>
-          <p> Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Egestadit volutpat maecenas volutpat. Pharetra vel turpis nunc eget lorem dolor sed. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tellus elementum sagittis vitae et. Tortor posuere ac u </p>
-        </div>
+            <% }); %>
+        <% } %>
       </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> adipiscing elit </a>
-          <p> Vitae tempus quam pellentesque nec. Elementum sagittis vitae et leo. Est pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Pellentesque habitant morbi tristique senectus. massa vitae tortor condim</p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> iusmod tempo </a>
-          <p> Porttitor massa id neque aliquam vestibulum morbi blandit cursus risus. Ut enim blandit volutpat maecenas volutpat. Pharetra vel turpis nunc eget lorem dolor sed. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tellus elementum sagittis vitae et. Tortor posuere ac u </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> sectetur adipiscing eli </a>
-          <p> Sit amet massa vitae tortor condimentum lacinia quis vel. Semper viverra nam libero justo laoreet. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> lacinia quis </a>
-          <p> Porttitor massa id neque aliquam vestibulum morbi blandit cursus risus. Ut enim blandit volutpat maecenas volutpat. Pharetra vel turpis nunc eget lorem dolor sed. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tellus elementum sagittis vitae et. Tortor posuere ac u </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> iusmod tempo </a>
-          <p> Porttitor massa id neque aliquam vestibulum morbi blandit cursus risus. Ut enim blandit volutpat maecenas volutpat. Pharetra vel turpis nunc eget lorem dolor sed. Malesuada fames ac turpis egestas sed tempus urna et pharetra. Tellus elementum sagittis vitae et. Tortor posuere ac u </p>
-        </div>
-      </div>
-
-      <div class="post">
-        <div class="postDesc">
-          <a href=""> sectetur adipiscing eli </a>
-          <p> Sit amet massa vitae tortor condimentum lacinia quis vel. Semper viverra nam libero justo laoreet. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Faucibus scelerisque eleifend donec pretium vulputate sapien nec sagittis </p>
-        </div>
-      </div> -->
 
 
     </div>
