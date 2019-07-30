@@ -1,12 +1,6 @@
 .icon > i {
   font-size: 48px;
   padding: 2px;
-  /* width: 72px;
-  height: 72px;
-  max-width: 72px;
-  max-height: 72px;
-  vertical-align: middle;
-  text-align: center;*/
 }
 
 .forumLinks-container {
@@ -77,16 +71,10 @@
 }
 
 .forumTopics, .postDesc {
-  /* display: table; */
   background-color: #2C4348;
-  /* width: 91%; */
-
-  /* box-sizing: border-box;
-  width:100%; */
 }
 
 .forumTopics {
-  /* width: 97%; */
 
 }
 
@@ -110,8 +98,6 @@
   height: 72px;
   max-width: 72px;
   max-height: 72px;
-  /* padding: 0; */
-
 }
 
 .TopicDesc {
