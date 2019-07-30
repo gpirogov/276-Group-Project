@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/stylesheets/starterpage.css">
     <link rel="stylesheet" href="/stylesheets/nav-bar.css">
     <link rel="stylesheet" href="/stylesheets/forumMain.css">
+    <link rel="stylesheet" href="/stylesheets/search.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   </head>
   <body>
@@ -26,6 +27,13 @@
         <h3>DISCUSSIONS</h3>
         <p>Visit any of our sub-forums and join the disscussion!</p>
         <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
+        <div class="searchBox">
+          <form method="post" action="/forumSearch">
+            <input type="text" placeholder="Search" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
         <div class="forumTopics">
           <span>
             <div class="icon">
