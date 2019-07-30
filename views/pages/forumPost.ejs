@@ -35,7 +35,6 @@
         </div>
         <br />
       </span>
-      <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
 
       <div class="popup" id="popup-post">
         <div class="popupInner" id="popupInner-post">
@@ -43,16 +42,8 @@
 
           <form class="addForm" id="addForm-post" method="post" onsubmit="return checkAddPostForm();" action="/forumAddPostReply" >
             <h1> Add a Comment </h1>
-            <!-- <label for="title"><b>Title</b></label> <br />
-            <input type="text" name="title" /> <br /> -->
 
-            <!-- <input type="text" name="content" /> <br /> -->
             <textarea class="addPostInput" id="addPostInput-content" name="content"></textarea> <br />
-
-
-            <!-- will eventually be removed -->
-            <!-- <label for="username"><b>Username</b></label> <br />
-            <input type="text" name="username" /> <br /> -->
 
             <!-- hidden input - topic -->
             <input type="hidden" name="title" value="<%= results[0].title %>"/>
@@ -74,7 +65,6 @@
         <% results.forEach(function(r) { %>
           <div class="post">
             <div class="postDesc">
-
               <span>
                 <p class ="posterUsername"> <%= r.username %> </p>
               </span>
@@ -82,9 +72,6 @@
               <p class="postContent">  <%= r.content %>  </p>
               <span class="likes-container">
                 <b class="likes"> <%= r.likes %>  </b>
-                <!-- <span class="icon"> -->
-                <!-- <button class="icon-button"> -->
-                <!-- <form name="iconForm" class="iconForm" onsubmit="return addLike();" > -->
                 <form name="iconForm" class="iconForm" method="post" action="/forumLikePost">
                   <button class="iconBtn" name="likeBtn" value="<%= r.uniqueid %>">
                     <i class="far fa-thumbs-up"></i>
@@ -92,8 +79,6 @@
                   <input type="hidden" name="topic" value="<%= r.topic %>"/>
                   <input type="hidden" name="id" value="<%= r.id %>"/>
                 </form>
-                <!-- </button> -->
-                <!-- </span> -->
               </span>
             </div>
           </div>
