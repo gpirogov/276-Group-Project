@@ -253,6 +253,8 @@ express()
  *  Forums:
  * ============================= */
 
+
+
  .get('/forums', (req,res) => {
    res.sendFile(path.join(__dirname + '/public/forum.html'));
  })
@@ -322,16 +324,12 @@ express()
  .post('/forumSearch', (req, res) => {
    var text = 'SELECT * FROM forums WHERE (LOWER(title) LIKE LOWER($1)) OR (LOWER(content) LIKE LOWER($2))';
    console.log("searching ... : " + req.body.search);
-   var values = [ req.body.search, req.body.search ];
+   var values = [ '%'+req.body.search+'%', '%'+req.body.search+'%' ];
 
    pool.query(text, values, (err, result) => {
-        res.render('pages/forumTopic', { results: result ? result.rows : null, topic: 'All', username: globalName });
+        res.render('pages/forumSearch', { results: result ? result.rows : null, topic: 'All', username: globalName, search: req.body.search});
    });
  })
-
- 
-
-
 
   /* ====================
    *  Diet Functionalities

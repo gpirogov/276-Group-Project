@@ -82,6 +82,8 @@
   cursor:pointer;
   overflow: hidden;
   outline:none;
+
+  margin-right: 10px;
 }
 
 .submitdiv {

@@ -9,6 +9,10 @@
   text-align: center;*/
 }
 
+.forumLinks-container {
+  margin-top: 55px;
+}
+
 #forumMain > h3 {
   color: #d6d6d6;
   padding-left: 32px;
@@ -29,6 +33,7 @@
 #forumMain > p, #forumMain > a, .forumTopic > a, .forumTopic > p{
   color: #d6d6d6;
   padding-left: 32px;
+  padding-right: 32px;
   padding-bottom: 10px;
   text-decoration: none;
 }

@@ -26,43 +26,10 @@
   <div class="forumTopic">
       <a href="/forums"> Home </a>
       <span>
-        <h3 class="topicTitle"><%= topic.toUpperCase() %></h3>
-        <div align="right">
-          <button type="button" class= "addButton" id="addButton" name="addButton">New Post</button>
-        </div>
+        <h3 class="topicTitle">SEARCH RESULTS</h3>
       </span>
-      <p>Discuss everything <%= topic %> related here!</p>
+      <p>All results for "<%= search %>" here...</p>
       <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
-
-      <div class="popup" id="popup">
-        <div class="popupInner" id="popupInner">
-          <button type="button" class="cancel" id="cancel" name="cancel">Cancel</button>
-
-          <form class="addForm" id="addForm" method="post" action="/forumAddPost" >
-            <h1> Add New Post </h1>
-            <label class="addPost-label" for="title"><b>Title</b></label> <br />
-            <input class="addPostInput" type="text" name="title" /> <br />
-
-            <!-- <input type="text" name="content" /> <br /> -->
-            <textarea class="addPostInput" id="addPostInput-content" name="content"></textarea> <br />
-
-
-            <!-- will eventually be removed -->
-            <!-- <label for="username"><b>Username</b></label> <br />
-            <input type="text" name="username" /> <br /> -->
-
-            <!-- hidden input - topic -->
-            <input type="hidden" name="username" value="<%= username %>"/> <br />
-            <input type="hidden" name="topic" value="<%= topic %>"/>
-
-            <div class="submitdiv">
-              <input class="submitButton" id="submitButton" value="SUBMIT" type="submit" />
-
-            </div>
-          </form>
-
-        </div>
-      </div>
 
 
       <% if(results) { %>
