@@ -1,8 +1,9 @@
 <!DOCTYPE html>
   <html lang="en" dir="ltr">
-  <% var i=0; var weight_list =new Array(test.legth); %>
+  <% var i=0; var weight_list =new Array(test.length); var rep_list = new Array(test.length); %>
     <% test.forEach((post) =>{%>
         <% weight_list[i] = post.weight; %>
+        <% rep_list[i] = post.rep; %>
         <% i++; %>
     <%}) %>
     <head>
@@ -13,24 +14,23 @@
 
       <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
       <script type="text/javascript">
-        var gettest = "<%=weight_list%>";
+        var weight = "<%=weight_list%>";
+        var rep = "<%=rep_list%>";
         google.charts.load('current', {'packages':['corechart']});
 
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-          var array_number = gettest.split(',').map(Number);
-          console.log(gettest);
-          console.log(array_number);
-          console.log(array_number[3]);
-          // Create the data table.
+          var array_weight = weight.split(',').map(Number);
+          var array_rep = rep.split(',').map(String);
           var data = new google.visualization.DataTable();
           data.addColumn('number', 'test');
-          data.addColumn('number', 'num');
-          data.addRow([0,0]);
-          for(var i=0; i<array_number.length;i++){
-            var y = array_number[i];
-            data.addRow([i+1,y]);
+          data.addColumn('number', 'time');
+          data.addColumn({type: 'string', role: 'tooltip'});
+          for(var i=0; i<array_weight.length;i++){
+            var y = array_weight[i];
+            var r = array_rep[i];
+            data.addRow([i+1, y, 'Weight = '+ y +'\nRep = '+ r]);
           }
 
 

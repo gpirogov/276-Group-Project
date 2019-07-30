@@ -729,7 +729,7 @@ req.body = JSON.parse(JSON.stringify(req.body));
 .post('/admin-graph',(req,res)=>{
   var routine = req.body.routine;
   var exercise = req.body.exercise;
-  const info = "SELECT weight FROM workout_table where username = $1 and routine = $2 and exercise = $3";
+  const info = "SELECT weight,rep FROM workout_table where username = $1 and routine = $2 and exercise = $3";
   const value = [searchName,routine,exercise];
   pool.query(info,value,(err,ans)=>{
     res.render('pages/admin_workoutgraph', {
