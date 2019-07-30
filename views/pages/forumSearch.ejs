@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Forum Burning + </title>
+  <link rel="stylesheet" href="/stylesheets/forumMain.css">
+  <link rel="stylesheet" href="/stylesheets/forum-addpost.css">
+  <link rel="stylesheet" href="/stylesheets/starterpage.css">
+  <link rel="stylesheet" href="/stylesheets/nav-bar.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <!-- <script src="signup.js" charset="utf-8"></script> -->
+  <script src="/js/forum-addpost.js" charset="utf-8"></script>
+</head>
+<body>
+  <div class="topnav">
+    <a href="/homepage"><img src="/images/logo-inverted.png"class="logo"></a>
+    <a href="/logout" class="navbar">Signout</a>
+    <a href="/profile" class="navbar">Profile</a>
+    <form class="go-to-workout-page" action="/go-to-workout-page" method="post">
+      <button type="submit" class="navbar">Workout</button>
+    </form>
+    <a href="/diet" class="navbar">Diet</a>
+    <a href="/forums" class="navbar">Forum</a>
+    <a href="/homepage" class="navbar">Homepage</a>
+    <!-- <h2>WORKOUT FORUM</h2> -->
+  </div>
+  <div class="forumTopic">
+      <a href="/forums"> Home </a>
+      <span>
+        <h3 class="topicTitle">SEARCH RESULTS</h3>
+      </span>
+      <p>All results for "<%= search %>" here...</p>
+      <!-- potentials: Weight loss <i class="fas fa-weight"></i>, running, .... -->
+
+
+      <% if(results) { %>
+        <% results.forEach(function(r) { %>
+          <div class="post">
+            <div class="postDesc">
+              <span>
+                <a class="titlePreview" href="/forums/<%= r.topic %>/<%= r.id.toString() %>"> <%= r.title %> </a>
+                <p class ="posterUsernamePreview"> <%= r.username %> </p>
+              </span>
+
+              <p class="postContentPreview">  <%= r.content %>  </p>
+            </div>
+          </div>
+          <% }); %>
+
+      <% } %>
+
+
+    </div>
+</body>
+</html>

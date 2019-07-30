@@ -1,5 +1,3 @@
-// Popup box idea from https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal
-
 window.addEventListener("load", function() {
   var popup = document.getElementsByClassName("popup")[0];
   var addButton = document.getElementsByClassName("addButton")[0];
@@ -17,3 +15,16 @@ window.addEventListener("load", function() {
   }
 });
 // add when user clicks away
+
+function checkAddPostForm() {
+  var form = document.forms.addForm
+  var title = form.elements.title.value;
+  // var content = document.getElementsByClassName("addForm")["content"].value;
+  var content = form.elements.content.value;
+
+  if(title == "" || content == "" || title == null || content == null) {
+    alert("Please fill out all fields");
+    return false;
+  }
+  return true;
+}
