@@ -9,7 +9,10 @@
   <link rel="stylesheet" href="/stylesheets/nav-bar.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
   <!-- <script src="signup.js" charset="utf-8"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   <script src="/js/forum-addpost.js" charset="utf-8"></script>
+  <script src="/js/forum-likepost.js" charset="utf-8"></script>
 </head>
 <body>
   <div class="topnav">
@@ -38,7 +41,7 @@
         <div class="popupInner" id="popupInner-post">
           <button type="button" class="cancel" id="cancel" name="cancel">Cancel</button>
 
-          <form class="addForm" id="addForm-post" method="post" action="/forumAddPostReply" >
+          <form class="addForm" id="addForm-post" method="post" onsubmit="return checkAddPostForm();" action="/forumAddPostReply" >
             <h1> Add a Comment </h1>
             <!-- <label for="title"><b>Title</b></label> <br />
             <input type="text" name="title" /> <br /> -->
@@ -57,7 +60,7 @@
             <input type="hidden" name="id" value="<%= id %>"/>
             <input type="hidden" name="username" value="<%= username %>"/> <br />
 
-            <div class="submitdiv">
+            <div class="submitdiv" onclick="checkAddPostForm()">
               <input class="submitButton" id="submitButton" value="SUBMIT" type="submit" />
 
             </div>
@@ -77,6 +80,21 @@
               </span>
               <br>
               <p class="postContent">  <%= r.content %>  </p>
+              <span class="likes-container">
+                <b class="likes"> <%= r.likes %>  </b>
+                <!-- <span class="icon"> -->
+                <!-- <button class="icon-button"> -->
+                <!-- <form name="iconForm" class="iconForm" onsubmit="return addLike();" > -->
+                <form name="iconForm" class="iconForm" method="post" action="/forumLikePost">
+                  <button class="iconBtn" name="likeBtn" value="<%= r.uniqueid %>">
+                    <i class="far fa-thumbs-up"></i>
+                  </button>
+                  <input type="hidden" name="topic" value="<%= r.topic %>"/>
+                  <input type="hidden" name="id" value="<%= r.id %>"/>
+                </form>
+                <!-- </button> -->
+                <!-- </span> -->
+              </span>
             </div>
           </div>
           <% }); %>

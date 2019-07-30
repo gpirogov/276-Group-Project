@@ -253,8 +253,6 @@ express()
  *  Forums:
  * ============================= */
 
-
-
  .get('/forums', (req,res) => {
    res.sendFile(path.join(__dirname + '/public/forum.html'));
  })
@@ -266,7 +264,9 @@ express()
    } else{
      // topic in req.params.topic
      var topic = req.params.topic;
-     var text = 'SELECT * FROM forums WHERE topic = $1';
+     // var text = 'SELECT * FROM forums WHERE topic = $1';
+     var text = 'SELECT * from (SELECT DISTINCT ON (title) * FROM forums WHERE topic = $1 ORDER BY title) originalpostsnotcommentspls order by time DESC';
+
      var values = [ req.params.topic ];
 
      // pool.query('SELECT * FROM forums', (err, result) => {
@@ -286,7 +286,7 @@ express()
    } else {
      var id = req.params.id;
      var topic = req.params.topic;
-     var text = 'SELECT * FROM forums WHERE id = $1';
+     var text = 'SELECT * FROM forums WHERE id = $1 ORDER BY time';
      var values = [ id ];
      console.log(id);
 
@@ -303,18 +303,18 @@ express()
    }
  })
  .post('/forumAddPost', (req, res) => {
-   var text = 'INSERT INTO forums (title, content, topic, username) VALUES ($1, $2, $3, $4)';
-   var values = [ req.body.title, req.body.content, req.body.topic, req.body.username ];
-
+   var text = 'INSERT INTO forums (title, content, topic, username, likes, time) VALUES ($1, $2, $3, $4, $5, to_timestamp($6 / 1000.0))';
+   var values = [ req.body.title, req.body.content, req.body.topic, req.body.username, 0, Date.now() ];
+   console.log(Date.now());
    pool.query(text, values, (err, result) => {
      res.redirect('/forums');
    });
  })
 
  .post('/forumAddPostReply', (req, res) => {
-   var text = 'INSERT INTO forums (id, title, content, topic, username) VALUES ($1, $2, $3, $4, $5)';
+   var text = 'INSERT INTO forums (id, title, content, topic, username, likes, time) VALUES ($1, $2, $3, $4, $5, $6, to_timestamp($7 / 1000.0))';
    console.log("id of reply: " + req.body.id);
-   var values = [ parseInt(req.body.id), req.body.title, req.body.content, req.body.topic, req.body.username ];
+   var values = [ parseInt(req.body.id), req.body.title, req.body.content, req.body.topic, req.body.username, 0, Date.now() ];
 
    pool.query(text, values, (err, result) => {
      res.redirect('/forums');
@@ -322,7 +322,9 @@ express()
  })
 
  .post('/forumSearch', (req, res) => {
-   var text = 'SELECT * FROM forums WHERE (LOWER(title) LIKE LOWER($1)) OR (LOWER(content) LIKE LOWER($2))';
+   var text = 'SELECT * FROM forums WHERE (LOWER(title) LIKE LOWER($1)) OR (LOWER(content) LIKE LOWER($2)) ORDER BY time DESC';
+   // var text = 'SELECT DISTINCT ON (title) * FROM forums WHERE (LOWER(title) LIKE LOWER($1)) OR (LOWER(content) LIKE LOWER($2))';
+
    console.log("searching ... : " + req.body.search);
    var values = [ '%'+req.body.search+'%', '%'+req.body.search+'%' ];
 
@@ -330,6 +332,20 @@ express()
         res.render('pages/forumSearch', { results: result ? result.rows : null, topic: 'All', username: globalName, search: req.body.search});
    });
  })
+
+ .post('/forumLikePost', (req, res) => {
+   var text = 'UPDATE forums SET likes = likes + 1 where uniqueid = $1';
+   var values = [ parseInt(req.body.likeBtn) ];
+   console.log("liked post's unique id " + req.body.likeBtn);
+
+   pool.query(text, values, (err, result) => {
+        // res.render('pages/forumSearch', { results: result ? result.rows : null, topic: 'All', username: globalName, search: req.body.search});
+        res.redirect('/forums/' + req.body.topic + '/' + req.body.id);
+   });
+ })
+
+
+
 
   /* ====================
    *  Diet Functionalities
@@ -377,7 +393,6 @@ express()
     res.render('pages/diet', {food_total_cal: food_total_cal, date:mealDate})
   })
 })
-
 
 .post('/add', function (req, res){
   var foodName = req.body.mealFood;

@@ -39,7 +39,7 @@
         <div class="popupInner" id="popupInner">
           <button type="button" class="cancel" id="cancel" name="cancel">Cancel</button>
 
-          <form class="addForm" id="addForm" method="post" action="/forumAddPost" >
+          <form class="addForm" id="addForm" method="post" onsubmit="return checkAddPostForm();" action="/forumAddPost" >
             <h1> Add New Post </h1>
             <label class="addPost-label" for="title"><b>Title</b></label> <br />
             <input class="addPostInput" type="text" name="title" /> <br />
@@ -56,7 +56,7 @@
             <input type="hidden" name="username" value="<%= username %>"/> <br />
             <input type="hidden" name="topic" value="<%= topic %>"/>
 
-            <div class="submitdiv">
+            <div class="submitdiv" onclick="checkAddPostForm()">
               <input class="submitButton" id="submitButton" value="SUBMIT" type="submit" />
 
             </div>
