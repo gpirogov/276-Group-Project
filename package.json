@@ -17,7 +17,7 @@
     "pg": "^7.11.0"
   },
   "devDependencies": {
-    "request": "^2.81.0",
+    "request": "^2.88.0",
     "tape": "^4.11.0"
   },
   "repository": {

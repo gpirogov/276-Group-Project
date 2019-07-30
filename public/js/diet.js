@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  //get url
+  // from https://stackoverflow.com/questions/6941533/get-protocol-domain-and-port-from-url
+  var urlParts = window.location.href.split('/');
+  var urlFull = (urlParts[0] + "//" + urlParts[2])
+  // console.log(urlFull + "/delete")
 
   //api id and key
   var appId= "83211bdc";
@@ -34,7 +39,7 @@ $(document).ready(function() {
   $('#apiSearchButton').on("click",function(){
     let selectedMeal = $('#mealSelector :selected').val()
     let food = $('#searchBar').val()
-    console.log(food)
+    console.log("api search for: " + food)
     $.ajax({
       type:"GET",
       url:"https://api.edamam.com/api/food-database/parser",
@@ -97,12 +102,6 @@ $(document).ready(function() {
         keyFood = keyFood.trim()
         // console.log("keys to delete")
         // console.log({keyUser, keyMeal, keyDate, keyFood});
-
-        //get url
-        // from https://stackoverflow.com/questions/6941533/get-protocol-domain-and-port-from-url
-        var urlParts = window.location.href.split('/');
-        var urlFull = (urlParts[0] + "//" + urlParts[2])
-        // console.log(urlFull + "/delete")
 
         $.ajax({
           method:"POST",
