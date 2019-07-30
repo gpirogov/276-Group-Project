@@ -7,8 +7,21 @@ var assert = chai.assert;
 
 chai.use(chaiHttp);
 
-server = 'https://paradox-project.herokuapp.com';   //".request(server)" didnt work without this.
-//server = 'http://localhost:5000';   //".request(server)" didnt work without this.
+//server = 'https://paradox-project.herokuapp.com';
+server = 'http://localhost:5000';   //".request(server)" didnt work without this.
+
+
+
+
+
+
+
+
+// see documentation on why this doesnt work / is commented out.
+
+
+
+
 
 
 
@@ -59,86 +72,7 @@ describe('Nav Bar - Workout', function() {
 });*/
 
 
-
-
-
-/*escribe('Sign Up Page', function() {
-        it('Registering a new user should start questionnaire', function(done) {
-                chai
-                        .request(server)
-                        .post('/signup.html')
-                        .set('content-type', 'application/x-www-form-urlencoded')
-                        .send({username : 'newuser1', pw : 'newpass1', gender : 'M', age : 21, weight : 180, height : 6})
-                        .redirects(0)
-                        .end(function(err, res){
-                                res.should.redirectTo(server + '/questionnaire-start.html');
-                                done();
-                        });
-        });
-        it('Registering an existing user should return "Existing Account" message', function(done) {
-                chai
-                        .request(server)
-                        .post('/signup.html')
-                        .set('content-type', 'application/x-www-form-urlencoded')
-                        .send({username : 'tester', pw : 'mypassword', gender : 'other', age : 0, weight : 0, height : 0})
-                        .end(function(err, res){    
-                                expect(errorMsg).to.equal("Error: Please ensure meal is selected and all fields are filled.");
-                                done();
-                        });
-        });
-});*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-describe('Sign Up Page', function() {
+/*describe('Sign Up Page', function() {
   it('Registering a new user should start questionnaire', function(done) {
     chai
       .request(server)
@@ -151,7 +85,7 @@ describe('Sign Up Page', function() {
         done();
       });
   });
-  /*it('Registering an existing user should return "Existing Account" message', function(done) {
+  it('Registering an existing user should return "Existing Account" message', function(done) {
     chai
       .request(server)
       .post('/signup.html')
@@ -161,56 +95,8 @@ describe('Sign Up Page', function() {
         expect(res.body.errorMsg).to.equal("Existing Account");
         done();
       });
-  });*/
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
+});*/
 
 
 
