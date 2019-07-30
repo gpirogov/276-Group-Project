@@ -1,0 +1,8 @@
+.searchBox {
+  float: right;
+}
+
+.searchBox button {
+  float: right;
+  padding: 6px;
+}
